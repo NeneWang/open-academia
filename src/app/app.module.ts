@@ -9,7 +9,6 @@ import { CounterStoreModule } from './store/counter.store';
 import { appReducer } from './store';
 
 
-
 @NgModule({
   declarations: [
     AppComponent

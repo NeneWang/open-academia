@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// import { IndexComponent  as CoursesIndex } from './student/pages/courses/index/index.component';
-// import { IndexComponent  as UsersIndex } from './student/pages/users/index/index.component';
-
-import { StudentsRoutingModule } from './student/students-routing.module';
+import { adminGuard } from './core/admin.guard';
+import { studentGuard } from './core/student.guard';  
 
 const routes: Routes = [
   {
@@ -14,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./admin/admin-routing.module').then(m => m.AdminRoutingModule)
   }

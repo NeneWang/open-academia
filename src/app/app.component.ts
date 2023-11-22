@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { increment, decrement } from './store/counter.actions';
-import { AcademiaserviceService } from './academia/services/academiaservice.service';
 
-import { AppState } from './store';
-import { selectAuthUser } from 'src/app/academia/store/coursemanagement.selector';
 import { Observable, map, of } from 'rxjs';
 import { User } from 'src/app/academia/models';
+import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 
 @Component({
   selector: 'app-root',
