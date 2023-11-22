@@ -21,7 +21,8 @@ import { RouterModule } from '@angular/router';
               ),
             }
         ])
-    ]
+    ],
+    exports: [RouterModule]
 })
 
 export class StudentsRoutingModule { }

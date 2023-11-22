@@ -8,6 +8,7 @@ const routes: Routes = [
     path: '',
     component: IndexComponent,
   }
+
 ]
 
 
@@ -21,4 +22,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class UsersModule { }
+export class CoursesModule { }

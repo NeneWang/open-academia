@@ -7,13 +7,12 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { CounterStoreModule } from './store/counter.store';
 import { appReducer } from './store';
-import { IndexComponent } from './users/pages/users/index/index.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    IndexComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
