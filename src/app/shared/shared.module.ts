@@ -21,7 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
   imports: [
     CommonModule, MatProgressSpinnerModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   exports: [
     MatButtonModule,
@@ -34,8 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatTableModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-
-
+    
   ],
 })
 export class SharedModule { }

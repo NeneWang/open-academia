@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { IndexComponent } from './index/index.component';
 import { Routes, RouterModule } from '@angular/router';
 import { TableComponent } from './table/table.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CoursesDialogComponentComponent } from '../../components/courses-dialog-component/courses-dialog-component.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 
 const routes: Routes = [
   
@@ -21,11 +25,15 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     IndexComponent,
-    TableComponent
+    TableComponent,
+    CoursesDialogComponentComponent
+    
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    SharedModule,
+    RouterModule.forChild(routes),
+    MatDialogModule,
   ],
   exports: [RouterModule]
 })
