@@ -4,4 +4,11 @@
   <button (click)="decrement()">Decrement</button>
   <br>
   <span>{{ count }}</span>
+
+  <br>
+  <button (click)="loginAsAdmin()" >Login as Admin</button>
+  <button (click)="loginAsStudent()" >Login as student</button>
+  <span>
+    {{ email$| async}}
+  </span>
 </div>

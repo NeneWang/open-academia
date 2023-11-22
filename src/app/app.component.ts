@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { increment, decrement } from './store/counter.actions';
+import { AcademiaserviceService } from './academia/services/academiaservice.service';
+
+import { AppState } from './store';
+import { selectAuthUser } from 'src/app/academia/store/coursemanagement.selector';
+import { Observable, map, of } from 'rxjs';
+import { User } from 'src/app/academia/models';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +16,46 @@ import { increment, decrement } from './store/counter.actions';
 export class AppComponent {
   title = 'open-academia';
   count: number | undefined;
+  authUser$: Observable<User | null>;
+  
 
-  constructor(private store: Store<{ counter: { count: number } }>) {
+
+  constructor(private store: Store<{ counter: { count: number } }>, private academiaserviceService: AcademiaserviceService) {
     this.store.select('counter').subscribe((state) => {
       this.count = state.count;
     });
+    
+    this.authUser$ = this.academiaserviceService.authUser$;
+  
+  }
+  get email$(): Observable<string | undefined> {
+    return this.authUser$.pipe(map((user) => user?.email));
   }
 
-  
   increment() {
     this.store.dispatch(increment());
   }
 
   decrement() {
     this.store.dispatch(decrement());
+  }
+
+  loginAsAdmin() {
+    console.log('loginDemo');
+    this.academiaserviceService.login({
+      email: 'buckyroberts@mail.com',
+      password: 'password1'
+    });
+  }
+
+  
+  loginAsStudent() {
+    console.log('loginDemo');
+    this.academiaserviceService.login({
+      email: 'nelsonwang@mail.com',
+      password: 'password1'
+    });
+
+  
   }
 }
