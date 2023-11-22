@@ -7,6 +7,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CoursesDialogComponentComponent } from '../../components/courses-dialog-component/courses-dialog-component.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import { CourseTableComponent } from 'src/app/admin/components/course-table/course-table.component';
+
 
 const routes: Routes = [
   
@@ -26,7 +28,8 @@ const routes: Routes = [
   declarations: [
     IndexComponent,
     TableComponent,
-    CoursesDialogComponentComponent
+    CoursesDialogComponentComponent,
+    CourseTableComponent,
     
   ],
   imports: [

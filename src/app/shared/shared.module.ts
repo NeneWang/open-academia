@@ -22,6 +22,14 @@ import { MatSelectModule } from '@angular/material/select';
     CommonModule, MatProgressSpinnerModule,
     MatFormFieldModule,
     MatDialogModule,
+    MatTableModule,
+    MatInputModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSelectModule,
+    
   ],
   exports: [
     MatButtonModule,

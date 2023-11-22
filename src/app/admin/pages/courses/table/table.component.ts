@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 import { CoursesDialogComponentComponent } from 'src/app/admin/components/courses-dialog-component/courses-dialog-component.component';
 
-import {Course} from 'src/app/academia/models';
+import { Course } from 'src/app/academia/models';
 
 
 
@@ -18,11 +18,11 @@ export class TableComponent {
   constructor(
     private academiaserviceService: AcademiaserviceService,
     private matDialog: MatDialog
-  ) { 
+  ) {
     this.courses$ = this.academiaserviceService.getCourses$();
   }
 
-  addCourse():void{
+  addCourse(): void {
     this.matDialog
       .open(CoursesDialogComponentComponent)
       .afterClosed()
