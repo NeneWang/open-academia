@@ -7,7 +7,8 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { CounterStoreModule } from './store/counter.store';
 import { appReducer } from './store';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { appReducer } from './store';
     AppRoutingModule,
     CounterStoreModule,
     CoreModule,
-    StoreModule.forRoot(appReducer)
+    StoreModule.forRoot(appReducer),
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
