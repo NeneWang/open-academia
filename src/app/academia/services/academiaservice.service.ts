@@ -7,7 +7,7 @@ import { User, LoginPayload, Course } from 'src/app/academia/models';
 import { selectAuthUser } from 'src/app/academia/store/coursemanagement.selector';
 import { AuthActions } from 'src/app/academia/store/coursemanagement.actions';
 import { environment } from 'src/environments/environment.local';
-import { Observable, of } from 'rxjs';
+import { Observable, concatMap, of } from 'rxjs';
 
 
 @Injectable({
@@ -15,7 +15,17 @@ import { Observable, of } from 'rxjs';
 })
 export class AcademiaserviceService {
 
-  courses: Course[] = []
+
+
+  courses: Course[] = [{
+    "id": 1,
+    "name": "Algorithms I",
+    "description": "This course is an introduction to the design and analysis of algorithms. Topics include asymptotic notation, recurrences and recursion, analysis of algorithms, sorting algorithms, basic data structures, and graph algorithms.",
+    "image": "https://i.ibb.co/k4bG2qF/algorithms-1.png",
+    "category": "Computer Science",
+    "intensity": "High",
+    "credits": 4
+  }]
 
 
   public authUser$ = this.store.select(selectAuthUser);
@@ -61,27 +71,30 @@ export class AcademiaserviceService {
   // ======== Course Management ======== 
 
   getCourses$(): Observable<Course[]> {
-    return of(this.courses);
+    // return of(this.courses);
+    return this.httpClient.get<Course[]>(`${environment.baseUrl}/course`);
+
   }
 
   createCourse$(payload: Course): Observable<Course[]> {
-    this.courses.push(payload);
-    return of([...this.courses]);
+    // this.courses.push(payload);
+    return this.httpClient.post<Course[]>(`${environment.baseUrl}/course`, payload).
+      pipe(concatMap(() => this.getCourses$()));;
   }
 
-  editCourse$(id: number, payload: Course): Observable<Course[]> {
-    return of(
-      this.courses.map((c) => (c.id === id ? { ...c, ...payload } : c))
-    );
+  updateCourse(id: number, course: Course){
+    return this.httpClient.put<Course[]>(`${environment.baseUrl}/course/${id}`, course).
+      pipe(concatMap(() => this.getCourses$()));;
   }
 
   deleteCourse$(id: number): Observable<Course[]> {
-    this.courses = this.courses.filter((c) => c.id !== id);
-    return of(this.courses);
+    return this.httpClient.delete<Course[]>(`${environment.baseUrl}/course/${id}`)
+      .pipe(concatMap(() => this.getCourses$()));
   }
 
   getCourseById$(id: number): Observable<Course | undefined> {
-    return of(this.courses.find((c) => c.id === id));
+    return this.httpClient.get<Course[]>(`${environment.baseUrl}/course/${id}`)
+      .pipe(concatMap((courses) => of(courses[0])));
   }
 
 

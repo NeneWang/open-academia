@@ -23,7 +23,7 @@ export class CoursesDialogComponentComponent {
     this.courseForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      image: ['', Validators.required],
+      // image: ['', Validators.required],
       category: [this.courseCategories[0], Validators.required],
       intensity: [this.intensityOptions[0], Validators.required],
       credits: [0, Validators.required],
@@ -31,8 +31,10 @@ export class CoursesDialogComponentComponent {
   }
 
   onSubmit(): void {
+    console.log('Is valid? this.courseForm', this.courseForm.valid)
     if (this.courseForm.valid) {
       console.log(this.courseForm.value);
+      this.matDialogRef.close(this.courseForm.value);
     }
   }
 }

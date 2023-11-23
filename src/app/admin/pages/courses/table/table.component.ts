@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 import { CoursesDialogComponentComponent } from 'src/app/admin/components/courses-dialog-component/courses-dialog-component.component';
 
@@ -19,7 +19,8 @@ export class TableComponent {
     private academiaserviceService: AcademiaserviceService,
     private matDialog: MatDialog
   ) {
-    this.courses$ = this.academiaserviceService.getCourses$();
+    this.courses$ = this.academiaserviceService.getCourses$()
+    
   }
 
   addCourse(): void {
@@ -33,7 +34,7 @@ export class TableComponent {
               id: new Date().getTime(),
               name: result.name,
               description: result.description,
-              image: result.image,
+              image: "",
               category: result.category,
               intensity: result.intensity,
               credits: result.credits,
@@ -41,6 +42,10 @@ export class TableComponent {
           }
         },
       });
+  }
+
+  deleteCourse(id: number): void {
+    this.courses$ = this.academiaserviceService.deleteCourse$(id);
   }
 
 
