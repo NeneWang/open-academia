@@ -49,6 +49,7 @@ export class TableComponent {
   }
 
   editCourse(course: Course): void {
+    console.log('course id', course)
     this.matDialog
       .open(CoursesDialogComponentComponent, {
         data: course,
@@ -57,15 +58,18 @@ export class TableComponent {
       .subscribe({
         next: (result) => {
           if (result) {
-            this.courses$ = this.academiaserviceService.updateCourse$(result.id,{
-
-              ...course,
+            this.courses$ = this.academiaserviceService.updateCourse$(
+              course.id, {
+              id: course.id,
               name: result.name,
               description: result.description,
+              image: "",
               category: result.category,
               intensity: result.intensity,
               credits: result.credits,
-            });
+
+            }
+            )
           }
         },
       });

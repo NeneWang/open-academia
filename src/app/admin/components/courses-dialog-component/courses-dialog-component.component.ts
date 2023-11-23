@@ -1,6 +1,8 @@
-import { Component, NgModule } from '@angular/core';
+import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
+import { Component, NgModule, Injectable, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Course } from 'src/app/academia/models';
 
 
 @Component({
@@ -18,16 +20,37 @@ export class CoursesDialogComponentComponent {
 
   constructor(
     private fb: FormBuilder,
-    private matDialogRef: MatDialogRef<CoursesDialogComponentComponent>
+    private academiaServiceService: AcademiaserviceService,
+    private matDialogRef: MatDialogRef<CoursesDialogComponentComponent>,
+    @Inject(MAT_DIALOG_DATA) 
+    private course?: Course
   ) {
-    this.courseForm = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      // image: ['', Validators.required],
-      category: [this.courseCategories[0], Validators.required],
-      intensity: [this.intensityOptions[0], Validators.required],
-      credits: [0, Validators.required],
-    });
+
+    if(course){
+      console.log('course', course);
+      // this.courseForm.patchValue(c);
+      // this.courseForm.patchValue(course);
+      this.courseForm = this.fb.group({
+        name: [course.name, Validators.required],
+        description: [course.description, Validators.required],
+        image: [course.image],
+        category: [course.category, Validators.required],
+        intensity: [course.intensity, Validators.required],
+        credits: [course.credits, Validators.required],
+      });
+    }else{
+
+      this.courseForm = this.fb.group({
+        name: ['', Validators.required],
+        description: ['', Validators.required],
+        image: [''],
+        category: [this.courseCategories[0], Validators.required],
+        intensity: [this.intensityOptions[0], Validators.required],
+        credits: [0, Validators.required],
+      });
+    }
+
+    
   }
 
   onSubmit(): void {
@@ -37,4 +60,10 @@ export class CoursesDialogComponentComponent {
       this.matDialogRef.close(this.courseForm.value);
     }
   }
+
+  
+  public get isEditing(): boolean {
+    return !!this.course;
+  }
+
 }

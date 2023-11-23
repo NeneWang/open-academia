@@ -92,9 +92,9 @@ export class AcademiaserviceService {
       .pipe(concatMap(() => this.getCourses$()));
   }
 
+    
   getCourseById$(id: number): Observable<Course | undefined> {
-    return this.httpClient.get<Course[]>(`${environment.baseUrl}/course/${id}`)
-      .pipe(concatMap((courses) => of(courses[0])));
+    return of(this.courses.find((c) => c.id === id));
   }
 
 

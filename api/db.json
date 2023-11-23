@@ -83,17 +83,8 @@
       "credits": 4
     },
     {
-      "id": 3,
-      "name": "Angular",
-      "description": "This course introduces the Angular framework, including components, routing, and services. Students will build a single-page web application.",
-      "image": "https://i.ibb.co/M5Svxdd/angular.png",
-      "category": "Frameworks",
-      "intensity": "High",
-      "credits": 4
-    },
-    {
       "id": 1700767108963,
-      "name": "te",
+      "name": "aaaaa",
       "description": "asdasd",
       "image": "",
       "category": "Computer Science",
