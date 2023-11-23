@@ -20,7 +20,7 @@ export class TableComponent {
     private matDialog: MatDialog
   ) {
     this.courses$ = this.academiaserviceService.getCourses$()
-    
+
   }
 
   addCourse(): void {
@@ -48,6 +48,28 @@ export class TableComponent {
     this.courses$ = this.academiaserviceService.deleteCourse$(id);
   }
 
+  editCourse(course: Course): void {
+    this.matDialog
+      .open(CoursesDialogComponentComponent, {
+        data: course,
+      })
+      .afterClosed()
+      .subscribe({
+        next: (result) => {
+          if (result) {
+            this.courses$ = this.academiaserviceService.updateCourse$(result.id,{
+
+              ...course,
+              name: result.name,
+              description: result.description,
+              category: result.category,
+              intensity: result.intensity,
+              credits: result.credits,
+            });
+          }
+        },
+      });
+  }
 
 
 }

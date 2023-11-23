@@ -82,7 +82,7 @@ export class AcademiaserviceService {
       pipe(concatMap(() => this.getCourses$()));;
   }
 
-  updateCourse(id: number, course: Course){
+  updateCourse$(id: number, course: Course){
     return this.httpClient.put<Course[]>(`${environment.baseUrl}/course/${id}`, course).
       pipe(concatMap(() => this.getCourses$()));;
   }
