@@ -16,7 +16,6 @@ import { Observable, concatMap, of } from 'rxjs';
 export class AcademiaserviceService {
 
 
-
   courses: Course[] = [{
     "id": 1,
     "name": "Algorithms I",
@@ -82,7 +81,7 @@ export class AcademiaserviceService {
       pipe(concatMap(() => this.getCourses$()));;
   }
 
-  updateCourse$(id: number, course: Course){
+  updateCourse$(id: number, course: Course) {
     return this.httpClient.put<Course[]>(`${environment.baseUrl}/course/${id}`, course).
       pipe(concatMap(() => this.getCourses$()));;
   }
@@ -92,9 +91,30 @@ export class AcademiaserviceService {
       .pipe(concatMap(() => this.getCourses$()));
   }
 
-    
+
   getCourseById$(id: number): Observable<Course | undefined> {
     return of(this.courses.find((c) => c.id === id));
+  }
+
+  // ======== User Management ========
+
+  getUsers$(): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${environment.baseUrl}/user`);
+  }
+
+  createUser$(payload: User): Observable<User[]> {
+    return this.httpClient.post<User[]>(`${environment.baseUrl}/user`, payload).
+      pipe(concatMap(() => this.getUsers$()));;
+  }
+
+  updateUser$(id: number, user: User): Observable<User[]> {
+    return this.httpClient.put<User[]>(`${environment.baseUrl}/user/${id}`, user).
+      pipe(concatMap(() => this.getUsers$()));;
+  }
+
+  deleteUser$(id: number): Observable<User[]> {
+    return this.httpClient.delete<User[]>(`${environment.baseUrl}/user/${id}`)
+      .pipe(concatMap(() => this.getUsers$()));
   }
 
 

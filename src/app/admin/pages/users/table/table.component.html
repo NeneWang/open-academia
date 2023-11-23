@@ -1,5 +1,11 @@
-<p>Admin table  Usersworks!</p>
+<p>table Courses</p>
+<br />
 
 
+<app-user-table
+    [dataSource]="(users$ | async) || []"
+    (deleteUser)="deleteUser($event)"
+    (editUser)="editUser($event)"
+></app-user-table>
 
-
+<button (click)="addUser()">Create User</button>
