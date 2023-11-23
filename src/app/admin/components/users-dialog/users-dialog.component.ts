@@ -13,7 +13,8 @@ export class UsersDialogComponent {
 
   userForm: FormGroup;
 
-
+  roleOptions: string[] = ['ADMIN', 'STUDENT', 'EMPLOYEE'];
+  isEdit = false;
 
   constructor(
     private fb: FormBuilder,
@@ -32,6 +33,7 @@ export class UsersDialogComponent {
         avatar: [user.avatar],
         role: [user.role, Validators.required],
       });
+      this.isEdit = true;
     } else {
       this.userForm = this.fb.group({
         first: ['', Validators.required],

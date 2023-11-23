@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    // canActivate: [adminGuard],
+    canActivate: [adminGuard],
     loadChildren: () =>
       import('./admin/admin-routing.module').then(m => m.AdminRoutingModule)
   }

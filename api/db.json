@@ -43,12 +43,12 @@
     {
       "id": 5,
       "first": "Admin",
-      "last": "Lin",
+      "last": "Wang",
       "email": "admin@mail.com",
       "password": "123456",
-      "role": "ADMIN",
       "token": "",
-      "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-glasses_23-2149436185.jpg?w=826&t=st=1700594372~exp=1700594972~hmac=e544f6a41e7813493906b4a5b5b855b47a4cc8bd30a69bc0045416ef2685ee27"
+      "avatar": "",
+      "role": "ADMIN"
     }
   ],
   "users": [
