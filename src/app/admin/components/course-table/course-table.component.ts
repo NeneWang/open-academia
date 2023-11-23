@@ -16,5 +16,6 @@ export class CourseTableComponent {
   @Output()
   deleteCourse = new EventEmitter();
 
-  displayedColumns = ['id', 'name', 'startDate', 'endDate', 'actions'];
+  displayedColumns = ['Id', 'Name', 'Description', 'Category', 'Intensity'];
+  
 }
