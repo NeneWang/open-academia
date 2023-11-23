@@ -253,3 +253,38 @@ deleteUser(id: number): Observable<User[]> {
   }
   ```
 
+Setting the methods
+
+```ts title="table.component.ts"
+  
+<app-courses-table
+[dataSource]="(courses$ | async) || []"
+(deleteCourse)="deleteCourse($event)"
+(editCourse)="editCourse($event)"
+></app-courses-table>
+```
+
+And now getting the actions to show:
+
+![](./img/2023-11-23-14-32-35.png)
+
+
+
+Note you add actions to it
+
+```ts title="course-table.component.ts"
+ 
+displayedColumns = ['id', 'name', 'actions'];
+```
+
+![](./img/2023-11-23-14-36-03.png)
+
+
+Adding edit Button TO make it work
+
+![](./img/2023-11-23-14-36-48.png)
+
+```
+
+```
+

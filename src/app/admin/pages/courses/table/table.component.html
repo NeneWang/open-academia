@@ -4,6 +4,8 @@
 
 <app-courses-table
 [dataSource]="(courses$ | async) || []"
+(deleteCourse)="deleteCourse($event)"
+(editCourse)="editCourse($event)"
 ></app-courses-table>
 
 <button (click)="addCourse()" >Create Course</button>
