@@ -10,7 +10,7 @@ import { AcademiaserviceService } from 'src/app/academia/services/academiaservic
 })
 export class CoursesComponent implements OnInit {
   courses$: Observable<Course[]>;
-  user_id: number | undefined; // Initialize as undefined
+  userId: number | undefined; // Initialize as undefined
 
   constructor(private academiaserviceService: AcademiaserviceService) {
     this.courses$ = this.academiaserviceService.getCourses$();
@@ -20,15 +20,15 @@ export class CoursesComponent implements OnInit {
     // Subscribe to the authUser$ observable to get the user's ID
     this.academiaserviceService.authUser$.subscribe((user) => {
       if (user) {
-        // Update the user_id variable with the user's ID
-        this.user_id = user.id;
+        // Update the userId variable with the user's ID
+        this.userId = user.id;
       }
     });
   }
 
-  enrollCourse(course_id: number): void {
-    if (this.user_id !== undefined) {
-      this.academiaserviceService.enrollCourse$(course_id, this.user_id);
+  enrollCourse(courseId: number): void {
+    if (this.userId !== undefined) {
+      this.academiaserviceService.enrollCourse$(courseId, this.userId);
     } else {
       console.error('User ID is undefined. User not logged in.');
       // Handle the case where the user is not logged in.

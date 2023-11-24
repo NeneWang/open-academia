@@ -44,8 +44,8 @@ export interface UserCourse{
     /**
      *  {
             "id": 1,
-            "user_id": 1,
-            "course_id": 1,
+            "userId": 1,
+            "courseId": 1,
             "progress": 10,
             "status": "In Progress",
             "grade": 0,
@@ -55,8 +55,8 @@ export interface UserCourse{
         }
      */
     id: number;
-    user_id: number;
-    course_id: number;
+    userId: number;
+    courseId: number;
     progress: number;
     status: UserCourseStatus;
     grade: number;
@@ -69,7 +69,7 @@ export interface Section{
     /**
      * {
             "id": 1,
-            "course_id": 1,
+            "courseId": 1,
             "name": "Introduction to Algorithms",
             "description": "This section introduces the course and the topics that will be covered.",
             "completion_score": 0,
@@ -78,7 +78,7 @@ export interface Section{
      */
 
     id: number;
-    course_id: number;
+    courseId: number;
     name: string;
     description: string;
     completion_score: number;
@@ -89,14 +89,14 @@ export interface UserSection{
     /**
      * {
             "id": 1,
-            "user_course_id": 1,
-            "section_id": 1,
+            "courseId": 1,
+            "sectionId": 1,
             "total_score": 0
         }
      */
     id: number;
-    user_course_id: number;
-    section_id: number;
+    courseId: number;
+    sectionId: number;
     total_score: number;
 }
 
@@ -104,14 +104,14 @@ export interface Page{
     /**
      * {
             "id": 1,
-            "section_id": 1,
+            "sectionId": 1,
             "title": "Introduction to Algorithms",
             "content_url": "https://www.youtube.com/embed/2SUvWfNJSsM",
             "has_submission": false
         }
      */
     id: number;
-    section_id: number;
+    sectionId: number;
     title: string;
     content_url: string;
     has_submission: boolean;

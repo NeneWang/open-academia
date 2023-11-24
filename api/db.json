@@ -1,5 +1,5 @@
 {
-  "user": [
+  "users": [
     {
       "id": 1,
       "first": "Bucky",
@@ -51,19 +51,7 @@
       "role": "ADMIN"
     }
   ],
-  "users": [
-    {
-      "id": 5,
-      "first": "Admin",
-      "last": "Lin",
-      "email": "admin@mail.com",
-      "password": "123456",
-      "role": "ADMIN",
-      "token": "",
-      "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-glasses_23-2149436185.jpg?w=826&t=st=1700594372~exp=1700594972~hmac=e544f6a41e7813493906b4a5b5b855b47a4cc8bd30a69bc0045416ef2685ee27"
-    }
-  ],
-  "course": [
+  "courses": [
     {
       "id": 1,
       "name": "Algorithms I",
@@ -92,11 +80,11 @@
       "credits": 0
     }
   ],
-  "usercourse": [
+  "usercourses": [
     {
       "id": 1,
-      "user_id": 1,
-      "course_id": 1,
+      "userId": 1,
+      "courseId": 1,
       "progress": 10,
       "status": "In Progress",
       "grade": 0,
@@ -105,10 +93,10 @@
       "end_date": "-"
     }
   ],
-  "section": [
+  "sections": [
     {
       "id": 1,
-      "course_id": 1,
+      "courseId": 1,
       "name": "Introduction to Algorithms",
       "description": "This section introduces the course and the topics that will be covered.",
       "completion_score": 0,
@@ -116,31 +104,31 @@
     },
     {
       "id": 2,
-      "course_id": 1,
+      "courseId": 1,
       "name": "Asymptotic Notation",
       "description": "This section introduces asymptotic notation and its use in analyzing algorithms.",
       "completion_score": 0,
       "order": 2
     }
   ],
-  "usersection": [
+  "usersections": [
     {
       "id": 1,
-      "user_course_id": 1,
-      "section_id": 1,
+      "courseId": 1,
+      "sectionId": 1,
       "total_score": 0
     }
   ],
-  "page": [
+  "pages": [
     {
       "id": 1,
-      "section_id": 1,
+      "sectionId": 1,
       "title": "Introduction to Algorithms",
       "content_url": "https://www.youtube.com/embed/2SUvWfNJSsM",
       "has_submission": false
     }
   ],
-  "path": [
+  "paths": [
     {
       "id": 1,
       "name": "Computer Science",

@@ -27,7 +27,7 @@ export class AcademiaserviceService {
   }]
 
 
-  public user_id: number | undefined;
+  public userId: number | undefined;
   public authUser$ = this.store.select(selectAuthUser);
   constructor(
     private httpClient: HttpClient,
@@ -39,8 +39,8 @@ export class AcademiaserviceService {
     this.authUser$.pipe(
       map((user) => user?.id)
     ).subscribe((id) => {
-      this.user_id = id;
-      console.log('this.user_id', this.user_id)
+      this.userId = id;
+      console.log('this.userId', this.userId)
     });
   }
 
@@ -57,7 +57,7 @@ export class AcademiaserviceService {
     // });
     this.httpClient
       .get<User[]>(
-        `${environment.baseUrl}/user?email=${payload.email}&password=${payload.password}`
+        `${environment.baseUrl}/users?email=${payload.email}&password=${payload.password}`
       )
       .subscribe({
         next: (response) => {
@@ -81,23 +81,23 @@ export class AcademiaserviceService {
 
   getCourses$(): Observable<Course[]> {
     // return of(this.courses);
-    return this.httpClient.get<Course[]>(`${environment.baseUrl}/course`);
+    return this.httpClient.get<Course[]>(`${environment.baseUrl}/courses`);
 
   }
 
   createCourse$(payload: Course): Observable<Course[]> {
     // this.courses.push(payload);
-    return this.httpClient.post<Course[]>(`${environment.baseUrl}/course`, payload).
+    return this.httpClient.post<Course[]>(`${environment.baseUrl}/courses`, payload).
       pipe(concatMap(() => this.getCourses$()));;
   }
 
   updateCourse$(id: number, course: Course) {
-    return this.httpClient.put<Course[]>(`${environment.baseUrl}/course/${id}`, course).
+    return this.httpClient.put<Course[]>(`${environment.baseUrl}/courses/${id}`, course).
       pipe(concatMap(() => this.getCourses$()));;
   }
 
   deleteCourse$(id: number): Observable<Course[]> {
-    return this.httpClient.delete<Course[]>(`${environment.baseUrl}/course/${id}`)
+    return this.httpClient.delete<Course[]>(`${environment.baseUrl}/courses/${id}`)
       .pipe(concatMap(() => this.getCourses$()));
   }
 
@@ -109,21 +109,21 @@ export class AcademiaserviceService {
   // ======== User Management ========
 
   getUsers$(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${environment.baseUrl}/user`);
+    return this.httpClient.get<User[]>(`${environment.baseUrl}/users`);
   }
 
   createUser$(payload: User): Observable<User[]> {
-    return this.httpClient.post<User[]>(`${environment.baseUrl}/user`, payload).
+    return this.httpClient.post<User[]>(`${environment.baseUrl}/users`, payload).
       pipe(concatMap(() => this.getUsers$()));;
   }
 
   updateUser$(id: number, user: User): Observable<User[]> {
-    return this.httpClient.put<User[]>(`${environment.baseUrl}/user/${id}`, user).
+    return this.httpClient.put<User[]>(`${environment.baseUrl}/users/${id}`, user).
       pipe(concatMap(() => this.getUsers$()));;
   }
 
   deleteUser$(id: number): Observable<User[]> {
-    return this.httpClient.delete<User[]>(`${environment.baseUrl}/user/${id}`)
+    return this.httpClient.delete<User[]>(`${environment.baseUrl}/users/${id}`)
       .pipe(concatMap(() => this.getUsers$()));
   }
 
@@ -156,10 +156,10 @@ export class AcademiaserviceService {
     console.log('DATE_TODAY', DATE_TODAY, 'DATE_IN_5_MONTHS', DATE_IN_5_MONTHS,
       'id_user', id_user, 'id_course', id_course);
 
-    return this.httpClient.post<UserCourse[]>(`${environment.baseUrl}/usercourse`, {
+    return this.httpClient.post<UserCourse[]>(`${environment.baseUrl}/usercourses`, {
       id: new Date().getTime(),
-      user_id: id_user,
-      course_id: id_course,
+      userId: id_user,
+      courseId: id_course,
       progress: 0,
       status: "In Progress",
       grade: 0,
@@ -167,8 +167,17 @@ export class AcademiaserviceService {
       expire_date: DATE_IN_5_MONTHS,
       end_date: "-"
     });
+  }
 
-
+  getEnrolledCourses$(id_user: number): Observable<Course[]> {
+    return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses?userId=${this.userId}&_expand=course`)
+      .pipe(map((usercourses) => {
+        const courses: Course[] = [];
+        usercourses.forEach((usercourse) => {
+          courses.push(this.courses.find((course) => course.id === usercourse.courseId)!);
+        });
+        return courses;
+      }));
   }
 
 
