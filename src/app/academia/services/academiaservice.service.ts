@@ -7,7 +7,7 @@ import { User, LoginPayload, Course, UserCourse } from 'src/app/academia/models'
 import { selectAuthUser } from 'src/app/academia/store/coursemanagement.selector';
 import { AuthActions } from 'src/app/academia/store/coursemanagement.actions';
 import { environment } from 'src/environments/environment.local';
-import { Observable, concatMap, of } from 'rxjs';
+import { Observable, concatMap, map, of } from 'rxjs';
 
 
 @Injectable({
@@ -27,12 +27,22 @@ export class AcademiaserviceService {
   }]
 
 
+  public user_id: number | undefined;
   public authUser$ = this.store.select(selectAuthUser);
   constructor(
     private httpClient: HttpClient,
     private router: Router,
     private store: Store
   ) { }
+
+  ngOnInit() {
+    this.authUser$.pipe(
+      map((user) => user?.id)
+    ).subscribe((id) => {
+      this.user_id = id;
+      console.log('this.user_id', this.user_id)
+    });
+  }
 
 
   private handleAuthUser(authUser: User): void {
@@ -121,7 +131,8 @@ export class AcademiaserviceService {
   //  ======== Enrollment Management ========
   enrollCourse$(id_course: number, id_user: number): Observable<UserCourse[]> {
     // return of(this.courses);
-    
+
+
     const get_today_date = () => {
       const today = new Date();
       const dd = String(today.getDate()).padStart(2, '0');
@@ -142,6 +153,8 @@ export class AcademiaserviceService {
 
     const DATE_TODAY = get_today_date();
     const DATE_IN_5_MONTHS = get_in_5_months_date();
+    console.log('DATE_TODAY', DATE_TODAY, 'DATE_IN_5_MONTHS', DATE_IN_5_MONTHS,
+      'id_user', id_user, 'id_course', id_course);
 
     return this.httpClient.post<UserCourse[]>(`${environment.baseUrl}/usercourse`, {
       id: new Date().getTime(),
@@ -154,7 +167,8 @@ export class AcademiaserviceService {
       expire_date: DATE_IN_5_MONTHS,
       end_date: "-"
     });
-    
+
+
   }
 
 

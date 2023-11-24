@@ -8,6 +8,7 @@ import { Course } from 'src/app/academia/models';
 })
 export class ViewCoursesTableComponent {
   @Input() dataSource: Course[] = [];
-  @Output() editCourse = new EventEmitter();
-  @Output() deleteCourse = new EventEmitter();
+  @Output() enrollCourse = new EventEmitter();
+  // @Output() editCourse = new EventEmitter();
+  // @Output() deleteCourse = new EventEmitter();
 }
