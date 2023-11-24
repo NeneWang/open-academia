@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StudentDetailComponent } from 'src/app/student/components/student-detail/student-detail.component';
+import { IndexComponent as StudentsIndex } from './pages/users/index/index.component';
+import { IndexComponent as CoursesIndex } from './pages/courses/index/index.component';
 
 
 
@@ -9,10 +11,7 @@ import { StudentDetailComponent } from 'src/app/student/components/student-detai
     RouterModule.forChild([
       {
         path: 'courses',
-        loadChildren: () =>
-          import('./pages/courses/courses.module').then(
-            (m) => m.CoursesModule
-          ),
+        component: CoursesIndex
       },
 
       { path: 'student/:id', component: StudentDetailComponent },

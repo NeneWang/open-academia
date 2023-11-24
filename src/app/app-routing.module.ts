@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { adminGuard } from './core/admin.guard';
-import { studentGuard } from './core/student.guard';  
+import { studentGuard } from './core/student.guard';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./student/students-routing.module').then(m => m.StudentsRoutingModule)
+      import('./student/student.module').then(m => m.StudentModule)
   },
   {
     path: 'admin',
@@ -20,8 +20,8 @@ const routes: Routes = [
 
 @NgModule({
 
-  imports: [RouterModule.forRoot(routes)
-],
+  imports: [RouterModule.forRoot(routes),
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

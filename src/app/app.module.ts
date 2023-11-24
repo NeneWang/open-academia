@@ -18,12 +18,12 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
     CounterStoreModule,
     CoreModule,
     StoreModule.forRoot(appReducer),
     BrowserAnimationsModule,
-    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
