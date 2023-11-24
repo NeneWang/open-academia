@@ -290,5 +290,9 @@ Now what is missing:
 ## Setting upp the Users Table
 
 
+1. First we need to create the main compoents
+2. Then we have to create the pages and the routings.
+   1. First goes the courses in general thats in index.
+3. Ranking is also important so that we can navigate the in the ranking as for the main index.
 
 

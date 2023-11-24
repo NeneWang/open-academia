@@ -2,28 +2,35 @@
   <h1>Counter App</h1>
   <button (click)="increment()">Increment</button>
   <button (click)="decrement()">Decrement</button>
-  <br>
+  <br />
   <span>{{ count }}</span>
 
-  <br>
-  <button (click)="loginAsAdmin()" >Login as Admin</button>
-  <button (click)="loginAsStudent()" >Login as student</button>
+  <br />
+  <button (click)="loginAsAdmin()">Login as Admin</button>
+  <button (click)="loginAsStudent()">Login as student</button>
   <span>
-    {{ email$| async}}
+    {{ email$ | async }}
   </span>
 
   <!-- Go to admin page -->
-  <br>
-  <br>
+  <br />
+  <br />
   <a routerLink="/admin/courses">Admin</a>
-  <br>
+  <br />
   <a routerLink="/">Home</a>
-  <br>
+  <br />
   <a routerLink="/admin/courses/table">Courses Admin Table</a>
-  <br>
-  
+  <br />
+
   <a routerLink="/admin/users/table">Users Admin Table</a>
   
+  <br />
+  <!-- Student Pages. -->
+  <a routerLink="/students"> Student Rankings </a>
+  <br />
+  <a routerLink="/courses"> Courses</a>
+
+  <!-- Marketing Pages -->
 </div>
 
 <router-outlet></router-outlet>
