@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { User, LoginPayload, Course } from 'src/app/academia/models';
+import { User, LoginPayload, Course, UserCourse } from 'src/app/academia/models';
 import { selectAuthUser } from 'src/app/academia/store/coursemanagement.selector';
 import { AuthActions } from 'src/app/academia/store/coursemanagement.actions';
 import { environment } from 'src/environments/environment.local';
@@ -115,6 +115,46 @@ export class AcademiaserviceService {
   deleteUser$(id: number): Observable<User[]> {
     return this.httpClient.delete<User[]>(`${environment.baseUrl}/user/${id}`)
       .pipe(concatMap(() => this.getUsers$()));
+  }
+
+
+  //  ======== Enrollment Management ========
+  enrollCourse$(id_course: number, id_user: number): Observable<UserCourse[]> {
+    // return of(this.courses);
+    
+    const get_today_date = () => {
+      const today = new Date();
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      const yyyy = today.getFullYear();
+
+      return yyyy + '-' + mm + '-' + dd;
+    }
+
+    const get_in_5_months_date = () => {
+      const today = new Date();
+      const dd = String(today.getDate()).padStart(2, '0');
+      const mm = String(today.getMonth() + 6).padStart(2, '0'); //January is 0!
+      const yyyy = today.getFullYear();
+
+      return yyyy + '-' + mm + '-' + dd;
+    }
+
+    const DATE_TODAY = get_today_date();
+    const DATE_IN_5_MONTHS = get_in_5_months_date();
+
+    return this.httpClient.post<UserCourse[]>(`${environment.baseUrl}/usercourse`, {
+      id: new Date().getTime(),
+      user_id: id_user,
+      course_id: id_course,
+      progress: 0,
+      status: "In Progress",
+      grade: 0,
+      start_date: DATE_TODAY,
+      expire_date: DATE_IN_5_MONTHS,
+      end_date: "-"
+    });
+    
   }
 
 

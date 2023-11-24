@@ -1,4 +1,6 @@
+
 export type UserRole = 'ADMIN' | 'EMPLOYEE' | 'STUDENT';
+
 export interface User {
     id: number;
     first: string;
@@ -36,6 +38,8 @@ export interface Course {
     credits: number;
 };
 
+export type UserCourseStatus = 'In Progress' | 'Completed' | 'Expired';
+
 export interface UserCourse{
     /**
      *  {
@@ -54,7 +58,7 @@ export interface UserCourse{
     user_id: number;
     course_id: number;
     progress: number;
-    status: string;
+    status: UserCourseStatus;
     grade: number;
     start_date: string;
     expire_date: string;
@@ -127,9 +131,5 @@ export interface Path{
     description: string;
     requirements: number[][];
 }
-
-
-
-
 
 
