@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Course } from 'src/app/academia/models';
+import { Course, UserCourse } from 'src/app/academia/models';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { AcademiaserviceService } from 'src/app/academia/services/academiaservic
 export class CoursesComponent implements OnInit {
   courses$: Observable<Course[]>;
   userId: number | undefined; // Initialize as undefined
+  userCourses: Observable<UserCourse[]> | undefined;
 
   constructor(private academiaserviceService: AcademiaserviceService) {
     this.courses$ = this.academiaserviceService.getCourses$();
@@ -28,7 +29,8 @@ export class CoursesComponent implements OnInit {
 
   enrollCourse(courseId: number): void {
     if (this.userId !== undefined) {
-      this.academiaserviceService.enrollCourse$(courseId, this.userId);
+      this.userCourses = this.academiaserviceService.enrollCourse$(courseId, this.userId);
+      console.log('userCourses', this.userCourses);
     } else {
       console.error('User ID is undefined. User not logged in.');
       // Handle the case where the user is not logged in.

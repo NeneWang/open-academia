@@ -7,7 +7,7 @@ import { User, LoginPayload, Course, UserCourse } from 'src/app/academia/models'
 import { selectAuthUser } from 'src/app/academia/store/coursemanagement.selector';
 import { AuthActions } from 'src/app/academia/store/coursemanagement.actions';
 import { environment } from 'src/environments/environment.local';
-import { Observable, concatMap, map, of } from 'rxjs';
+import { Observable, catchError, concatMap, map, of } from 'rxjs';
 
 
 @Injectable({
@@ -129,6 +129,11 @@ export class AcademiaserviceService {
 
 
   //  ======== Enrollment Management ========
+
+  getUserCourses$(): Observable<UserCourse[]> {
+    return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses`);
+  }
+
   enrollCourse$(id_course: number, id_user: number): Observable<UserCourse[]> {
     // return of(this.courses);
 
@@ -156,7 +161,23 @@ export class AcademiaserviceService {
     console.log('DATE_TODAY', DATE_TODAY, 'DATE_IN_5_MONTHS', DATE_IN_5_MONTHS,
       'id_user', id_user, 'id_course', id_course);
 
-    return this.httpClient.post<UserCourse[]>(`${environment.baseUrl}/usercourses`, {
+    console.log('USER COURSES',
+      {
+        id: new Date().getTime(),
+        userId: id_user,
+        courseId: id_course,
+        progress: 0,
+        status: "In Progress",
+        grade: 0,
+        start_date: DATE_TODAY,
+        expire_date: DATE_IN_5_MONTHS,
+        end_date: "-"
+      });
+
+    //  return this.httpClient.post<User[]>(`${environment.baseUrl}/users`, payload).
+    // pipe(concatMap(() => this.getUsers$()));;
+
+    return this.httpClient.post<UserCourse>(`${environment.baseUrl}/usercourses`, {
       id: new Date().getTime(),
       userId: id_user,
       courseId: id_course,
@@ -166,7 +187,14 @@ export class AcademiaserviceService {
       start_date: DATE_TODAY,
       expire_date: DATE_IN_5_MONTHS,
       end_date: "-"
-    });
+    }).pipe(
+      concatMap(() => this.getUserCourses$()),
+      catchError((error) => {
+        console.error('Error enrolling course:', error);
+        throw error; // Rethrow the error to propagate it further
+      })
+    );
+
   }
 
   getEnrolledCourses$(id_user: number): Observable<Course[]> {
