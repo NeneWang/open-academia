@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Course, UserCourse } from 'src/app/academia/models';
+import { Course, User, UserCourse } from 'src/app/academia/models';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 
 @Component({
@@ -28,12 +28,42 @@ export class CoursesComponent implements OnInit {
   }
 
   enrollCourse(courseId: number): void {
+
+
     if (this.userId !== undefined) {
-      this.userCourses = this.academiaserviceService.enrollCourse$(courseId, this.userId);
-      console.log('userCourses', this.userCourses);
+
+
+      /**
+       * 
+        userId: number;
+        courseId: number;
+        progress: number;
+        status: UserCourseStatus;
+        grade: number;
+        start_date: string;
+        expire_date: string;
+        end_date: string;
+       */
+
+
+      const payload: UserCourse = {
+        id: new Date().getTime(),
+        userId: this.userId,
+        courseId: courseId,
+        progress: 0,
+        status: 'In Progress',
+        grade: 0,
+        start_date: new Date().toISOString(),
+        expire_date: new Date().toISOString(),
+        end_date: new Date().toISOString(),
+      };
+
+
+      this.academiaserviceService.createUserCourse(
+        payload,
+      );
     } else {
       console.error('User ID is undefined. User not logged in.');
-      // Handle the case where the user is not logged in.
     }
   }
 }

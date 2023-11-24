@@ -130,83 +130,76 @@ export class AcademiaserviceService {
 
   //  ======== Enrollment Management ========
 
-  getUserCourses$(): Observable<UserCourse[]> {
+  getUserCourses$(): Observable<any> {
     return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses`);
   }
 
-  enrollCourse$(id_course: number, id_user: number): Observable<UserCourse[]> {
-    // return of(this.courses);
+  createUserCourse(payload: UserCourse): Observable<UserCourse[]> {
 
 
-    const get_today_date = () => {
-      const today = new Date();
-      const dd = String(today.getDate()).padStart(2, '0');
-      const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-      const yyyy = today.getFullYear();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+    };
 
-      return yyyy + '-' + mm + '-' + dd;
-    }
 
-    const get_in_5_months_date = () => {
-      const today = new Date();
-      const dd = String(today.getDate()).padStart(2, '0');
-      const mm = String(today.getMonth() + 6).padStart(2, '0'); //January is 0!
-      const yyyy = today.getFullYear();
+    // const payload: User = {
+    //   id: 7,
+    //   first: 'Nelson',
+    //   last: 'Wang',
+    //   email: 'nelsonwang@mail.com',
+    //   password: 'password1',
+    //   role: 'EMPLOYEE',
+    //   token: '',
+    //   avatar: '',
+    // };
 
-      return yyyy + '-' + mm + '-' + dd;
-    }
 
-    const DATE_TODAY = get_today_date();
-    const DATE_IN_5_MONTHS = get_in_5_months_date();
-    console.log('DATE_TODAY', DATE_TODAY, 'DATE_IN_5_MONTHS', DATE_IN_5_MONTHS,
-      'id_user', id_user, 'id_course', id_course);
+    // return this.httpClient.post<User[]>(`${environment.baseUrl}/users`, payload, httpOptions).
+    //   pipe(concatMap(() => this.getUsers$()));
 
-    console.log('USER COURSES',
-      {
-        id: new Date().getTime(),
-        userId: id_user,
-        courseId: id_course,
-        progress: 0,
-        status: "In Progress",
-        grade: 0,
-        start_date: DATE_TODAY,
-        expire_date: DATE_IN_5_MONTHS,
-        end_date: "-"
-      });
-
-    //  return this.httpClient.post<User[]>(`${environment.baseUrl}/users`, payload).
-    // pipe(concatMap(() => this.getUsers$()));;
-
-    return this.httpClient.post<UserCourse>(`${environment.baseUrl}/usercourses`, {
-      id: new Date().getTime(),
-      userId: id_user,
-      courseId: id_course,
-      progress: 0,
-      status: "In Progress",
-      grade: 0,
-      start_date: DATE_TODAY,
-      expire_date: DATE_IN_5_MONTHS,
-      end_date: "-"
-    }).pipe(
-      concatMap(() => this.getUserCourses$()),
-      catchError((error) => {
-        console.error('Error enrolling course:', error);
-        throw error; // Rethrow the error to propagate it further
-      })
-    );
+    return this.httpClient.post<UserCourse[]>(`${environment.baseUrl}/usercourses`, payload, httpOptions).
+      pipe(concatMap(() => this.getUserCourses$()));
 
   }
 
-  getEnrolledCourses$(id_user: number): Observable<Course[]> {
-    return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses?userId=${this.userId}&_expand=course`)
-      .pipe(map((usercourses) => {
-        const courses: Course[] = [];
-        usercourses.forEach((usercourse) => {
-          courses.push(this.courses.find((course) => course.id === usercourse.courseId)!);
-        });
-        return courses;
-      }));
-  }
+  // getEnrolledCourses$(id_user: number): Observable<UserCo[]> {
+
+
+
+  //   const get_today_date = () => {
+  //     const today = new Date();
+  //     const dd = String(today.getDate()).padStart(2, '0');
+  //     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  //     const yyyy = today.getFullYear();
+
+  //     return yyyy + '-' + mm + '-' + dd;
+  //   }
+
+  //   const get_in_5_months_date = () => {
+  //     const today = new Date();
+  //     const dd = String(today.getDate()).padStart(2, '0');
+  //     const mm = String(today.getMonth() + 6).padStart(2, '0'); //January is 0!
+  //     const yyyy = today.getFullYear();
+
+  //     return yyyy + '-' + mm + '-' + dd;
+  //   }
+
+  //   const DATE_TODAY = get_today_date();
+  //   const DATE_IN_5_MONTHS = get_in_5_months_date();
+
+
+
+  //   // return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses?userId=${this.userId}&_expand=course`)
+  //   //   .pipe(map((usercourses) => {
+  //   //     const courses: Course[] = [];
+  //   //     usercourses.forEach((usercourse) => {
+  //   //       courses.push(this.courses.find((course) => course.id === usercourse.courseId)!);
+  //   //     });
+  //   //     return courses;
+  //   //   }));
+  // }
 
 
 }
