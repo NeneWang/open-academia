@@ -6,13 +6,16 @@ import { ViewCoursesTableComponent } from 'src/app/student/components/courses-ta
 import { CoursesDetailComponent } from 'src/app/student/components/courses-detail/courses-detail.component';
 import { RouterModule } from '@angular/router';
 import { StudentsRoutingModule } from './students-routing.module';
+import { CoursesComponent } from './pages/courses/courses.component';
+import { RankingsComponent } from './pages/rankings/rankings.component';
 
 @NgModule({
   declarations: [
-    ViewCoursesTableComponent
+    ViewCoursesTableComponent,
+    CoursesComponent,
+    RankingsComponent
   ],
   imports: [
-    // ViewCoursesTableComponent,
     CommonModule,
     SharedModule,
     StudentsRoutingModule

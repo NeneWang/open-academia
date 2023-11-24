@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { StudentDetailComponent } from 'src/app/student/components/student-detail/student-detail.component';
-import { IndexComponent as StudentsIndex } from './pages/users/index/index.component';
-import { IndexComponent as CoursesIndex } from './pages/courses/index/index.component';
-
-
+import { CoursesComponent } from './pages/courses/courses.component';
+import { RankingsComponent } from './pages/rankings/rankings.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       {
         path: 'courses',
-        component: CoursesIndex
+        component: CoursesComponent
       },
 
       { path: 'student/:id', component: StudentDetailComponent },
       {
         path: 'students',
-        loadChildren: () =>
-          import('./pages/users/users.module').then(
-            (m) => m.UsersModule
-          ),
+        component: RankingsComponent
+      },
+      {
+        path: 'rankings', component: RankingsComponent
       }
     ])
   ],
