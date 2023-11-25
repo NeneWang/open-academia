@@ -296,3 +296,36 @@ Now what is missing:
 3. Ranking is also important so that we can navigate the in the ranking as for the main index.
 
 
+### Show Enrollment status
+
+I am thinking of either building some kind of  check. I can have an set object with the id of the courses taken. Then have an o(1) check for them.
+
+
+```ts title="course-table.component.ts"
+
+  getEnrolledCourses$(id_user: number): Observable<UserCourse[]> {
+
+    return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses?userId=${id_user}`);
+  }
+```
+
+This is honeslty enough we cna now have on the usage case:
+
+![](./img/2023-11-24-21-41-21.png)
+
+
+
+
+## Overall Conclusions
+
+These are things that I have learnt for them to be good practices
+
+- Not to use Shared loading way too much. For different users profile management you should attempt managing by having different modules
+- Dont abuse load async. Create components inside and it will automatically match
+- POST Http requires of .subsbscribe to actually run.
+- Always document whyou are doing. Is good for generating Youtbe's content.
+- Make a generalized conclusions section like this one.
+- Start the project by creating the services and main ocmponents. and main directions, it doesnt matter if it is uggly.
+- Main usage of ``
+
+

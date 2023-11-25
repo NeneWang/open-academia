@@ -1,8 +1,9 @@
 <p>courses works!</p>
 
-<app-view-courses-table
-    [dataSource]="(courses$ | async) || []"
-    (enrollCourse)="enrollCourse($event)"
-></app-view-courses-table>
 
+Courses{{ enrolledCoursesIds | json }}
+<app-view-courses-table
+  [dataSource]="(courses$ | async) || []"
+  (enrollCourse)="enrollCourse($event)"
+></app-view-courses-table>
 

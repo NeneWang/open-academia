@@ -144,62 +144,15 @@ export class AcademiaserviceService {
     };
 
 
-    // const payload: User = {
-    //   id: 7,
-    //   first: 'Nelson',
-    //   last: 'Wang',
-    //   email: 'nelsonwang@mail.com',
-    //   password: 'password1',
-    //   role: 'EMPLOYEE',
-    //   token: '',
-    //   avatar: '',
-    // };
-
-
-    // return this.httpClient.post<User[]>(`${environment.baseUrl}/users`, payload, httpOptions).
-    //   pipe(concatMap(() => this.getUsers$()));
-
     return this.httpClient.post<UserCourse[]>(`${environment.baseUrl}/usercourses`, payload, httpOptions).
       pipe(concatMap(() => this.getUserCourses$()));
 
   }
 
-  // getEnrolledCourses$(id_user: number): Observable<UserCo[]> {
+  getEnrolledCourses$(id_user: number): Observable<UserCourse[]> {
 
-
-
-  //   const get_today_date = () => {
-  //     const today = new Date();
-  //     const dd = String(today.getDate()).padStart(2, '0');
-  //     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  //     const yyyy = today.getFullYear();
-
-  //     return yyyy + '-' + mm + '-' + dd;
-  //   }
-
-  //   const get_in_5_months_date = () => {
-  //     const today = new Date();
-  //     const dd = String(today.getDate()).padStart(2, '0');
-  //     const mm = String(today.getMonth() + 6).padStart(2, '0'); //January is 0!
-  //     const yyyy = today.getFullYear();
-
-  //     return yyyy + '-' + mm + '-' + dd;
-  //   }
-
-  //   const DATE_TODAY = get_today_date();
-  //   const DATE_IN_5_MONTHS = get_in_5_months_date();
-
-
-
-  //   // return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses?userId=${this.userId}&_expand=course`)
-  //   //   .pipe(map((usercourses) => {
-  //   //     const courses: Course[] = [];
-  //   //     usercourses.forEach((usercourse) => {
-  //   //       courses.push(this.courses.find((course) => course.id === usercourse.courseId)!);
-  //   //     });
-  //   //     return courses;
-  //   //   }));
-  // }
+    return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses?userId=${id_user}`);
+  }
 
 
 }
