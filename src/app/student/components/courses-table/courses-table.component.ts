@@ -8,7 +8,13 @@ import { Course } from 'src/app/academia/models';
 })
 export class ViewCoursesTableComponent {
   @Input() dataSource: Course[] = [];
+  @Input() enrolledCoursesIds: number[] = [];
   @Output() enrollCourse = new EventEmitter();
   // @Output() editCourse = new EventEmitter();
   // @Output() deleteCourse = new EventEmitter();
+
+  isEnrolled = (courseId: number) => {
+    const isEnrolled = this.enrolledCoursesIds.some((e) => e === courseId);
+    return isEnrolled;
+  }
 }
