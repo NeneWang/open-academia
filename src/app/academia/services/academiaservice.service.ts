@@ -137,6 +137,9 @@ export class AcademiaserviceService {
   createUserCourse(payload: UserCourse): Observable<UserCourse[]> {
 
 
+    // Dont create if already enrolled with same course id and same user id 
+
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -148,11 +151,19 @@ export class AcademiaserviceService {
       pipe(concatMap(() => this.getUserCourses$()));
 
   }
-  deleteUserCourse(id_user: number, id_course: number): Observable<any>{
+  deleteUserCourse(id_user: number, id_course: number): void {
     const apiUrl = `${environment.baseUrl}/usercourses`;
 
     console.log('apiUrl', `${apiUrl}?userId=${id_user}&courseId=${id_course}`)
-    return this.httpClient.delete<UserCourse[]>(`${apiUrl}?userId=${id_user}&courseId=${id_course}`)
+    this.httpClient.get<UserCourse[]>(`${apiUrl}?userId=${id_user}&courseId=${id_course}`).subscribe((e) => {
+      for (let i = 0; i < e.length; i++) {
+        this.httpClient.delete<UserCourse[]>(`${apiUrl}/${e[i].id}`).subscribe((e) => {
+          return e;
+        });
+
+      }
+    });
+
   }
 
   getEnrolledUserCourses$(id_user: number): Observable<UserCourse[]> {
@@ -160,17 +171,17 @@ export class AcademiaserviceService {
     return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses?userId=${id_user}`);
   }
 
-  
+
   getEnrolledCourses$(id_user: number): Observable<Course[]> {
     // console.log(`ENROLL COURSE: ${environment.baseUrl}/usercourses?userId=${id_user}?expand=course`);
     // http://localhost:3000/usercourses?userId=1&_expand=course
     return this.httpClient.get<UserCourseExpand[]>(`${environment.baseUrl}/usercourses?userId=${id_user}&_expand=course`).pipe(map((e) => e.map((e) => e.course)));
   }
-  
-  
+
+
 }
 
-interface UserCourseExpand{
+interface UserCourseExpand {
   id: number;
   userId: number;
   courseId: number;

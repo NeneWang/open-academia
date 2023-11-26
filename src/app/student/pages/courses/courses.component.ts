@@ -66,9 +66,7 @@ export class CoursesComponent implements OnInit {
   unenrollCourse(courseId: number): void {
     if (this.userId !== undefined) {
       this.enrolledCoursesIds = this.enrolledCoursesIds.filter((e) => e !== courseId);
-      this.academiaserviceService.deleteUserCourse(this.userId, courseId).subscribe((e) => {
-        return e;
-      });
+      this.academiaserviceService.deleteUserCourse(this.userId, courseId)
     } else {
       console.error('User ID is undefined. User not logged in.');
     }
