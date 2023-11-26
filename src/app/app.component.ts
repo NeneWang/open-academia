@@ -53,7 +53,9 @@ export class AppComponent {
       email: 'nelsonwang@mail.com',
       password: 'password1'
     });
+  }
 
-  
+  logout(){
+    this.academiaserviceService.logout();
   }
 }

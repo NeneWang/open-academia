@@ -8,6 +8,8 @@
   <br />
   <button (click)="loginAsAdmin()">Login as Admin</button>
   <button (click)="loginAsStudent()">Login as student</button>
+  <button *ngIf="email$ | async"  (click)="logout()" >Logout</button>
+  
   <span>
     {{ email$ | async }}
   </span>
@@ -32,6 +34,10 @@
   <br />
   <a routerLink="/profile">Profile</a>
 
+  <br />
+  <a routerLink="/login">login</a>
+  <br />
+  <a routerLink="/signup">signup</a>
 
   <!-- Marketing Pages -->
 </div>

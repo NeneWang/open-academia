@@ -91,6 +91,17 @@
       "start_date": "2023-01-01",
       "expire_date": "2023-05-01",
       "end_date": "-"
+    },
+    {
+      "id": 1701009978001,
+      "userId": 1,
+      "courseId": 2,
+      "progress": 0,
+      "status": "In Progress",
+      "grade": 0,
+      "start_date": "2023-11-26T14:46:18.001Z",
+      "expire_date": "2023-11-26T14:46:18.001Z",
+      "end_date": "2023-11-26T14:46:18.001Z"
     }
   ],
   "sections": [

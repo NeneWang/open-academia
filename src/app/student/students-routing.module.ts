@@ -4,7 +4,8 @@ import { StudentDetailComponent } from 'src/app/student/components/student-detai
 import { CoursesComponent } from './pages/courses/courses.component';
 import { RankingsComponent } from './pages/rankings/rankings.component';
 import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.component';
-
+import { LoginScreenComponent } from './pages/login-screen/login-screen.component';
+import { SignupScreenComponent } from './pages/signup-screen/signup-screen.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,12 @@ import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.co
       },
       {
         path: 'profile', component: ProfileScreenComponent
+      },
+      {
+        path: 'login', component: LoginScreenComponent
+      },
+      {
+        path: 'signup', component: SignupScreenComponent
       }
     ])
   ],

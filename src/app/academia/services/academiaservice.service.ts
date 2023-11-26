@@ -67,14 +67,19 @@ export class AcademiaserviceService {
             alert('Usuario o contrasena invalidos');
           } else {
             this.handleAuthUser(authUser);
-
-            // this.router.navigate(['/dashboard/home']);
+            this.router.navigate(['/profile']);
           }
         },
         error: (err) => {
           alert('Error de conexion');
         },
       });
+  }
+
+  logout(): void{
+    this.store.dispatch(AuthActions.resetState());
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
   // ======== Course Management ======== 
