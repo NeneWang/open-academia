@@ -23,6 +23,15 @@
       >
         Enroll
       </button>
-    </mat-card-actions>
+    
+    
+      <button
+      *ngIf="isEnrolled(course.id)"
+      mat-button
+      color="warn"
+      (click)="unenrollCourse.emit(course.id)"
+    >
+      Unenroll
+    </button></mat-card-actions>
   </mat-card>
 </div>

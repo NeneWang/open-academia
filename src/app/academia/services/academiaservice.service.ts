@@ -148,6 +148,12 @@ export class AcademiaserviceService {
       pipe(concatMap(() => this.getUserCourses$()));
 
   }
+  deleteUserCourse(id_user: number, id_course: number): Observable<any>{
+    const apiUrl = `${environment.baseUrl}/usercourses`;
+
+    console.log('apiUrl', `${apiUrl}?userId=${id_user}&courseId=${id_course}`)
+    return this.httpClient.delete<UserCourse[]>(`${apiUrl}?userId=${id_user}&courseId=${id_course}`)
+  }
 
   getEnrolledCourses$(id_user: number): Observable<UserCourse[]> {
 

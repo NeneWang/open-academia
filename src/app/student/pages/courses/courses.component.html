@@ -5,6 +5,7 @@ Courses{{ enrolledCoursesIds | json }}
 <app-view-courses-table
   [dataSource]="(courses$ | async) || []"
   [enrolledCoursesIds]="enrolledCoursesIds || []"
+  (unenrollCourse)="unenrollCourse($event)"
   (enrollCourse)="enrollCourse($event)"
 ></app-view-courses-table>
 

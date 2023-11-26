@@ -10,6 +10,7 @@ export class ViewCoursesTableComponent {
   @Input() dataSource: Course[] = [];
   @Input() enrolledCoursesIds: number[] = [];
   @Output() enrollCourse = new EventEmitter();
+  @Output() unenrollCourse = new EventEmitter();
   // @Output() editCourse = new EventEmitter();
   // @Output() deleteCourse = new EventEmitter();
 

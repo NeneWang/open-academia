@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit {
 
   constructor(private academiaserviceService: AcademiaserviceService) {
     this.courses$ = this.academiaserviceService.getCourses$();
-  
+
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class CoursesComponent implements OnInit {
         this.userId = user.id;
         // Fetch the enrolledCOurses
         this.academiaserviceService.getEnrolledCourses$(this.userId).subscribe((userCourses) => {
-      
+
           this.enrolledCoursesIds = userCourses.map((e) => e.courseId);
           console.log('this.enrolledCoursesIds', this.enrolledCoursesIds)
         });
@@ -37,26 +37,8 @@ export class CoursesComponent implements OnInit {
 
   enrollCourse(courseId: number): void {
 
-    
+
     if (this.userId !== undefined) {
-      console.log('this.enrolledCoursesIds', this.enrolledCoursesIds)
-        
-
-      /**
-       * 
-        userId: number;
-        courseId: number;
-        progress: number;
-        status: UserCourseStatus;
-        grade: number;
-        start_date: string;
-        expire_date: string;
-        end_date: string;
-       */
-
-
-      console.log('Enroll Course ID: ', courseId, 'user id', this.userId);
-
       const payload: UserCourse = {
         id: new Date().getTime(),
         userId: this.userId,
@@ -70,14 +52,22 @@ export class CoursesComponent implements OnInit {
       };
 
       console.log('Payload, ', payload);
+      this.enrolledCoursesIds.push(courseId);
 
       this.academiaserviceService.createUserCourse(
         payload,
       ).subscribe((e) => {
-        console.log('Enroll Course ID: ', courseId, 'user id', this.userId);
-        // console.log(e)
-        // this.userCourses$ = e;
-        // console.log('this.userCourses$', this.userCourses$)
+        return e;
+      });
+    } else {
+      console.error('User ID is undefined. User not logged in.');
+    }
+  }
+
+  unenrollCourse(courseId: number): void {
+    if (this.userId !== undefined) {
+      this.enrolledCoursesIds = this.enrolledCoursesIds.filter((e) => e !== courseId);
+      this.academiaserviceService.deleteUserCourse(this.userId, courseId).subscribe((e) => {
         return e;
       });
     } else {
