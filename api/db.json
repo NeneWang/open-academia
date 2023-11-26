@@ -49,6 +49,16 @@
       "token": "",
       "avatar": "",
       "role": "ADMIN"
+    },
+    {
+      "id": 1701013411050,
+      "first": "Nelson",
+      "last": "Wang",
+      "email": "wangnelson2@gmail.com",
+      "password": "123456",
+      "token": "",
+      "avatar": "",
+      "role": "STUDENT"
     }
   ],
   "courses": [

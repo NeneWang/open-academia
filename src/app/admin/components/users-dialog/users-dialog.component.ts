@@ -49,7 +49,19 @@ export class UsersDialogComponent {
 
   onSubmit(): void {
     if (this.userForm.valid) {
-      console.log(this.userForm.value);
+      const newUser: User = {
+        id: new Date().getTime(),
+        first: this.userForm.value.first,
+        last: this.userForm.value.last,
+        email: this.userForm.value.email,
+        password: this.userForm.value.password,
+        token: '',
+        avatar: '',
+        role: this.userForm.value.role,
+      }
+
+      this.academiaServiceService.createUser$(newUser);
+   
       this.MatDialogRef.close(this.userForm.value);
     }
   }
