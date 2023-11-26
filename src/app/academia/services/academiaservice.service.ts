@@ -155,10 +155,30 @@ export class AcademiaserviceService {
     return this.httpClient.delete<UserCourse[]>(`${apiUrl}?userId=${id_user}&courseId=${id_course}`)
   }
 
-  getEnrolledCourses$(id_user: number): Observable<UserCourse[]> {
+  getEnrolledUserCourses$(id_user: number): Observable<UserCourse[]> {
 
     return this.httpClient.get<UserCourse[]>(`${environment.baseUrl}/usercourses?userId=${id_user}`);
   }
 
+  
+  getEnrolledCourses$(id_user: number): Observable<Course[]> {
+    // console.log(`ENROLL COURSE: ${environment.baseUrl}/usercourses?userId=${id_user}?expand=course`);
+    // http://localhost:3000/usercourses?userId=1&_expand=course
+    return this.httpClient.get<UserCourseExpand[]>(`${environment.baseUrl}/usercourses?userId=${id_user}&_expand=course`).pipe(map((e) => e.map((e) => e.course)));
+  }
+  
+  
+}
 
+interface UserCourseExpand{
+  id: number;
+  userId: number;
+  courseId: number;
+  progress: number;
+  status: string;
+  grade: number;
+  start_date: string;
+  expire_date: string;
+  end_date: string;
+  course: Course;
 }

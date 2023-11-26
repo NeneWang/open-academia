@@ -11,7 +11,6 @@ import { AcademiaserviceService } from 'src/app/academia/services/academiaservic
 export class CoursesComponent implements OnInit {
   courses$: Observable<Course[]>;
   userId: number | undefined; // Initialize as undefined
-  // userCourses$: UserCourse[]
   enrolledCoursesIds: number[] = [];
 
   constructor(private academiaserviceService: AcademiaserviceService) {
@@ -26,7 +25,7 @@ export class CoursesComponent implements OnInit {
         // Update the userId variable with the user's ID
         this.userId = user.id;
         // Fetch the enrolledCOurses
-        this.academiaserviceService.getEnrolledCourses$(this.userId).subscribe((userCourses) => {
+        this.academiaserviceService.getEnrolledUserCourses$(this.userId).subscribe((userCourses) => {
 
           this.enrolledCoursesIds = userCourses.map((e) => e.courseId);
           console.log('this.enrolledCoursesIds', this.enrolledCoursesIds)

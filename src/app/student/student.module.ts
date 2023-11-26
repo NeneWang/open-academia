@@ -8,12 +8,14 @@ import { RouterModule } from '@angular/router';
 import { StudentsRoutingModule } from './students-routing.module';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { RankingsComponent } from './pages/rankings/rankings.component';
+import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.component';
 
 @NgModule({
   declarations: [
     ViewCoursesTableComponent,
     CoursesComponent,
-    RankingsComponent
+    RankingsComponent,
+    ProfileScreenComponent
   ],
   imports: [
     CommonModule,

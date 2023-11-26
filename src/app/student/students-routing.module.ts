@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { StudentDetailComponent } from 'src/app/student/components/student-detail/student-detail.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { RankingsComponent } from './pages/rankings/rankings.component';
-import { ProfileScreenComponent } from '../admin/pages/profile-screen/profile-screen.component';
+import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.component';
 
 
 @NgModule({
@@ -23,8 +23,7 @@ import { ProfileScreenComponent } from '../admin/pages/profile-screen/profile-sc
         path: 'rankings', component: RankingsComponent
       },
       {
-        path: 'profile',
-        component: ProfileScreenComponent
+        path: 'profile', component: ProfileScreenComponent
       }
     ])
   ],

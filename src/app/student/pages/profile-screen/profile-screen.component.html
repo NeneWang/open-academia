@@ -1,0 +1,13 @@
+<p>profile-screen works!</p>
+
+{{courses$ | async | json}}
+
+<app-view-courses-table
+  [dataSource]="(courses$ | async) || []"
+></app-view-courses-table>
+
+
+<!-- 
+  [enrolledCoursesIds]="enrolledCoursesIds || []"
+  (unenrollCourse)="unenrollCourse($event)"
+  (enrollCourse)="enrollCourse($event)" -->
