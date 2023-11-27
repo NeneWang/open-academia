@@ -369,6 +369,10 @@ Lets check where am I missing it?
 
 ![](./img/2023-11-26-22-52-54.png)
 
+
+
+
+
 ## Overall Conclusions
 
 These are things that I have learnt for them to be good practices

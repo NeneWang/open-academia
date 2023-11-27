@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Section } from 'src/app/academia/models';
+import { AssigmentPopupComponentComponent } from '../../components/assigment-popup-component/assigment-popup-component.component';
 
 @Component({
   selector: 'app-courses-detail',
@@ -35,8 +36,14 @@ export class CoursesDetailComponent {
     }
   ]
 
+  sectionToggle: {[key: number]: boolean};
+
   constructor(){
     console.log('sections', this.sections)
+    this.sectionToggle = this.sections.reduce((acc, section) => {
+      acc[section.id] = false;
+      return acc;
+    }, {} as {[key: number]: boolean});
   }
 
   submitAssignment(section: Section): void {
@@ -44,7 +51,14 @@ export class CoursesDetailComponent {
   }
 
   toggleDropdown(section: Section): void {
-    console.log('toggle section')
+    console.log('toggle section', section.id, this.sectionToggle[section.id])
+    this.sectionToggle[section.id] = !this.sectionToggle[section.id];
+  }
+
+  openAssigmentPopup(): void {
+
+    
+
   }
 
 

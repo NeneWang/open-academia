@@ -1,30 +1,51 @@
 <p>courses-detail works Courses Details!</p>
 
-<div class="course-sections">
-  <div *ngFor="let section of sections" class="course-section">
-    <div class="section-header">
-      <input type="checkbox" [checked]="section.completion_score === 100" />
-      <div class="section-details">
-        <h3>{{ section.name }}</h3>
-        <p>{{ section.description }}</p>
+<div class="">
+  <div *ngFor="let section of sections" >
+    <div class="course-section">
+      <div class="left-content section-header">
+        <input
+          type="checkbox"
+          class="content-item-spaced input-checkbox"
+          [checked]="section.completion_score === 100"
+        />
+        <div class="section-details section-title">
+          <h3>{{section.order}}. {{ section.name }}</h3>
+        </div>
+        <a   mat-button >Recording</a>
+        <a mat-button >Files </a>
+        <button mat-button
+          class="toggle-button content-item-spaced "
+          (click)="toggleDropdown(section)"
+        >
+          ^
+        </button>
+        <div></div>
       </div>
-      <button class="toggle-button" (click)="toggleDropdown(section)">
-        Toggle
-      </button>
     </div>
-    <!-- <div class="dropdown" [ngClass]="{ 'show': section.showDropdown }"> -->
 
-    <div class="dropdown show">
-      <p>Assignment: {{ section.name }} Assignment</p>
-      <button class="submit-button" (click)="submitAssignment(section)">
-        Submit Assignment
-      </button>
-    </div>
-    <div class="progress-bar">
-      <div
-        class="progress"
-        [style.width]="section.completion_score + '%'"
-      ></div>
+    <div
+      *ngIf="sectionToggle[section.id]"
+      class="course-section"
+    >
+      <div class="left-content">
+        <div class="section-details assigment-width">
+          <p>Assignment: {{ section.name }} Assignment</p>
+          <p>{{ section.description }}</p>
+        </div>
+        <div >
+          <!-- <p>2023-11-26</p> -->
+          <p>
+            <button
+            mat-button
+              class="mat-button assigment-button"
+              (click)="submitAssignment(section)"
+            >
+              Submit Assignment
+            </button>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
