@@ -1,4 +1,4 @@
-
+import { strings } from '@material/form-field';
 export type UserRole = 'ADMIN' | 'EMPLOYEE' | 'STUDENT';
 
 export interface User {
@@ -41,7 +41,7 @@ export interface Course {
 
 export type UserCourseStatus = 'In Progress' | 'Completed' | 'Expired';
 
-export interface UserCourse{
+export interface UserCourse {
     /**
      *  {
             "id": 1,
@@ -66,7 +66,7 @@ export interface UserCourse{
     end_date: string;
 }
 
-export interface Section{
+export interface Section {
     /**
      * {
             "id": 1,
@@ -84,9 +84,12 @@ export interface Section{
     description: string;
     completion_score: number;
     order: number;
+    has_assigment: boolean;
+    assigment_prompt?: string;
+    template_file_url?: string;
 }
 
-export interface UserSection{
+export interface UserSection {
     /**
      * {
             "id": 1,
@@ -99,9 +102,19 @@ export interface UserSection{
     courseId: number;
     sectionId: number;
     total_score: number;
+    is_viewed: boolean;
+    completed_date: string;
+    due_date: string;
 }
 
-export interface Page{
+
+export interface Section_UserSection extends Section {
+    usersection: UserSection[];
+
+
+}
+
+export interface Page {
     /**
      * {
             "id": 1,
@@ -118,7 +131,7 @@ export interface Page{
     has_submission: boolean;
 }
 
-export interface Path{
+export interface Path {
     /**
      * {
             "id": 1,

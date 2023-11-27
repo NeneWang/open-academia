@@ -2,12 +2,12 @@
   <div class="container">
     <div class="spread">
       <div class="left-row">Assgiment Prompt</div>
-      <div class="right-row">
-        <button mat-button>Download Template File</button>
+      <div class="right-row" *ngIf="section?.template_file_url">
+        <a mat-button target="_blank" href="{{section.template_file_url}}" class="undecorated" >Download Template File</a>
       </div>
     </div>
 
-    <div>Develop a Pacman Content.</div>
+    <div>{{section.assigment_prompt}}</div>
     <div class="spread">
       <div class="left-row">
         <input type="text" matInput placeholder="Public link for download" />

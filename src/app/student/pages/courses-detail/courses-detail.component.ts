@@ -1,6 +1,6 @@
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 import { Component } from '@angular/core';
-import { Section } from 'src/app/academia/models';
+import { Section, Section_UserSection } from 'src/app/academia/models';
 import { AssigmentPopupComponentComponent } from '../../components/assigment-popup-component/assigment-popup-component.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -11,14 +11,28 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CoursesDetailComponent {
 
-  sections: Section[] = [
+  sections: Section_UserSection[] = [
     {
       id: 1,
+      courseId: 1,
       name: 'Introduction',
       description: 'This is the introduction section',
-      courseId: 1,
-      order: 1,
       completion_score: 100,
+      order: 1,
+      has_assigment: true,
+      template_file_url: "https://github.com/NeneWang/mastery-cli",
+      assigment_prompt: "Build Pacman",
+      usersection: [
+        {
+          id: 1,
+          courseId: 1,
+          sectionId: 1,
+          total_score: 100,
+          is_viewed: true,
+          completed_date: '11-27-2023',
+          due_date: "2023-11-30"
+        }
+      ]
     },
     {
       id: 2,
@@ -27,6 +41,19 @@ export class CoursesDetailComponent {
       courseId: 1,
       order: 2,
       completion_score: 30,
+      has_assigment: true,
+      assigment_prompt: "Use Pylab to...",
+      usersection: [
+        {
+          id: 2,
+          courseId: 1,
+          sectionId: 2,
+          total_score: 0,
+          is_viewed: false,
+          completed_date: '',
+          due_date: "2023-11-30"
+        }
+      ]
     },
     {
       id: 3,
@@ -35,6 +62,18 @@ export class CoursesDetailComponent {
       courseId: 1,
       order: 3,
       completion_score: 0,
+      has_assigment: false,
+      usersection: [
+        {
+          id: 3,
+          courseId: 1,
+          sectionId: 2,
+          total_score: 0,
+          is_viewed: false,
+          completed_date: '',
+          due_date: "2023-12-15"
+        }
+      ]
     }
   ]
 
@@ -60,9 +99,11 @@ export class CoursesDetailComponent {
     this.sectionToggle[section.id] = !this.sectionToggle[section.id];
   }
 
-  openAssigmentPopup(): void {
+  openAssigmentPopup(section_usesection: Section_UserSection): void {
     this.matDialog
-      .open(AssigmentPopupComponentComponent)
+      .open(AssigmentPopupComponentComponent, {
+        data: section_usesection
+      })
       .afterClosed()
       .subscribe({
         next: (result) => {

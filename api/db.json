@@ -1,167 +1,214 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "first": "Bucky",
-      "last": "Roberts",
-      "email": "buckyroberts@mail.com",
-      "password": "password1",
-      "role": "ADMIN",
-      "token": "",
-      "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=826&t=st=1700594112~exp=1700594712~hmac=5d7a5afc2a327d64e046bf43f816d0d1f98928253eb08eae7636a1917dbe3659"
-    },
-    {
-      "id": 2,
-      "first": "Nelson",
-      "last": "Wang",
-      "email": "nelsonwang@mail.com",
-      "password": "password1",
-      "role": "EMPLOYEE",
-      "token": "",
-      "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436200.jpg?t=st=1700594112~exp=1700594712~hmac=2934ab53e7f19067f89bf02628536856fe43e4af6b1e8214c86a8b7e9646eb06"
-    },
-    {
-      "id": 3,
-      "first": "Julio",
-      "last": "Caesar",
-      "email": "juliocaesar@mail.com",
-      "password": "password1",
-      "role": "STUDENT",
-      "token": "",
-      "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436200.jpg?t=st=1700594112~exp=1700594712~hmac=2934ab53e7f19067f89bf02628536856fe43e4af6b1e8214c86a8b7e9646eb06"
-    },
-    {
-      "id": 4,
-      "first": "Viian",
-      "last": "Lin",
-      "email": "viianlin@mail.com",
-      "password": "password1",
-      "role": "STUDENT",
-      "token": "",
-      "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-glasses_23-2149436185.jpg?w=826&t=st=1700594372~exp=1700594972~hmac=e544f6a41e7813493906b4a5b5b855b47a4cc8bd30a69bc0045416ef2685ee27"
-    },
-    {
-      "id": 5,
-      "first": "Admin",
-      "last": "Wang",
-      "email": "admin@mail.com",
-      "password": "123456",
-      "token": "",
-      "avatar": "",
-      "role": "ADMIN"
-    },
-    {
-      "id": 1701013411050,
-      "first": "Nelson",
-      "last": "Wang",
-      "email": "wangnelson2@gmail.com",
-      "password": "123456",
-      "token": "",
-      "avatar": "",
-      "role": "STUDENT"
-    }
-  ],
-  "courses": [
-    {
-      "id": 1,
-      "name": "Algorithms I",
-      "description": "This course is an introduction to the design and analysis of algorithms. Topics include asymptotic notation, recurrences and recursion, analysis of algorithms, sorting algorithms, basic data structures, and graph algorithms.",
-      "image": "https://i.ibb.co/k4bG2qF/algorithms-1.png",
-      "category": "Computer Science",
-      "intensity": "High",
-      "credits": 4,
-      "prequisites": ["Basic programming skills", "Discrete mathematics"]
-    },
-    {
-      "id": 2,
-      "name": "Algorithms II",
-      "description": "This course advances the design and analysis of algorithms. Topics include amortized analysis, advanced data structures, randomized algorithms, and computational geometry.",
-      "image": "https://i.ibb.co/D8xQwCL/algorithms-2.png",
-      "category": "Computer Science",
-      "intensity": "High",
-      "credits": 4,
-        "prequisites": ["Algorithms I"]
-    },
-    {
-      "id": 1700767108963,
-      "name": "aaaaa",
-      "description": "asdasd",
-      "image": "",
-      "category": "Computer Science",
-      "intensity": "Low",
-      "credits": 0
-    }
-  ],
-  "usercourses": [
-    {
-      "id": 1,
-      "userId": 1,
-      "courseId": 1,
-      "progress": 10,
-      "status": "In Progress",
-      "grade": 0,
-      "start_date": "2023-01-01",
-      "expire_date": "2023-05-01",
-      "end_date": "-"
-    },
-    {
-      "id": 1701009978001,
-      "userId": 1,
-      "courseId": 2,
-      "progress": 0,
-      "status": "In Progress",
-      "grade": 0,
-      "start_date": "2023-11-26T14:46:18.001Z",
-      "expire_date": "2023-11-26T14:46:18.001Z",
-      "end_date": "2023-11-26T14:46:18.001Z"
-    }
-  ],
-  "sections": [
-    {
-      "id": 1,
-      "courseId": 1,
-      "name": "Introduction to Algorithms",
-      "description": "This section introduces the course and the topics that will be covered.",
-      "completion_score": 0,
-      "order": 1
-    },
-    {
-      "id": 2,
-      "courseId": 1,
-      "name": "Asymptotic Notation",
-      "description": "This section introduces asymptotic notation and its use in analyzing algorithms.",
-      "completion_score": 0,
-      "order": 2
-    }
-  ],
-  "usersections": [
-    {
-      "id": 1,
-      "courseId": 1,
-      "sectionId": 1,
-      "total_score": 0
-    }
-  ],
-  "pages": [
-    {
-      "id": 1,
-      "sectionId": 1,
-      "title": "Introduction to Algorithms",
-      "content_url": "https://www.youtube.com/embed/2SUvWfNJSsM",
-      "has_submission": false
-    }
-  ],
-  "paths": [
-    {
-      "id": 1,
-      "name": "Computer Science",
-      "description": "This path introduces the fundamentals of computer science.",
-      "requirements": [
-        [
-          1,
-          0
-        ]
-      ]
-    }
-  ]
+    "users": [
+        {
+            "id": 1,
+            "first": "Bucky",
+            "last": "Roberts",
+            "email": "buckyroberts@mail.com",
+            "password": "password1",
+            "role": "ADMIN",
+            "token": "",
+            "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=826&t=st=1700594112~exp=1700594712~hmac=5d7a5afc2a327d64e046bf43f816d0d1f98928253eb08eae7636a1917dbe3659"
+        },
+        {
+            "id": 2,
+            "first": "Nelson",
+            "last": "Wang",
+            "email": "nelsonwang@mail.com",
+            "password": "password1",
+            "role": "EMPLOYEE",
+            "token": "",
+            "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436200.jpg?t=st=1700594112~exp=1700594712~hmac=2934ab53e7f19067f89bf02628536856fe43e4af6b1e8214c86a8b7e9646eb06"
+        },
+        {
+            "id": 3,
+            "first": "Julio",
+            "last": "Caesar",
+            "email": "juliocaesar@mail.com",
+            "password": "password1",
+            "role": "STUDENT",
+            "token": "",
+            "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436200.jpg?t=st=1700594112~exp=1700594712~hmac=2934ab53e7f19067f89bf02628536856fe43e4af6b1e8214c86a8b7e9646eb06"
+        },
+        {
+            "id": 4,
+            "first": "Viian",
+            "last": "Lin",
+            "email": "viianlin@mail.com",
+            "password": "password1",
+            "role": "STUDENT",
+            "token": "",
+            "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-glasses_23-2149436185.jpg?w=826&t=st=1700594372~exp=1700594972~hmac=e544f6a41e7813493906b4a5b5b855b47a4cc8bd30a69bc0045416ef2685ee27"
+        },
+        {
+            "id": 5,
+            "first": "Admin",
+            "last": "Wang",
+            "email": "admin@mail.com",
+            "password": "123456",
+            "token": "",
+            "avatar": "",
+            "role": "ADMIN"
+        },
+        {
+            "id": 1701013411050,
+            "first": "Nelson",
+            "last": "Wang",
+            "email": "wangnelson2@gmail.com",
+            "password": "123456",
+            "token": "",
+            "avatar": "",
+            "role": "STUDENT"
+        }
+    ],
+    "courses": [
+        {
+            "id": 1,
+            "name": "Algorithms I",
+            "description": "This course is an introduction to the design and analysis of algorithms. Topics include asymptotic notation, recurrences and recursion, analysis of algorithms, sorting algorithms, basic data structures, and graph algorithms.",
+            "image": "https://i.ibb.co/k4bG2qF/algorithms-1.png",
+            "category": "Computer Science",
+            "intensity": "High",
+            "credits": 4,
+            "prequisites": [
+                "Basic programming skills",
+                "Discrete mathematics"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Algorithms II",
+            "description": "This course advances the design and analysis of algorithms. Topics include amortized analysis, advanced data structures, randomized algorithms, and computational geometry.",
+            "image": "https://i.ibb.co/D8xQwCL/algorithms-2.png",
+            "category": "Computer Science",
+            "intensity": "High",
+            "credits": 4,
+            "prequisites": [
+                "Algorithms I"
+            ]
+        },
+        {
+            "id": 1700767108963,
+            "name": "aaaaa",
+            "description": "asdasd",
+            "image": "",
+            "category": "Computer Science",
+            "intensity": "Low",
+            "credits": 0
+        }
+    ],
+    "usercourses": [
+        {
+            "id": 1,
+            "userId": 1,
+            "courseId": 1,
+            "progress": 10,
+            "status": "In Progress",
+            "grade": 0,
+            "start_date": "2023-01-01",
+            "expire_date": "2023-05-01",
+            "end_date": "-"
+        },
+        {
+            "id": 1701009978001,
+            "userId": 1,
+            "courseId": 2,
+            "progress": 0,
+            "status": "In Progress",
+            "grade": 0,
+            "start_date": "2023-11-26T14:46:18.001Z",
+            "expire_date": "2023-11-26T14:46:18.001Z",
+            "end_date": "2023-11-26T14:46:18.001Z"
+        }
+    ],
+    "sections": [
+        {
+            "id": 1,
+            "courseId": 1,
+            "name": "Introduction to Algorithms",
+            "description": "This section introduces the course and the topics that will be covered.",
+            "completion_score": 0,
+            "order": 1
+        },
+        {
+            "id": 2,
+            "courseId": 1,
+            "name": "Asymptotic Notation",
+            "description": "This section introduces asymptotic notation and its use in analyzing algorithms.",
+            "completion_score": 0,
+            "order": 2
+        },
+        {
+            "id": 3,
+            "name": "Introduction to Python",
+            "description": "This is the introduction to python section",
+            "courseId": 1,
+            "order": 3,
+            "completion_score": 0
+        },
+        {
+            "id": 4,
+            "name": "Introduction to Pylab",
+            "description": "This is the introduction to pylab section",
+            "courseId": 1,
+            "order": 4,
+            "completion_score": 30
+        }
+    ],
+    "usersections": [
+        {
+            "id": 1,
+            "courseId": 1,
+            "sectionId": 1,
+            "total_score": 0,
+            "is_viewed": false,
+            "has_assigment": true,
+            "assigment_prompt": "lorem  ipsum lor",
+            "completed_date": "2023-11-26",
+            "due_date": "2023-11-30"
+        },
+        {
+            "id": 2,
+            "courseId": 1,
+            "sectionId": 2,
+            "total_score": 0,
+            "is_viewed": false,
+            "has_assigment": true,
+            "assigment_prompt": "lorem  ipsum lor",
+            "completed_date": "",
+            "due_date": "2023-11-30"
+        },
+        {
+            "id": 3,
+            "courseId": 1,
+            "sectionId": 3,
+            "total_score": 0,
+            "is_viewed": false,
+            "has_assigment": false,
+            "completed_date": "",
+            "due_date": "2023-12-15"
+        }
+    ],
+    "pages": [
+        {
+            "id": 1,
+            "sectionId": 1,
+            "title": "Introduction to Algorithms",
+            "content_url": "https://www.youtube.com/embed/2SUvWfNJSsM",
+            "has_submission": false
+        }
+    ],
+    "paths": [
+        {
+            "id": 1,
+            "name": "Computer Science",
+            "description": "This path introduces the fundamentals of computer science.",
+            "requirements": [
+                [
+                    1,
+                    0
+                ]
+            ]
+        }
+    ]
 }

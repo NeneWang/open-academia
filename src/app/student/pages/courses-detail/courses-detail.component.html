@@ -7,7 +7,7 @@
         <input
           type="checkbox"
           class="content-item-spaced input-checkbox"
-          [checked]="section.completion_score === 100"
+          [checked]="section.usersection?.[0]?.is_viewed"
         />
         <div class="section-details section-title">
           <h3>{{section.order}}. {{ section.name }}</h3>
@@ -26,20 +26,26 @@
 
     <div
       *ngIf="sectionToggle[section.id]"
-      class="course-section"
+    class="course-section"
     >
       <div class="left-content">
         <div class="section-details assigment-width">
           <p>Assignment: {{ section.name }} Assignment</p>
           <p>{{ section.description }}</p>
         </div>
-        <div >
+        <div *ngIf="section.has_assigment" >
           <!-- <p>2023-11-26</p> -->
+          <div *ngIf="section.usersection?.[0]?.completed_date">
+            <p>Sent: {{ section.usersection?.[0]?.completed_date }}</p>
+          </div>
+          <div *ngIf="!section.usersection?.[0]?.completed_date">
+            <p>Due: {{ section.usersection?.[0]?.due_date }}</p>
+          </div>
           <p>
             <button
             mat-button
               class="mat-button assigment-button"
-              (click)="openAssigmentPopup()"
+              (click)="openAssigmentPopup(section)"
             >
               Submit Assignment
             </button>
