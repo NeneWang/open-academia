@@ -36,6 +36,7 @@ export interface Course {
     category: string;
     intensity: string;
     credits: number;
+    prequisites?: string[];
 };
 
 export type UserCourseStatus = 'In Progress' | 'Completed' | 'Expired';

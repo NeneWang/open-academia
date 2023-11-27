@@ -54,7 +54,6 @@ export class ProfileScreenComponent {
         end_date: new Date().toISOString(),
       };
 
-      console.log('Payload, ', payload);
       this.enrolledCoursesIds.push(courseId);
 
       this.academiaserviceService.createUserCourse(

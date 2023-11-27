@@ -1,6 +1,3 @@
-<p>profile-screen works!</p>
-
-{{ courses$ | async | json }}
 
 <app-view-courses-table
   [dataSource]="(courses$ | async) || []"

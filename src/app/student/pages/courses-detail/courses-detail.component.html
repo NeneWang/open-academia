@@ -1,0 +1,30 @@
+<p>courses-detail works Courses Details!</p>
+
+<div class="course-sections">
+  <div *ngFor="let section of sections" class="course-section">
+    <div class="section-header">
+      <input type="checkbox" [checked]="section.completion_score === 100" />
+      <div class="section-details">
+        <h3>{{ section.name }}</h3>
+        <p>{{ section.description }}</p>
+      </div>
+      <button class="toggle-button" (click)="toggleDropdown(section)">
+        Toggle
+      </button>
+    </div>
+    <!-- <div class="dropdown" [ngClass]="{ 'show': section.showDropdown }"> -->
+
+    <div class="dropdown show">
+      <p>Assignment: {{ section.name }} Assignment</p>
+      <button class="submit-button" (click)="submitAssignment(section)">
+        Submit Assignment
+      </button>
+    </div>
+    <div class="progress-bar">
+      <div
+        class="progress"
+        [style.width]="section.completion_score + '%'"
+      ></div>
+    </div>
+  </div>
+</div>

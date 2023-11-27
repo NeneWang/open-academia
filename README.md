@@ -314,7 +314,60 @@ This is honeslty enough we cna now have on the usage case:
 ![](./img/2023-11-24-21-41-21.png)
 
 
+### Creating Sections
 
+1. First you want to have them respecting the sections of the areas of them. 
+
+![](./img/2023-11-26-22-47-20.png)
+
+It seems that basic `*ngFor` is not there in the CourseDialog.
+
+```html
+<ul>
+    <li *ngFor="let prerequisite of course.prequisites">
+        {{ prerequisite }}
+    </li>
+</ul>
+```
+
+
+```
+NG0303: Can't bind to 'ngForOf' since it isn't a known property of 'li' (used in the 'CoursesDetailComponent' component template).
+1. If 'li' is an Angular component and it has the 'ngForOf' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.
+```
+
+It seems that I am supposed to add the declaration somewhere to import the common module:
+
+Lets check
+
+- [x] app.module.ts
+- [x] core.module.ts
+- [x] admin.module.ts
+- [x] users.module.ts
+- [x] shared.module.ts
+- [x] student.module.ts
+- [x] courses.module.ts
+- [x] academia.module.ts
+- [ ] app-routing.module.ts
+- [ ] admin-routing.module.ts
+- [ ] studnets-routing.module.ts
+
+
+It wouldnt really make sesne to have them being reimported on the `routing` type of imports. It makes sense to.
+
+I had a similar problem when it came .
+
+Ok, it seems that I didnt declare it thats why:
+
+![](./img/2023-11-26-22-59-25.png)
+
+
+
+
+Lets check where am I missing it?
+
+![](./img/2023-11-26-22-52-54.png)
 
 ## Overall Conclusions
 
@@ -327,5 +380,5 @@ These are things that I have learnt for them to be good practices
 - Make a generalized conclusions section like this one.
 - Start the project by creating the services and main ocmponents. and main directions, it doesnt matter if it is uggly.
 - Main usage of ``
-
+- Using popups is a bad idea, hint to solve is: making sure that they are declared on the moduled that they are being used.
 

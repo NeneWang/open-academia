@@ -6,6 +6,8 @@ import { RankingsComponent } from './pages/rankings/rankings.component';
 import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.component';
 import { LoginScreenComponent } from './pages/login-screen/login-screen.component';
 import { SignupScreenComponent } from './pages/signup-screen/signup-screen.component';
+import { CoursesDetailComponent } from './pages/courses-detail/courses-detail.component';
+
 
 @NgModule({
   imports: [
@@ -13,6 +15,10 @@ import { SignupScreenComponent } from './pages/signup-screen/signup-screen.compo
       {
         path: 'courses',
         component: CoursesComponent
+      },
+      {
+        path: 'courses/:id',
+        component: CoursesDetailComponent
       },
 
       { path: 'student/:id', component: StudentDetailComponent },

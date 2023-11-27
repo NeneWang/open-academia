@@ -8,10 +8,10 @@
     />
     <mat-card-content>
       <h2>{{ course.name }}</h2>
-      <p>{{ course.description }}</p>
+      <!-- <p>{{ course.description }}</p>
       <p>Category: {{ course.category }}</p>
       <p>Intensity: {{ course.intensity }}</p>
-      <p>Credits: {{ course.credits }}</p>
+      <p>Credits: {{ course.credits }}</p> -->
     </mat-card-content>
     <mat-card-actions>
       <!-- <button mat-button color="primary" [routerLink]="course.id">View</button> -->
@@ -23,14 +23,23 @@
       >
         Enroll
       </button>
+      <button
+        (click)="openEnrollDialog(course)"
+        mat-button
+        color="primary"
+      >
+        Details
+      </button>
     
+      <!-- <a routerLink=`/courses/`>Curriculum</a> -->
+      <a routerLink="/courses/{{course.id}}" mat-button>Curriculum</a>
     
       <button
-      *ngIf="isEnrolled(course.id)"
-      mat-button
-      color="warn"
-      (click)="unenrollCourse.emit(course.id)"
-    >
+        *ngIf="isEnrolled(course.id)"
+        mat-button
+        color="warn"
+        (click)="unenrollCourse.emit(course.id)"
+      >
       Unenroll
     </button></mat-card-actions>
   </mat-card>

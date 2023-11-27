@@ -9,6 +9,7 @@ import { CounterStoreModule } from './store/counter.store';
 import { appReducer } from './store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -18,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     SharedModule,
     AppRoutingModule,
     CounterStoreModule,

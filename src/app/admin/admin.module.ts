@@ -8,11 +8,11 @@ import { CoursesScreenComponent } from './pages/courses-screen/courses-screen.co
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { CoursesDialogComponentComponent } from 'src/app/admin/components/courses-dialog-component/courses-dialog-component.component';
-import { CourseTableComponent } from 'src/app/admin/components/course-table/course-table.component';
 
 import { UsersDialogComponent } from './components/users-dialog/users-dialog.component';
+import { CourseTableComponent } from 'src/app/admin/components/course-table/course-table.component';
+
 import { UserTableComponent } from './components/user-table/user-table.component';
-import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.component';
 
 
 @NgModule({
@@ -29,7 +29,6 @@ import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.co
     UsersDialogComponent,
     UserTableComponent,
     MatDialogModule,
-    ProfileScreenComponent
   ]
 })
 export class AdminModule { }

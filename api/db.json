@@ -69,7 +69,8 @@
       "image": "https://i.ibb.co/k4bG2qF/algorithms-1.png",
       "category": "Computer Science",
       "intensity": "High",
-      "credits": 4
+      "credits": 4,
+      "prequisites": ["Basic programming skills", "Discrete mathematics"]
     },
     {
       "id": 2,
@@ -78,7 +79,8 @@
       "image": "https://i.ibb.co/D8xQwCL/algorithms-2.png",
       "category": "Computer Science",
       "intensity": "High",
-      "credits": 4
+      "credits": 4,
+        "prequisites": ["Algorithms I"]
     },
     {
       "id": 1700767108963,
