@@ -1,6 +1,8 @@
+import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 import { Component } from '@angular/core';
 import { Section } from 'src/app/academia/models';
 import { AssigmentPopupComponentComponent } from '../../components/assigment-popup-component/assigment-popup-component.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-courses-detail',
@@ -36,14 +38,17 @@ export class CoursesDetailComponent {
     }
   ]
 
-  sectionToggle: {[key: number]: boolean};
+  sectionToggle: { [key: number]: boolean };
 
-  constructor(){
-    console.log('sections', this.sections)
+  constructor(private academiaserviceService: AcademiaserviceService,
+    private matDialog: MatDialog) {
+
+
+
     this.sectionToggle = this.sections.reduce((acc, section) => {
       acc[section.id] = false;
       return acc;
-    }, {} as {[key: number]: boolean});
+    }, {} as { [key: number]: boolean });
   }
 
   submitAssignment(section: Section): void {
@@ -56,8 +61,17 @@ export class CoursesDetailComponent {
   }
 
   openAssigmentPopup(): void {
+    this.matDialog
+      .open(AssigmentPopupComponentComponent)
+      .afterClosed()
+      .subscribe({
+        next: (result) => {
+          if (result) {
+            console.log('exit result', result)
+          }
+        },
+      });
 
-    
 
   }
 

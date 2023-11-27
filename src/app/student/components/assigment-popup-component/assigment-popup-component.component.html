@@ -1,7 +1,43 @@
-<p>assigment-popup-component works!</p>
+<div mat-dialog-content>
+  <div class="container">
+    <div class="spread">
+      <div class="left-row">Assgiment Prompt</div>
+      <div class="right-row">
+        <button mat-button>Download Template File</button>
+      </div>
+    </div>
 
-<div class="container">
-    <div class="left-row">Left</div>
-    <div class="right-row">Right</div>
+    <div>Develop a Pacman Content.</div>
+    <div class="spread">
+      <div class="left-row">
+        <input type="text" matInput placeholder="Public link for download" />
+      </div>
+      <div>Or</div>
+      <div class="right-row">
+        <!-- File Selector Input Box -->
+        <input type="file" name=""/>
+      </div>
+    </div>
+
+    <br>
+    <!-- Large text container -->
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="3"
+      cdkAutosizeMaxRows="50"
+      style="width: 100%;"
+    ></textarea>
+
+    <br>
+    <div class="spread">
+        <div class="left-row">
+            <button mat-button>Open Class Content</button>
+        </div>
+        <div class="right-row">
+            <button mat-button>Submit</button>
+        </div>
+    </div>
   </div>
-  
+</div>

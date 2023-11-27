@@ -1,14 +1,18 @@
 .container {
+  width: 60em;
+  max-width: 100%;
+}
+
+.spread {
     display: flex;
-    justify-content: space-between; /* Aligns items at each end (left and right) */
-    align-items: center; /* Vertically centers items within the container */
-  }
-  
-  .left-row {
-    /* Styles for the left content */
-  }
-  
-  .right-row {
-    /* Styles for the right content */
-  }
-  
+  justify-content: space-between; /* Aligns items at each end (left and right) */
+  align-items: center; /* Vertically centers items within the container */
+}
+
+.left-row {
+  /* Styles for the left content */
+}
+
+.right-row {
+  /* Styles for the right content */
+}
