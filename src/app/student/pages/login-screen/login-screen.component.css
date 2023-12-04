@@ -15,12 +15,12 @@
 
 .text-center {
     text-align: center;
-    width: 90%;
+    /* width: 90%; */
     margin-bottom: 20px;
 }
 
 mat-form-field{
-    width: 90%; /* Increase the width of the form fields */
+    width: 100%;
     margin-bottom: 20px;
 }
 
