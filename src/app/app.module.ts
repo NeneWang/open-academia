@@ -10,7 +10,8 @@ import { appReducer } from './store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
-
+// mat-nav-list
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -24,8 +25,9 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     CounterStoreModule,
     CoreModule,
-    StoreModule.forRoot(appReducer),
+    MatListModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot(appReducer),
   ],
   providers: [],
   bootstrap: [AppComponent]

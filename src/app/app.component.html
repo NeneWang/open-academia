@@ -7,29 +7,71 @@
     mode="side"
     position="start"
   >
-    sidebar content
+    <mat-nav-list>
+      <mat-list-item
+        routerLink="/admin/courses"
+        routerLinkActive
+        #adminCoursesLink="routerLinkActive"
+        [activated]="adminCoursesLink.isActive"
+      >
+        <a>Admin</a>
+      </mat-list-item>
 
-    <a routerLink="/admin/courses">Admin</a>
-    <br />
-    <a routerLink="/">Home</a>
-    <br />
-    <a routerLink="/admin/courses/table">Courses Admin Table</a>
-    <br />
+      <mat-list-item
+        routerLink="/"
+        routerLinkActive
+        #homeLink="routerLinkActive"
+        [activated]="homeLink.isActive"
+      >
+        <a>Home</a>
+      </mat-list-item>
 
-    <a routerLink="/admin/users/table">Users Admin Table</a>
+      <mat-list-item
+        routerLink="/admin/courses/table"
+        routerLinkActive
+        #coursesAdminTableLink="routerLinkActive"
+        [activated]="coursesAdminTableLink.isActive"
+      >
+        <a>Courses Admin Table</a>
+      </mat-list-item>
 
-    <br />
-    <!-- Student Pages. -->
-    <a routerLink="/students"> Student Rankings </a>
-    <br />
-    <a routerLink="/courses"> Courses</a>
-    <br />
-    <a routerLink="/profile">Profile</a>
+      <mat-list-item
+        routerLink="/admin/users/table"
+        routerLinkActive
+        #usersAdminTableLink="routerLinkActive"
+        [activated]="usersAdminTableLink.isActive"
+      >
+        <a>Users Admin Table</a>
+      </mat-list-item>
 
-    <br />
-    <a routerLink="/login">login</a>
-    <br />
-    <a routerLink="/signup">signup</a>
+      <mat-list-item
+        routerLink="/students"
+        routerLinkActive
+        #studentsLink="routerLinkActive"
+        [activated]="studentsLink.isActive"
+      >
+        <a>Student Rankings</a>
+      </mat-list-item>
+
+      <mat-list-item
+        routerLink="/courses"
+        routerLinkActive
+        #coursesLink="routerLinkActive"
+        [activated]="coursesLink.isActive"
+      >
+        <a>Courses</a>
+      </mat-list-item>
+
+      <mat-list-item
+        routerLink="/profile"
+        routerLinkActive
+        #profileLink="routerLinkActive"
+        [activated]="profileLink.isActive"
+      >
+        <a>Profile</a>
+      </mat-list-item>
+
+    </mat-nav-list>
   </mat-drawer>
 
   <!-- CONTENIDO -->
@@ -43,14 +85,17 @@
       <!-- SIDEBAR -->
       <span>Open Academia</span>
       <div class="spacer"></div>
-      
+
       <div *ngIf="!(email$ | async)">
         <button mat-button routerLink="/login">Login</button>
+        <button mat-button routerLink="/signup">Register</button>
         <button mat-button (click)="loginAsAdmin()">Login as Admin</button>
         <button mat-button (click)="loginAsStudent()">Login as student</button>
       </div>
 
-      <button mat-button *ngIf="email$ | async" (click)="logout()">Logout</button>
+      <button mat-button *ngIf="email$ | async" (click)="logout()">
+        Logout
+      </button>
     </mat-toolbar>
     <main>
       <router-outlet></router-outlet>
