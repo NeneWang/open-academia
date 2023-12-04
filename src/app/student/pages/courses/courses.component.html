@@ -1,7 +1,6 @@
-<p>courses works!</p>
 
 
-Courses{{ enrolledCoursesIds | json }}
+
 <app-view-courses-table
   [dataSource]="(courses$ | async) || []"
   [enrolledCoursesIds]="enrolledCoursesIds || []"
