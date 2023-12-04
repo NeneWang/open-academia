@@ -7,24 +7,25 @@
     position="start"
   >
     <mat-nav-list>
-      <mat-list-item
-        routerLink="/admin/courses/table"
-        routerLinkActive
-        #coursesAdminTableLink="routerLinkActive"
-        [activated]="coursesAdminTableLink.isActive"
-      >
-        <a>Courses Admin Table</a>
-      </mat-list-item>
+      <div *ngIf="isAdmin$ | async">
+        <mat-list-item
+          routerLink="/admin/courses/table"
+          routerLinkActive
+          #coursesAdminTableLink="routerLinkActive"
+          [activated]="coursesAdminTableLink.isActive"
+        >
+          <a>Courses Admin Table</a>
+        </mat-list-item>
 
-      <mat-list-item
-        routerLink="/admin/users/table"
-        routerLinkActive
-        #usersAdminTableLink="routerLinkActive"
-        [activated]="usersAdminTableLink.isActive"
-      >
-        <a>Users Admin Table</a>
-      </mat-list-item>
-
+        <mat-list-item
+          routerLink="/admin/users/table"
+          routerLinkActive
+          #usersAdminTableLink="routerLinkActive"
+          [activated]="usersAdminTableLink.isActive"
+        >
+          <a>Users Admin Table</a>
+        </mat-list-item>
+      </div>
       <mat-list-item
         routerLink="/students"
         routerLinkActive
@@ -71,8 +72,7 @@
         <button mat-button (click)="loginAsStudent()">Login as student</button>
       </div>
 
-      <div *ngIf="email$ | async">
-        <!-- Admin -->
+      <div *ngIf="isAdmin$ | async">
         <button
           routerLink="/admin/courses"
           routerLinkActive
@@ -82,6 +82,9 @@
         >
           <a>Admin</a>
         </button>
+      </div>
+      <div *ngIf="email$ | async">
+        <!-- Admin -->
 
         <!-- Profile -->
         <button

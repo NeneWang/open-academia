@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Course } from 'src/app/academia/models';
 import { CourseEnrollmentDialogComponent } from './../course-enrollment-dialog/course-enrollment-dialog.component';
 import { CourseEnrollmentDialogDetailonlyComponent } from '../../course-enrollment-dialog-detailonly/course-enrollment-dialog-detailonly.component';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,12 +14,11 @@ import { CourseEnrollmentDialogDetailonlyComponent } from '../../course-enrollme
 export class ViewCoursesTableComponent {
   @Input() dataSource: Course[] = [];
   @Input() enrolledCoursesIds: number[] = [];
+  @Input() isLogged: boolean = false;
   @Output() enrollCourse = new EventEmitter();
   @Output() unenrollCourse = new EventEmitter();
-  // @Output() editCourse = new EventEmitter();
-  // @Output() deleteCourse = new EventEmitter();
 
-
+  
   constructor(
     private matDialog: MatDialog,
   ) {
@@ -30,6 +30,13 @@ export class ViewCoursesTableComponent {
   isEnrolled = (courseId: number) => {
     const isEnrolled = this.enrolledCoursesIds.some((e) => e === courseId);
     return isEnrolled;
+  }
+
+  isEnrollable = (courseId: number) => {
+
+      // Is enrollable if it is logeable and not enrolled
+      const isEnrollable = !this.isEnrolled(courseId);
+      return isEnrollable && this.isLogged;
   }
 
 

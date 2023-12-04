@@ -15,7 +15,8 @@
     </mat-card-content>
     <mat-card-actions class="card-actions">
       <button
-        *ngIf="!isEnrolled(course.id)"
+        *ngIf="isEnrollable(course.id)"
+        
         mat-button
         color="warn"
         (click)="enrollCourse.emit(course.id); $event.stopPropagation()"

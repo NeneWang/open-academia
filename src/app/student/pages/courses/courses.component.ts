@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Course, User, UserCourse } from 'src/app/academia/models';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 
@@ -15,7 +15,7 @@ export class CoursesComponent implements OnInit {
 
   constructor(private academiaserviceService: AcademiaserviceService) {
     this.courses$ = this.academiaserviceService.getCourses$();
-
+  
   }
 
   ngOnInit() {
@@ -32,6 +32,10 @@ export class CoursesComponent implements OnInit {
         });
       }
     });
+  }
+
+  isLogged(): boolean {
+    return this.userId !== undefined;
   }
 
   enrollCourse(courseId: number): void {

@@ -239,6 +239,17 @@
       "start_date": "2023-12-04T17:42:33.045Z",
       "expire_date": "2023-12-04T17:42:33.045Z",
       "end_date": "2023-12-04T17:42:33.045Z"
+    },
+    {
+      "id": 1701723643145,
+      "userId": 1,
+      "courseId": 5,
+      "progress": 0,
+      "status": "In Progress",
+      "grade": 0,
+      "start_date": "2023-12-04T21:00:43.145Z",
+      "expire_date": "2023-12-04T21:00:43.145Z",
+      "end_date": "2023-12-04T21:00:43.145Z"
     }
   ],
   "sections": [

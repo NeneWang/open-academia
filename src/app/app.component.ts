@@ -31,6 +31,14 @@ export class AppComponent {
     return this.authUser$.pipe(map((user) => user?.email));
   }
 
+  get isLogin$(): Observable<boolean> {
+    return this.authUser$.pipe(map((user) => !!user));
+  }
+
+  get isAdmin$(): Observable<boolean> {
+    return this.authUser$.pipe(map((user) => user?.role === 'ADMIN'));
+  }
+
   increment() {
     this.store.dispatch(increment());
   }
