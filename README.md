@@ -386,3 +386,33 @@ These are things that I have learnt for them to be good practices
 - Main usage of ``
 - Using popups is a bad idea, hint to solve is: making sure that they are declared on the moduled that they are being used.
 
+
+## Documentation
+
+![](./img/2023-12-04-07-46-06.png)
+
+- This is what we want to create the hover on.
+- Some kind of drawer that can be used to pick up and show the drawer
+
+```html
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="toggleDrawer()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" opened="true">
+    Drawer content
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+```
+
+![](./img/2023-12-04-08-40-53.png)
+
+And that worked!

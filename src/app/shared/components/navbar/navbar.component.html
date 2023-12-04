@@ -1,6 +1,7 @@
-<mat-drawer-container>
+<mat-drawer-container class="example-container" autosize>
+  <!-- SIDEBAR -->
   <mat-drawer
-    style="width: 140px"
+    style="width: 200px"
     [opened]="showSidebar"
     #drawer
     class="example-sidenav"
@@ -33,27 +34,15 @@
   </mat-drawer>
 
   <!-- CONTENIDO -->
-  <div class="sidenav-content full-height">
+  <div class="example-sidenav-content">
     <mat-toolbar color="primary">
       <button mat-icon-button (click)="toggleDrawer()">
         <mat-icon>menu</mat-icon>
       </button>
-
-      <!-- SIDEBAR -->
-      <!-- SIDEBAR -->
       <span>Open Academia</span>
-      <div class="spacer"></div>
-      
-      <div *ngIf="!(email$ | async)">
-        <button mat-button routerLink="/login">Login</button>
-        <button mat-button (click)="loginAsAdmin()">Login as Admin</button>
-        <button mat-button (click)="loginAsStudent()">Login as student</button>
-      </div>
-
-      <button mat-button *ngIf="email$ | async" (click)="logout()">Logout</button>
     </mat-toolbar>
-    <main>
-      <router-outlet></router-outlet>
+    <main style="padding: 5rem">
+        <ng-content></ng-content>
     </main>
   </div>
 </mat-drawer-container>

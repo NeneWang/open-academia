@@ -11,13 +11,19 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+// import { AppRoutingModule } from '../app-routing.module';
 
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+
+    NavbarComponent
+  ],
   imports: [
     CommonModule, MatProgressSpinnerModule,
     MatFormFieldModule,
@@ -29,7 +35,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatButtonModule,
     MatSelectModule,
-    
+    MatToolbarModule,
+    MatSidenavModule,
+
   ],
   exports: [
     MatButtonModule,
@@ -42,7 +50,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatTableModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    
+    NavbarComponent,
+    MatToolbarModule,
+    MatSidenavModule,
   ],
 })
 export class SharedModule { }

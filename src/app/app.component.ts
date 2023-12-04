@@ -15,6 +15,7 @@ export class AppComponent {
   title = 'open-academia';
   count: number | undefined;
   authUser$: Observable<User | null>;
+  showSidebar = false;
   
 
 
@@ -44,6 +45,13 @@ export class AppComponent {
       email: 'buckyroberts@mail.com',
       password: 'password1'
     });
+  }
+  
+  toggleDrawer() {
+    console.log("toggleDrawer");
+    // this.sidenav.toggle();
+    this.showSidebar = !this.showSidebar;
+    console.log(this.showSidebar)
   }
 
   
