@@ -19,7 +19,8 @@ import { UserTableComponent } from './components/user-table/user-table.component
   imports: [
     CommonModule,
     MatFormFieldModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule,
   ],
   declarations: [
     UsersScreenComponent,
@@ -28,7 +29,6 @@ import { UserTableComponent } from './components/user-table/user-table.component
     CourseTableComponent,
     UsersDialogComponent,
     UserTableComponent,
-    MatDialogModule,
   ]
 })
 export class AdminModule { }

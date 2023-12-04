@@ -8,24 +8,6 @@
   >
     <mat-nav-list>
       <mat-list-item
-        routerLink="/admin/courses"
-        routerLinkActive
-        #adminCoursesLink="routerLinkActive"
-        [activated]="adminCoursesLink.isActive"
-      >
-        <a>Admin</a>
-      </mat-list-item>
-
-      <mat-list-item
-        routerLink="/"
-        routerLinkActive
-        #homeLink="routerLinkActive"
-        [activated]="homeLink.isActive"
-      >
-        <a>Home</a>
-      </mat-list-item>
-
-      <mat-list-item
         routerLink="/admin/courses/table"
         routerLinkActive
         #coursesAdminTableLink="routerLinkActive"
@@ -60,15 +42,6 @@
       >
         <a>Courses</a>
       </mat-list-item>
-
-      <mat-list-item
-        routerLink="/profile"
-        routerLinkActive
-        #profileLink="routerLinkActive"
-        [activated]="profileLink.isActive"
-      >
-        <a>Profile</a>
-      </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
 
@@ -79,10 +52,17 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <!-- SIDEBAR -->
-      <!-- SIDEBAR -->
       <span>Open Academia</span>
       <div class="spacer"></div>
+
+      <button
+        routerLink="/"
+        routerLinkActive
+        mat-button
+        #homeLink="routerLinkActive"
+      >
+        <a>Home</a>
+      </button>
 
       <div *ngIf="!(email$ | async)">
         <button mat-button routerLink="/login">Login</button>
@@ -91,9 +71,29 @@
         <button mat-button (click)="loginAsStudent()">Login as student</button>
       </div>
 
-      <button mat-button *ngIf="email$ | async" (click)="logout()">
-        Logout
-      </button>
+      <div *ngIf="email$ | async">
+        <!-- Admin -->
+        <button
+          routerLink="/admin"
+          routerLinkActive
+          mat-button
+          [class.active]="adminLink.isActive"
+          #adminLink="routerLinkActive"
+        >
+          <a>Admin</a>
+        </button>
+
+        <!-- Profile -->
+        <button
+          routerLink="/profile"
+          routerLinkActive
+          mat-button
+          #profileLink="routerLinkActive"
+        >
+          <a>Profile</a>
+        </button>
+      </div>
+      <button mat-button (click)="logout()">Logout</button>
     </mat-toolbar>
     <main>
       <div class="container">
