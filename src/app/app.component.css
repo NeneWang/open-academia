@@ -6,4 +6,10 @@
     flex: 1 1 auto;
   }
 
-  
+
+
+  .container {
+    padding-top: 10%;
+    padding-right: 5%;
+    padding-left: 5%;
+}
