@@ -7,11 +7,20 @@ import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.co
 import { LoginScreenComponent } from './pages/login-screen/login-screen.component';
 import { SignupScreenComponent } from './pages/signup-screen/signup-screen.component';
 import { CoursesDetailComponent } from './pages/courses-detail/courses-detail.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
+
+import {adminGuard} from '../core/admin.guard';
 
 
 @NgModule({
   imports: [
     RouterModule.forChild([
+      {
+        path: '',
+        component: HomePageComponent
+      },
       {
         path: 'courses',
         component: CoursesComponent
@@ -30,14 +39,22 @@ import { CoursesDetailComponent } from './pages/courses-detail/courses-detail.co
         path: 'rankings', component: RankingsComponent
       },
       {
-        path: 'profile', component: ProfileScreenComponent
+        path: 'profile', component: ProfileScreenComponent,
+        canActivate: [adminGuard]
+
       },
       {
         path: 'login', component: LoginScreenComponent
       },
       {
         path: 'signup', component: SignupScreenComponent
-      }
+      },
+      {
+        path: 'privacy', component: PrivacyComponent
+      },
+      {
+        path: 'terms-of-use', component: TermsOfUseComponent
+      },
     ])
   ],
   exports: [RouterModule]

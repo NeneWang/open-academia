@@ -1,3 +1,4 @@
+import { UserRole } from './../../../academia/models/index';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 import { Component } from '@angular/core';
 import { Observable, filter } from 'rxjs';
@@ -12,7 +13,10 @@ export class ProfileScreenComponent {
 
   courses$: Observable<Course[]>;
   userId: number | undefined; // Initialize as undefined
+  userName: string | undefined;
+  userRole: string | undefined;
   enrolledCoursesIds: number[] = [];
+  userRoleFormatted: string | undefined;
 
   constructor(private academiaserviceService: AcademiaserviceService) {
     this.courses$ = new Observable<Course[]>();
@@ -25,6 +29,8 @@ export class ProfileScreenComponent {
     this.academiaserviceService.authUser$.subscribe((user) => {
       if (user) {
         this.userId = user.id;
+        this.userName = user.first + ' ' + user.last;
+        this.userRole = user.role;
 
         this.academiaserviceService.getEnrolledUserCourses$(this.userId).subscribe((userCourses) => {
 

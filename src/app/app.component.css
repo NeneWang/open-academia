@@ -1,3 +1,11 @@
+.navbrand{
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+}
+
+
 .adaptive-sidenav{
     min-width: 8em;
     width: 15%;

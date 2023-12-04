@@ -26,24 +26,24 @@
           <a>Users Admin Table</a>
         </mat-list-item>
       </div>
+      
       <mat-list-item
-        routerLink="/students"
-        routerLinkActive
-        #studentsLink="routerLinkActive"
-        [activated]="studentsLink.isActive"
+      routerLink="/courses"
+      routerLinkActive
+      #coursesLink="routerLinkActive"
+      [activated]="coursesLink.isActive"
       >
-        <a>Student Rankings</a>
-      </mat-list-item>
-
-      <mat-list-item
-        routerLink="/courses"
-        routerLinkActive
-        #coursesLink="routerLinkActive"
-        [activated]="coursesLink.isActive"
-      >
-        <a>Courses</a>
-      </mat-list-item>
-    </mat-nav-list>
+      <a>Courses</a>
+    </mat-list-item>
+    <mat-list-item
+      routerLink="/students"
+      routerLinkActive
+      #studentsLink="routerLinkActive"
+      [activated]="studentsLink.isActive"
+    >
+      <a>Rankings</a>
+    </mat-list-item>
+  </mat-nav-list>
   </mat-drawer>
 
   <!-- CONTENIDO -->
@@ -53,17 +53,18 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <span>Open Academia</span>
-      <div class="spacer"></div>
-
+      
       <button
         routerLink="/"
         routerLinkActive
         mat-button
+        class=navbrand
         #homeLink="routerLinkActive"
       >
-        <a>Home</a>
+        Open Academia
       </button>
+      <div class="spacer"></div>
+
 
       <div *ngIf="!(email$ | async)">
         <button mat-button routerLink="/login">Login</button>
@@ -105,3 +106,12 @@
     </main>
   </div>
 </mat-drawer-container>
+
+<mat-toolbar class="footer" color="primary">
+  <span>&copy; 2023 Open Academia</span>
+  <span class="spacer"></span>
+  <!-- <button mat-button>About Us</button>
+  <button mat-button>Contact Us</button> -->
+  <button mat-button routerLink="privacy">Privacy Policy</button>
+  <button mat-button routerLink="/terms-of-use">Terms of Service</button>
+</mat-toolbar>

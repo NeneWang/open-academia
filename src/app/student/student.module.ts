@@ -17,6 +17,9 @@ import { AssigmentPopupComponentComponent } from './components/assigment-popup-c
 import { CourseEnrollmentDialogComponent } from './components/course-enrollment-dialog/course-enrollment-dialog.component';
 import { CourseEnrollmentDialogDetailonlyComponent } from './course-enrollment-dialog-detailonly/course-enrollment-dialog-detailonly.component';
 import { MatListModule } from '@angular/material/list';
+import { HomePageComponent } from './home-page/home-page.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { MatListModule } from '@angular/material/list';
     CourseEnrollmentDialogComponent,
     CoursesDetailComponent,
     CourseEnrollmentDialogDetailonlyComponent,
+    HomePageComponent,
+    PrivacyComponent,
+    TermsOfUseComponent,
   ],
   imports: [
     CommonModule,

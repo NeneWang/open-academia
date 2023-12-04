@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 // import { AppRoutingModule } from '../app-routing.module';
 
 
@@ -22,7 +23,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 @NgModule({
   declarations: [
 
-    NavbarComponent
+    NavbarComponent,
+     CapitalizePipe
   ],
   imports: [
     CommonModule, MatProgressSpinnerModule,
@@ -53,6 +55,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     NavbarComponent,
     MatToolbarModule,
     MatSidenavModule,
+    CapitalizePipe,
   ],
 })
 export class SharedModule { }
