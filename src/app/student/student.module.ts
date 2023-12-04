@@ -15,6 +15,7 @@ import { CourseContentScreenComponent } from './pages/course-content-screen/cour
 import { ContentSectionBarComponent } from './components/content-section-bar/content-section-bar.component';
 import { AssigmentPopupComponentComponent } from './components/assigment-popup-component/assigment-popup-component.component';
 import { CourseEnrollmentDialogComponent } from './components/course-enrollment-dialog/course-enrollment-dialog.component';
+import { CourseEnrollmentDialogDetailonlyComponent } from './course-enrollment-dialog-detailonly/course-enrollment-dialog-detailonly.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CourseEnrollmentDialogComponent } from './components/course-enrollment-
     ContentSectionBarComponent,
     AssigmentPopupComponentComponent,
     CourseEnrollmentDialogComponent,
-    CoursesDetailComponent
+    CoursesDetailComponent,
+    CourseEnrollmentDialogDetailonlyComponent
   ],
   imports: [
     CommonModule,

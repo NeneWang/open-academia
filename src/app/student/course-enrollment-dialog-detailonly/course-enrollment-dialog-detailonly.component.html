@@ -1,0 +1,22 @@
+<div mat-dialog-content>
+    <h1>{{ course.name }}</h1>
+    <p>{{ course.category }} | Intensity: {{ course.intensity }} | Credits: {{course.credits}}</p>
+  
+    <p>
+      {{ course.description }}
+    </p>
+  
+    <div *ngIf="course.prequisites">
+      <h3>Prerequisites</h3>
+      <ul>
+        <li *ngFor="let prerequisite of course.prequisites">
+          {{ prerequisite }}
+        </li>
+      </ul>
+    </div>
+  
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+     </div>
+  </div>
+  

@@ -11,3 +11,13 @@
     33.33% - 16px
   ); /* 33.33% width to fit three cards in a row, minus gap */
 }
+
+
+.hoverable {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.hoverable:hover {
+  transform: scale(1.02);
+}

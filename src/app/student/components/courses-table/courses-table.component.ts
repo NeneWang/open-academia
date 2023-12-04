@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Course } from 'src/app/academia/models';
 import { CourseEnrollmentDialogComponent } from './../course-enrollment-dialog/course-enrollment-dialog.component';
+import { CourseEnrollmentDialogDetailonlyComponent } from '../../course-enrollment-dialog-detailonly/course-enrollment-dialog-detailonly.component';
+
 
 @Component({
   selector: 'app-view-courses-table',
@@ -33,20 +35,40 @@ export class ViewCoursesTableComponent {
 
   openEnrollDialog(course: Course): void {
 
-    this.matDialog
-      .open(CourseEnrollmentDialogComponent, {
-        data: course,
-        
-      })
-      .afterClosed()
-      .subscribe({
-        next: (result) => {
-          if (result) {
-            console.log('exit result', result)
-            this.enrollCourse.emit(result);
-          }
-        },
-      });
+
+    if(this.isEnrolled(course.id)){
+      this.matDialog
+        .open(CourseEnrollmentDialogDetailonlyComponent, {
+          data: course,
+          
+        })
+        .afterClosed()
+        .subscribe({
+          next: (result) => {
+            if (result) {
+              console.log('exit result', result)
+              this.enrollCourse.emit(result);
+            }
+          },
+        });
+
+    }else{
+      this.matDialog
+        .open(CourseEnrollmentDialogComponent, {
+          data: course,
+          
+        })
+        .afterClosed()
+        .subscribe({
+          next: (result) => {
+            if (result) {
+              console.log('exit result', result)
+              this.enrollCourse.emit(result);
+            }
+          },
+        });
+    }
+
 
 
   }

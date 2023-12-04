@@ -1,5 +1,5 @@
 <div class="cards-container">
-  <mat-card *ngFor="let course of dataSource" class="course-card">
+  <mat-card *ngFor="let course of dataSource" class="course-card hoverable" (click)="openEnrollDialog(course)">
     <img
       mat-card-image
       *ngIf="course.image"
@@ -10,33 +10,23 @@
       <h2>{{ course.name }}</h2>
     </mat-card-content>
     <mat-card-actions>
-      
       <button
         *ngIf="!isEnrolled(course.id)"
         mat-button
         color="warn"
-        (click)="enrollCourse.emit(course.id)"
+        (click)="enrollCourse.emit(course.id); $event.stopPropagation()"
       >
         Enroll
       </button>
-      <button
-        (click)="openEnrollDialog(course)"
-        mat-button
-        color="primary"
-      >
-        Details
-      </button>
-    
-      <!-- <a routerLink=`/courses/`>Curriculum</a> -->
       <a routerLink="/courses/{{course.id}}" mat-button color="primary">Curriculum</a>
-    
       <button
         *ngIf="isEnrolled(course.id)"
         mat-button
         color="warn"
-        (click)="unenrollCourse.emit(course.id)"
+        (click)="unenrollCourse.emit(course.id); $event.stopPropagation()"
       >
-      Unenroll
-    </button></mat-card-actions>
+        Unenroll
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>
