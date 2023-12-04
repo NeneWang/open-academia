@@ -8,9 +8,7 @@
         <input formControlName="first" matInput />
       </mat-form-field>
     </div>
-    <div class="col-4">
-
-    </div>
+    <div class="col-4"></div>
     <div class="col-4">
       <mat-form-field>
         <mat-label>Last</mat-label>
@@ -32,23 +30,21 @@
       </mat-form-field>
     </div>
 
+    <button primary (click)="onSubmit()" mat-raised-button color="primary">
+      Register
+    </button>
     <p>
       We won't send special offers as all courses are free. But we will send you
       reminders to finish your assigmnets
     </p>
-    
+
     <p class="agreement">
       By signing up, you agree to our <a href="/terms">Terms of Use</a> and
       <a href="/privacy">Privacy Policy</a>.
     </p>
     <hr />
-    <p class="agreement">
-      Already have an account? <a href="/login">Login</a>
-    </p>
-    <button primary (click)="onSubmit()" mat-raised-button color="primary">
-      Register
-    </button>
-    <br>
-    <br>
+    <p class="agreement">Already have an account? <a href="/login">Login</a></p>
+    <br />
+    <br />
   </form>
 </div>
