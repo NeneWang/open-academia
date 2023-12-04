@@ -416,3 +416,60 @@ These are things that I have learnt for them to be good practices
 ![](./img/2023-12-04-08-40-53.png)
 
 And that worked!
+
+
+```html title="Readme.md"
+
+<mat-list-item
+  routerLink="/profile"
+  routerLinkActive
+  #profileLink="routerLinkActive"
+  [activated]="profileLink.isActive"
+>
+  <a>Profile</a>
+</mat-list-item>
+<mat-list-item
+  routerLink="/admin/courses"
+  routerLinkActive
+  #adminCoursesLink="routerLinkActive"
+  [activated]="adminCoursesLink.isActive"
+>
+  <a>Admin</a>
+</mat-list-item>
+
+
+<mat-list-item
+  routerLink="/admin/courses/table"
+  routerLinkActive
+  #coursesAdminTableLink="routerLinkActive"
+  [activated]="coursesAdminTableLink.isActive"
+>
+  <a>Courses Admin Table</a>
+</mat-list-item>
+
+<mat-list-item
+  routerLink="/admin/users/table"
+  routerLinkActive
+  #usersAdminTableLink="routerLinkActive"
+  [activated]="usersAdminTableLink.isActive"
+>
+  <a>Users Admin Table</a>
+</mat-list-item>
+
+<mat-list-item
+  routerLink="/students"
+  routerLinkActive
+  #studentsLink="routerLinkActive"
+  [activated]="studentsLink.isActive"
+>
+  <a>Student Rankings</a>
+</mat-list-item>
+
+<mat-list-item
+  routerLink="/courses"
+  routerLinkActive
+  #coursesLink="routerLinkActive"
+  [activated]="coursesLink.isActive"
+>
+  <a>Courses</a>
+  ```
