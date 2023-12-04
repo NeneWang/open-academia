@@ -103,9 +103,8 @@
       "image": "https://i.ibb.co/bRwjR1N/ai-intro.png",
       "category": "Computer Science",
       "intensity": "High",
-      "credits": 4     
+      "credits": 4
     },
-    
     {
       "id": 5,
       "name": "Computer Science Capstone",
@@ -218,6 +217,28 @@
       "start_date": "2023-12-04T16:04:06.934Z",
       "expire_date": "2023-12-04T16:04:06.937Z",
       "end_date": "2023-12-04T16:04:06.937Z"
+    },
+    {
+      "id": 1701711752226,
+      "userId": 2,
+      "courseId": 9,
+      "progress": 0,
+      "status": "In Progress",
+      "grade": 0,
+      "start_date": "2023-12-04T17:42:32.226Z",
+      "expire_date": "2023-12-04T17:42:32.226Z",
+      "end_date": "2023-12-04T17:42:32.226Z"
+    },
+    {
+      "id": 1701711753045,
+      "userId": 2,
+      "courseId": 8,
+      "progress": 0,
+      "status": "In Progress",
+      "grade": 0,
+      "start_date": "2023-12-04T17:42:33.045Z",
+      "expire_date": "2023-12-04T17:42:33.045Z",
+      "end_date": "2023-12-04T17:42:33.045Z"
     }
   ],
   "sections": [
