@@ -17,6 +17,6 @@ export class UserTableComponent {
   @Output()
   deleteUser = new EventEmitter();
 
-  displayedColumns = ['id', 'first', 'last', 'email', 'role', 'actions'];
+  displayedColumns = ['first', 'last', 'email', 'role', 'actions'];
 }
 

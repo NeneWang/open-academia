@@ -1,1 +1,15 @@
-<p>rankings works!</p>
+
+<mat-card>
+  <mat-card-title>Rankings</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item
+        class="ranking-item"
+        *ngFor="let ranking of rankings; index as i"
+      >
+        <h3 matLine>{{ i + 1 }}. {{ ranking.name }}</h3>
+        <p matLine>Score: {{ ranking.score }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

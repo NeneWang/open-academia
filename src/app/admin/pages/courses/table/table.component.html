@@ -1,13 +1,8 @@
-<p>table Courses</p>
-<br>
-
-
+<div class="button-container">
+    <button mat-raised-button color="primary" (click)="addCourse()">Create Course</button>
+</div>
 <app-courses-table
-[dataSource]="(courses$ | async) || []"
-(deleteCourse)="deleteCourse($event)"
-(editCourse)="editCourse($event)"
+    [dataSource]="(courses$ | async) || []"
+    (deleteCourse)="deleteCourse($event)"
+    (editCourse)="editCourse($event)"
 ></app-courses-table>
-
-<button (click)="addCourse()" >Create Course</button>
-
-

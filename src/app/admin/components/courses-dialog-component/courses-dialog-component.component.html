@@ -1,4 +1,3 @@
-<p>courses-dialog-component works!</p>
 <div mat-dialog-content>
   <form class="row" [formGroup]="courseForm">
     <div class="col-12">
@@ -35,10 +34,23 @@
         <input formControlName="credits" type="number" matInput />
       </mat-form-field>
     </div>
+    <div class="col-12">
+      <!-- Image Url -->
+      <mat-form-field class="w-100">
+        <mat-label>Image Url</mat-label>
+        <input formControlName="image" matInput />
+      </mat-form-field>
+
+      <img class="mini-render" [src]="courseForm.get('image')!.value" alt="Course Image" *ngIf="courseForm.get('image')!.value">
+
+
+    </div>
   </form>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="mat-dialog-actions" >
   <button mat-button mat-dialog-close>Cancel</button>
+  
+  <div class="spacer"></div>
   <button (click)="onSubmit()" mat-button>Save</button>
 </div>
 

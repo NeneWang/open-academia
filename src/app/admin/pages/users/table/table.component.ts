@@ -12,7 +12,7 @@ import { UsersDialogComponent } from 'src/app/admin/components/users-dialog/user
 })
 export class TableComponent {
   users$: Observable<User[]>;
-  
+
   constructor(
     private academiaserviceService: AcademiaserviceService,
     private matDialog: MatDialog
@@ -23,7 +23,10 @@ export class TableComponent {
 
   addUser(): void {
     this.matDialog
-      .open(UsersDialogComponent)
+      .open(UsersDialogComponent,
+        {
+          width: "80%",
+        })
       .afterClosed()
       .subscribe({
         next: (result) => {
@@ -48,10 +51,10 @@ export class TableComponent {
   }
 
   editUser(user: User): void {
-    console.log('user id', user)
     this.matDialog
       .open(UsersDialogComponent, {
         data: user,
+        width: "80%",
       })
       .afterClosed()
       .subscribe({

@@ -1,4 +1,4 @@
-<p>users-dialog works!</p>
+
 <div mat-dialog-content>
   <form class="row" [formGroup]="userForm">
     <div class="col-12">
@@ -41,6 +41,7 @@
   </form>
   <div mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancel</button>
+    <div class="spacer"></div>
     <button (click)="onSubmit()" mat-button>Save</button>
   </div>
 </div>

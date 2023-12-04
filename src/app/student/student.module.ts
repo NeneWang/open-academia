@@ -16,7 +16,7 @@ import { ContentSectionBarComponent } from './components/content-section-bar/con
 import { AssigmentPopupComponentComponent } from './components/assigment-popup-component/assigment-popup-component.component';
 import { CourseEnrollmentDialogComponent } from './components/course-enrollment-dialog/course-enrollment-dialog.component';
 import { CourseEnrollmentDialogDetailonlyComponent } from './course-enrollment-dialog-detailonly/course-enrollment-dialog-detailonly.component';
-
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -32,12 +32,13 @@ import { CourseEnrollmentDialogDetailonlyComponent } from './course-enrollment-d
     AssigmentPopupComponentComponent,
     CourseEnrollmentDialogComponent,
     CoursesDetailComponent,
-    CourseEnrollmentDialogDetailonlyComponent
+    CourseEnrollmentDialogDetailonlyComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
-    StudentsRoutingModule
+    StudentsRoutingModule,
+    MatListModule
     
   ]
 })

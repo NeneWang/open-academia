@@ -25,7 +25,9 @@ export class TableComponent {
 
   addCourse(): void {
     this.matDialog
-      .open(CoursesDialogComponentComponent)
+      .open(CoursesDialogComponentComponent, {
+        width: "80%",
+      })
       .afterClosed()
       .subscribe({
         next: (result) => {
@@ -53,6 +55,7 @@ export class TableComponent {
     this.matDialog
       .open(CoursesDialogComponentComponent, {
         data: course,
+        width: "80%",
       })
       .afterClosed()
       .subscribe({

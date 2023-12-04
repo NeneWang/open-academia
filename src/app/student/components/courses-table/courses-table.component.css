@@ -40,8 +40,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  margin-top: auto;
+  padding-bottom: .5em;
 }
 
 .spacer {
   flex-grow: 1;
 }
+
+/* .mat-card-actions {
+  margin-top: auto;
+  padding-bottom: 16px;
+} */

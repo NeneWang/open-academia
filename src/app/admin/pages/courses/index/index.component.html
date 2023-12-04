@@ -1,3 +1,29 @@
-<p> Admin Courses index works!</p>
+<div class="card-container">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-icon mat-card-avatar>people</mat-icon>
+            <mat-card-title>User Administration</mat-card-title>
+            <mat-card-subtitle>Manage all user accounts</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Here you can manage all user accounts, roles, and permissions as well as create new Users.</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="/admin/users/table">Go to User Admin</button>
+        </mat-card-actions>
+    </mat-card>
 
-
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-icon mat-card-avatar>school</mat-icon>
+            <mat-card-title>Course Administration</mat-card-title>
+            <mat-card-subtitle>Manage all Courses</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Here you can create new courses, delete and manage all courses details.</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" routerLink="/admin/courses/table">Go to Student Admin</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
