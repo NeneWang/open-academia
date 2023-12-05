@@ -17,8 +17,9 @@ import { CourseTableComponent } from 'src/app/admin/components/course-table/cour
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { ViewUserDialogComponent } from './components/view-user-dialog/view-user-dialog.component';
 import { ViewEnrollCourseComponent } from './components/view-enroll-course/view-enroll-course.component';
-// import { ViewCourseDialogComponent } from './components/view-course-dialog/view-course-dialog.component';
 
+import { adminReducer } from './store/admin.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { ViewEnrollCourseComponent } from './components/view-enroll-course/view-
     MatFormFieldModule,
     MatCardModule,
     MatListModule,
+    StoreModule.forFeature('admin', adminReducer)
   ],
   declarations: [
     UsersScreenComponent,
