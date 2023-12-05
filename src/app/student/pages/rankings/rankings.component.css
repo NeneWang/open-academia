@@ -46,3 +46,10 @@
 .course {
   flex: 1 0 20%; /* This makes the course divs take up 1/5 of the container's width */
 }
+
+
+
+.table-section {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}

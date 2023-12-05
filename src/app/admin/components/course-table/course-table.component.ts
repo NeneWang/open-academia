@@ -57,5 +57,10 @@ export class CourseTableComponent {
     
   }
 
+  reset(){
+    this.selectedCourse = undefined;
+    this.enrolledUsers = [];
+  }
+
   displayedColumns = [ 'name', 'actions'];
 }

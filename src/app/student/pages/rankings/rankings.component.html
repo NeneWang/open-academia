@@ -6,7 +6,7 @@
       <h2 mat-dialog-title>{{ selectedUser | username }}</h2>
       <mat-dialog-content>
         <p><strong>Email:</strong> {{ selectedUser.email }}</p>
-        <p><strong>Role:</strong> {{ selectedUser.role }}</p>
+        <p><strong>Role:</strong> {{ selectedUser.role | capitalize }}</p>
       </mat-dialog-content>
 
       <div>
@@ -21,12 +21,12 @@
       </div>
 
       <mat-dialog-actions>
-        <button mat-button mat-dialog-close (click)="reset()">Close</button>
+        <button mat-button mat-dialog-close color="warn"  (click)="reset()">Close</button>
       </mat-dialog-actions>
   </div>
 
 
-<table class="large-table details-card table table-hover ">
+<table class="large-table details-card table table-hover table-section ">
   <thead>
     <tr>
       <th class="spaced-cell col">Name</th>

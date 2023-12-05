@@ -16,6 +16,10 @@
         </div>
       </div>
     </div>
+    
+    <mat-dialog-actions>
+      <button mat-button color="warn"  mat-dialog-close (click)="reset()">Close</button>
+    </mat-dialog-actions>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="table-section mat-elevation-z8">

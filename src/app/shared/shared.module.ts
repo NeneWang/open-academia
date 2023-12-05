@@ -17,6 +17,7 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { MatListModule } from '@angular/material/list';
 import { UsernamePipe } from './pipes/username.pipe';
 import { SmallImageDirective } from './directives/small-image.directive';
+import { ColorCategoryDirective } from './directives/color-category.directive';
 
 
 
@@ -26,6 +27,7 @@ import { SmallImageDirective } from './directives/small-image.directive';
      CapitalizePipe,
      UsernamePipe,
      SmallImageDirective,
+     ColorCategoryDirective,
   ],
   imports: [
     CommonModule, MatProgressSpinnerModule,

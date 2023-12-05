@@ -19,7 +19,8 @@ Some Case studies are such as:
   - [ ]  username
   - [ ]  capitalize
 - [ ]  Directives
-  - [ ]  miniRender: for images
+  - [ ]  miniRender: for images, render small previews
+  - [ ]  colorCategory renders different colors depending on cateogry type
 
 ### Packages
 
