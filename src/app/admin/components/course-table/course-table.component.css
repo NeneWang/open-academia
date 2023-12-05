@@ -1,0 +1,19 @@
+.mini-render {
+  max-width: 10em; /* Adjust as needed */
+  max-height: 10em; /* Adjust as needed */
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  width: 15em;
+  align-items: center;
+  margin: 0 !important; /* Adjust as needed */
+  padding: 0 !important; /* Adjust as needed */
+}
+
+.custom-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+}

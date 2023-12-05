@@ -6,13 +6,14 @@ import { AcademiaserviceService } from 'src/app/academia/services/academiaservic
 export const studentGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const authService = inject(AcademiaserviceService);
-
-  return true;
-  // return authService
-  //   .verifyToken()
-  //   .pipe(
-  //     map((isAuthenticated) =>
-  //       isAuthenticated ? true : router.createUrlTree(['/'])
-  //     )
-  //   );
+  // as long as the user is logged in, we can assume that the user is a student
+  return authService.authUser$.pipe(
+    map((user) => {
+      if (!user) {
+        return router.createUrlTree(['/']);
+      } else {
+        return true;
+      }
+    })
+  );
 };

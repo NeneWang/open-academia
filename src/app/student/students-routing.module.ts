@@ -11,8 +11,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 
-import {adminGuard} from '../core/admin.guard';
-
+import { studentGuard } from '../core/student.guard';
 
 @NgModule({
   imports: [
@@ -40,7 +39,7 @@ import {adminGuard} from '../core/admin.guard';
       },
       {
         path: 'profile', component: ProfileScreenComponent,
-        canActivate: [adminGuard]
+        canActivate: [studentGuard]
 
       },
       {
