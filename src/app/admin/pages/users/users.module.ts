@@ -8,7 +8,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { UserTableComponent } from 'src/app/admin/components/user-table/user-table.component';
 import { UsersDialogComponent } from '../../components/users-dialog/users-dialog.component';
 
-
 const routes: Routes = [
   {
     path: '',

@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { MatListModule } from '@angular/material/list';
 // import { AppRoutingModule } from '../app-routing.module';
 
 
@@ -39,6 +40,7 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
     MatSelectModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatListModule
 
   ],
   exports: [

@@ -1,7 +1,26 @@
+<h3>User Information</h3>
+<p>
+  {{ getName() }}
+</p>
+
+<p>
+  {{ user.email }}
+</p>
+<p>{{ getRole() }}</p>
+
 <h3>Courses</h3>
 
-<!-- Courses Subscribed -->
+<div *ngFor="let course of userCourses">
+  <p>Status: {{ course.status }}</p>
+  <p>Progress: {{ course.progress }}%</p>
+  <p>Grade: {{ course.grade }}</p>
+  <p>Start Date: {{ course.start_date }}</p>
+  <p>Expire Date: {{ course.expire_date }}</p>
+  <!-- <button (click)="enrollCourse(course.courseId)">Enroll</button>
+    <button (click)="unenrollCourse(course.courseId)">Unenroll</button> -->
+</div>
 
+<!-- Courses Subscribed -->
 
 <!-- Mat Cards using the courses thing -->
 <!-- <app-view-courses-table>

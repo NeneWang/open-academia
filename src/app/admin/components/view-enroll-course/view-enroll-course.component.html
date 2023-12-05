@@ -1,0 +1,44 @@
+<div class="cards-container">
+    <mat-card
+      *ngFor="let course of dataSource"
+      class="course-card hoverable"
+      (click)="openEnrollDialog(course)"
+    >
+      <img
+        mat-card-image
+        *ngIf="course.image"
+        [src]="course.image"
+        alt="{{ course.name }}"
+      />
+      <mat-card-content style="min-height: 5em;">
+        <h2>{{ course.name }}</h2>
+      </mat-card-content>
+      <mat-card-actions class="card-actions">
+        <button
+          *ngIf="isEnrollable(course.id)"
+          
+          mat-button
+          color="warn"
+          (click)="enrollCourse.emit(course.id); $event.stopPropagation()"
+        >
+          Enroll
+        </button>
+        <a
+          class="curriculum-span"
+          *ngIf="isEnrolled(course.id)"
+          routerLink="/courses/{{ course.id }}"
+          >Curriculum</a
+        >
+        <div class="spacer"></div>
+        <button
+          *ngIf="isEnrolled(course.id)"
+          mat-button
+          color="warn"
+          (click)="unenrollCourse.emit(course.id); $event.stopPropagation()"
+        >
+          Unenroll
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  

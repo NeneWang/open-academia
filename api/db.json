@@ -197,17 +197,6 @@
   ],
   "usercourses": [
     {
-      "id": 1701009978001,
-      "userId": 1,
-      "courseId": 2,
-      "progress": 0,
-      "status": "In Progress",
-      "grade": 0,
-      "start_date": "2023-11-26T14:46:18.001Z",
-      "expire_date": "2023-11-26T14:46:18.001Z",
-      "end_date": "2023-11-26T14:46:18.001Z"
-    },
-    {
       "id": 1701705846934,
       "userId": 1,
       "courseId": 1,
@@ -241,15 +230,15 @@
       "end_date": "2023-12-04T17:42:33.045Z"
     },
     {
-      "id": 1701723643145,
+      "id": 1701743346037,
       "userId": 1,
-      "courseId": 5,
+      "courseId": 4,
       "progress": 0,
       "status": "In Progress",
       "grade": 0,
-      "start_date": "2023-12-04T21:00:43.145Z",
-      "expire_date": "2023-12-04T21:00:43.145Z",
-      "end_date": "2023-12-04T21:00:43.145Z"
+      "start_date": "2023-12-05T02:29:06.037Z",
+      "expire_date": "2023-12-05T02:29:06.037Z",
+      "end_date": "2023-12-05T02:29:06.037Z"
     }
   ],
   "sections": [

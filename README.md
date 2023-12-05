@@ -383,6 +383,36 @@ Lets check where am I missing it?
 ```
 
 
+At this point I am strugling with the courses view table.
+ Therefore I will continue to just be working with tthe lsit of items and the user information
+
+
+```js
+
+  userCourses: UserCourse[] = [];
+
+  constructor(
+    private academiaserviceService: AcademiaserviceService,
+    @Inject(MAT_DIALOG_DATA) public user: User,
+  ) {
+    academiaserviceService.getEnrolledUserCourses$(user.id).subscribe(
+      (userCourse: any) => {
+        this.userCourses = userCourse;
+        console.log('userCourse', userCourse)
+      }
+    )
+  }
+```
+
+![](./img/2023-12-04-20-21-09.png)
+
+
+
+
+
+
+
+
 ## Overall Conclusions
 
 These are things that I have learnt for them to be good practices

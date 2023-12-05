@@ -85,11 +85,10 @@ export class AcademiaserviceService {
   // ======== Course Management ======== 
 
   getCourses$(): Observable<Course[]> {
-    // return of(this.courses);
     return this.httpClient.get<Course[]>(`${environment.baseUrl}/courses`);
 
   }
-
+  
   createCourse$(payload: Course): Observable<Course[]> {
     // this.courses.push(payload);
     return this.httpClient.post<Course[]>(`${environment.baseUrl}/courses`, payload).

@@ -1,0 +1,16 @@
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.course {
+  flex: 0 0 20%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.mini-render {
+  max-width: 10em; /* Adjust as needed */
+  max-height: 10em; /* Adjust as needed */
+}
