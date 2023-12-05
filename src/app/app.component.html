@@ -26,24 +26,24 @@
           <a>Users Admin Table</a>
         </mat-list-item>
       </div>
-      
+
       <mat-list-item
-      routerLink="/courses"
-      routerLinkActive
-      #coursesLink="routerLinkActive"
-      [activated]="coursesLink.isActive"
+        routerLink="/courses"
+        routerLinkActive
+        #coursesLink="routerLinkActive"
+        [activated]="coursesLink.isActive"
       >
-      <a>Courses</a>
-    </mat-list-item>
-    <mat-list-item
-      routerLink="/students"
-      routerLinkActive
-      #studentsLink="routerLinkActive"
-      [activated]="studentsLink.isActive"
-    >
-      <a>Rankings</a>
-    </mat-list-item>
-  </mat-nav-list>
+        <a>Courses</a>
+      </mat-list-item>
+      <mat-list-item
+        routerLink="/students"
+        routerLinkActive
+        #studentsLink="routerLinkActive"
+        [activated]="studentsLink.isActive"
+      >
+        <a>Rankings</a>
+      </mat-list-item>
+    </mat-nav-list>
   </mat-drawer>
 
   <!-- CONTENIDO -->
@@ -53,18 +53,16 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      
       <button
         routerLink="/"
         routerLinkActive
         mat-button
-        class=navbrand
+        class="navbrand"
         #homeLink="routerLinkActive"
       >
         Open Academia
       </button>
       <div class="spacer"></div>
-
 
       <div *ngIf="!(email$ | async)">
         <button mat-button routerLink="/login">Login</button>
@@ -72,8 +70,25 @@
         <button mat-button (click)="loginAsAdmin()">Login as Admin</button>
         <button mat-button (click)="loginAsStudent()">Login as student</button>
       </div>
+      <div *ngIf="email$ | async">
+        <!-- Admin -->
 
+        <!-- <span>
+        </span> -->
+        <!-- Profile -->
+        <button
+          routerLink="/profile"
+          routerLinkActive
+          mat-button
+          #profileLink="routerLinkActive"
+        >
+          <a>
+            {{ name$ | async }}</a>
+        </button>
+        <button mat-button (click)="logout()">Logout</button>
+      </div>
       <div *ngIf="isAdmin$ | async">
+        
         <button
           routerLink="/admin/courses"
           routerLinkActive
@@ -84,20 +99,7 @@
           <a>Admin</a>
         </button>
       </div>
-      <div *ngIf="email$ | async">
-        <!-- Admin -->
-
-        <!-- Profile -->
-        <button
-          routerLink="/profile"
-          routerLinkActive
-          mat-button
-          #profileLink="routerLinkActive"
-        >
-          <a>Profile</a>
-        </button>
-        <button mat-button (click)="logout()">Logout</button>
-      </div>
+   
     </mat-toolbar>
     <main>
       <div class="container">

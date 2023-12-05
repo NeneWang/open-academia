@@ -44,7 +44,8 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
     CommonModule,
     SharedModule,
     StudentsRoutingModule,
-    MatListModule
+    MatListModule,
+    // ViewCoursesTableComponent,
     
   ]
 })

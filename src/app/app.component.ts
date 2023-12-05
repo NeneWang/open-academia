@@ -30,6 +30,10 @@ export class AppComponent {
   get email$(): Observable<string | undefined> {
     return this.authUser$.pipe(map((user) => user?.email));
   }
+  get name$(): Observable<string | undefined> {
+  
+    return this.authUser$.pipe(map((user) => ` ${user?.first} ${user?.last}`));
+  }
 
   get isLogin$(): Observable<boolean> {
     return this.authUser$.pipe(map((user) => !!user));
