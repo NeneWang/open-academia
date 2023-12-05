@@ -1,13 +1,13 @@
-import { Directive, ElementRef, Renderer2, OnInit } from '@angular/core';
+import { Directive, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 
 @Directive({
   selector: '[colorCategory]'
 })
-export class ColorCategoryDirective implements OnInit {
+export class ColorCategoryDirective implements AfterViewInit {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  ngOnInit() {
-    const content = this.el.nativeElement.textContent;
+  ngAfterViewInit() {
+    const content = this.el.nativeElement.textContent.trim();
     let color: string;
 
     switch (content) {
@@ -17,6 +17,7 @@ export class ColorCategoryDirective implements OnInit {
       case 'Mathematics':
         color = 'red';
         break;
+      // Add more cases here
       default:
         color = 'black';
     }

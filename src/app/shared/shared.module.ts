@@ -61,6 +61,7 @@ import { ColorCategoryDirective } from './directives/color-category.directive';
     CapitalizePipe,
     UsernamePipe,
     SmallImageDirective,
+    ColorCategoryDirective,
   ],
 })
 export class SharedModule { }

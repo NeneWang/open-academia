@@ -74,7 +74,7 @@ export class ViewCoursesTableComponent {
 
 
             // If there is no user id, redirect to LoginPayload
-            if (!this.isLogged) {
+            if (!this.isLogged && result) {
               // Redirect with RouterTestingModule
               this.academiaserviceService.redirectToLogin();
             }
