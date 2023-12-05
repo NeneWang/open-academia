@@ -8,7 +8,6 @@
 
 .large-table {
   width: 100%;
-  
 }
 
 .spaced-cell {
@@ -21,5 +20,31 @@
 }
 
 .center-text {
-    text-align: center;
-  }
+  text-align: center;
+}
+
+.details-card {
+  background-color: white;
+  /* Clean border */
+  border: none;
+  border-radius: 10px;
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding-bottom: 1em;
+}
+
+.mini-render {
+  max-width: 10em; /* Adjust as needed */
+  max-height: 10em; /* Adjust as needed */
+}
+
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.course {
+  flex: 1 0 20%; /* This makes the course divs take up 1/5 of the container's width */
+}
