@@ -22,7 +22,7 @@
           #coursesAdminTableLink="routerLinkActive"
           [activated]="coursesAdminTableLink.isActive"
         >
-          <a>Courses Admin Table</a>
+          <a>Courses Admin</a>
         </mat-list-item>
 
         <mat-list-item
@@ -31,7 +31,7 @@
           #usersAdminTableLink="routerLinkActive"
           [activated]="usersAdminTableLink.isActive"
         >
-          <a>Users Admin Table</a>
+          <a>Users Admin</a>
         </mat-list-item>
       </div>
       <div *ngIf="isLogin$ | async">
@@ -41,7 +41,7 @@
           #studentsLink="routerLinkActive"
           [activated]="studentsLink.isActive"
         >
-          <a>Rankings</a>
+          <a>Users Rankings</a>
         </mat-list-item>
       </div>
     </mat-nav-list>
