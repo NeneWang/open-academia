@@ -12,10 +12,12 @@ const routes: Routes = [
   {
     path: '',
     component: IndexComponent,
+    title: 'Users'
   },
   {
     path: 'table',
     component: TableComponent,
+    title: 'Users'
   }
 ]
 

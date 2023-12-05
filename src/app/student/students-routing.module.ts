@@ -18,42 +18,56 @@ import { studentGuard } from '../core/student.guard';
     RouterModule.forChild([
       {
         path: '',
-        component: HomePageComponent
+        title: "Home",
+        component: HomePageComponent,
       },
       {
         path: 'courses',
+        title: "Courses",
         component: CoursesComponent
       },
       {
         path: 'courses/:id',
+        title: "Courses",
         component: CoursesDetailComponent
       },
 
-      { path: 'student/:id', component: StudentDetailComponent },
+      {
+        path: 'student/:id',
+        component: StudentDetailComponent,
+        title: "Student Detail",
+      },
       {
         path: 'students',
-        component: RankingsComponent
+        component: RankingsComponent,
+        title: "Student Rankings",
       },
       {
         path: 'rankings', component: RankingsComponent,
         canActivate: [studentGuard],
+        title: "Student Rankings",
       },
       {
         path: 'profile', component: ProfileScreenComponent,
-        canActivate: [studentGuard]
+        canActivate: [studentGuard],
+        title: "Profile",
 
       },
       {
-        path: 'login', component: LoginScreenComponent
+        path: 'login', component: LoginScreenComponent,
+        title: "Login",
       },
       {
-        path: 'signup', component: SignupScreenComponent
+        path: 'signup', component: SignupScreenComponent,
+        title: "Sign Up",
       },
       {
-        path: 'privacy', component: PrivacyComponent
+        path: 'privacy', component: PrivacyComponent,
+        title: "Privacy",
       },
       {
-        path: 'terms-of-use', component: TermsOfUseComponent
+        path: 'terms-of-use', component: TermsOfUseComponent,
+        title: "Terms of Use",
       },
     ])
   ],

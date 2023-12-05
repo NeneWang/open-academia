@@ -16,11 +16,13 @@ const routes: Routes = [
   {
     path: 'table',
     component: TableComponent,
+    title: 'Courses'
   },
   {
     path: '',
     // component: TableComponent,
     component: IndexComponent,
+    title: 'Courses'
   },
 ]
 

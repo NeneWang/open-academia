@@ -10,7 +10,7 @@
         <p><strong>Role:</strong> {{ selectedUser.role }}</p>
       </mat-dialog-content>
 
-      <div>
+      <div *ngIf="isThereEnrolledCourses()">
         <h3>Enrolled Courses</h3>
         <div class="course-container">
           <div class="course" *ngFor="let course of userCourses">

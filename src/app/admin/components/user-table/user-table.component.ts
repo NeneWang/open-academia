@@ -38,8 +38,10 @@ export class UserTableComponent {
         console.log('selected userCourse', userCourse)
       }
     )
+  }
 
-    
+  isThereEnrolledCourses(): boolean {
+    return this.userCourses.length > 0;
   }
 
   unenrollCourse(courseId: number): void {
