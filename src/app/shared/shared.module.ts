@@ -18,6 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { UsernamePipe } from './pipes/username.pipe';
 import { SmallImageDirective } from './directives/small-image.directive';
 import { ColorCategoryDirective } from './directives/color-category.directive';
+import { CourseTitleDirective } from './directives/course-title.directive';
 
 
 
@@ -28,6 +29,7 @@ import { ColorCategoryDirective } from './directives/color-category.directive';
      UsernamePipe,
      SmallImageDirective,
      ColorCategoryDirective,
+     CourseTitleDirective,
   ],
   imports: [
     CommonModule, MatProgressSpinnerModule,
@@ -62,6 +64,7 @@ import { ColorCategoryDirective } from './directives/color-category.directive';
     UsernamePipe,
     SmallImageDirective,
     ColorCategoryDirective,
+    CourseTitleDirective,
   ],
 })
 export class SharedModule { }
