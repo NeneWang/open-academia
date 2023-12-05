@@ -11,7 +11,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
@@ -24,8 +23,6 @@ import { RankscorePipe } from './pipes/rankscore.pipe';
 
 @NgModule({
   declarations: [
-
-    NavbarComponent,
      CapitalizePipe,
      RankscorePipe,
   ],
@@ -56,7 +53,6 @@ import { RankscorePipe } from './pipes/rankscore.pipe';
     MatTableModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    NavbarComponent,
     MatToolbarModule,
     MatSidenavModule,
     CapitalizePipe,

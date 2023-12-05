@@ -38,9 +38,7 @@ import { StoreModule } from '@ngrx/store';
     UsersDialogComponent,
     UserTableComponent,
     ViewUserDialogComponent,
-    MatListModule,
     ViewEnrollCourseComponent
-    // ViewCourseDialogComponent,
   ]
 })
 export class AdminModule { }
