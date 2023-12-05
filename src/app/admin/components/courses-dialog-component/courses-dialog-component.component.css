@@ -6,10 +6,6 @@ mat-dialog-actions {
   justify-content: space-between;
 }
 
-.mini-render {
-    max-width: 10em; /* Adjust as needed */
-    max-height: 10em; /* Adjust as needed */
-  }
 
 .spacer {
     flex-grow: 1;

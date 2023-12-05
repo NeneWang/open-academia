@@ -16,6 +16,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { MatListModule } from '@angular/material/list';
 import { UsernamePipe } from './pipes/username.pipe';
+import { SmallImageDirective } from './directives/small-image.directive';
 
 
 
@@ -24,6 +25,7 @@ import { UsernamePipe } from './pipes/username.pipe';
   declarations: [
      CapitalizePipe,
      UsernamePipe,
+     SmallImageDirective,
   ],
   imports: [
     CommonModule, MatProgressSpinnerModule,
@@ -56,6 +58,7 @@ import { UsernamePipe } from './pipes/username.pipe';
     MatSidenavModule,
     CapitalizePipe,
     UsernamePipe,
+    SmallImageDirective,
   ],
 })
 export class SharedModule { }

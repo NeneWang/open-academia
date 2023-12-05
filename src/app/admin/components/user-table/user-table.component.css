@@ -10,11 +10,6 @@
   padding: 10px;
 }
 
-.mini-render {
-  max-width: 10em; /* Adjust as needed */
-  max-height: 10em; /* Adjust as needed */
-}
-
 .details-card {
   background-color: white;
   /* Clean border */

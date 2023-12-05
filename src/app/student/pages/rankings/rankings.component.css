@@ -38,11 +38,6 @@
   padding-bottom: 1em;
 }
 
-.mini-render {
-  max-width: 10em; /* Adjust as needed */
-  max-height: 10em; /* Adjust as needed */
-}
-
 .course-container {
   display: flex;
   flex-wrap: wrap;

@@ -13,6 +13,14 @@ Some Case studies are such as:
 - [ ] ngrx Store Management
 
 
+## Features
+
+- [ ]  Pipes
+  - [ ]  username
+  - [ ]  capitalize
+- [ ]  Directives
+  - [ ]  miniRender: for images
+
 ### Packages
 
 ```

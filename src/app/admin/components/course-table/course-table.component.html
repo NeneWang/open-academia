@@ -1,7 +1,7 @@
 <div *ngIf="selectedCourse" class="details-card">
     <h2 mat-dialog-title>{{ selectedCourse.name }}</h2>
 
-    <img class="mini-render" [src]="selectedCourse.image" alt="Course Image" />
+    <img miniRender [src]="selectedCourse.image" alt="Course Image" />
     <mat-dialog-content>
       <p><strong>Description</strong> {{ selectedCourse.description }}</p>
     </mat-dialog-content>
