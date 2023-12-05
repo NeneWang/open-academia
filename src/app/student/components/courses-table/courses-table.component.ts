@@ -47,6 +47,7 @@ export class ViewCoursesTableComponent {
       this.matDialog
         .open(CourseEnrollmentDialogDetailonlyComponent, {
           data: course,
+          width: "90%",
           
         })
         .afterClosed()

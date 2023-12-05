@@ -339,6 +339,9 @@ NG0303: Can't bind to 'ngForOf' since it isn't a known property of 'li' (used in
 
 It seems that I am supposed to add the declaration somewhere to import the common module:
 
+
+
+
 Lets check
 
 - [x] app.module.ts
@@ -370,7 +373,14 @@ Lets check where am I missing it?
 ![](./img/2023-11-26-22-52-54.png)
 
 
+```html
+<h3>Courses</h3>
 
+<!-- Courses Subscribed -->
+
+
+<!-- Mat Cards using the courses thing -->
+```
 
 
 ## Overall Conclusions

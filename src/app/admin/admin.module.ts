@@ -11,6 +11,8 @@ import { UsersDialogComponent } from './components/users-dialog/users-dialog.com
 import { CourseTableComponent } from 'src/app/admin/components/course-table/course-table.component';
 
 import { UserTableComponent } from './components/user-table/user-table.component';
+import { ViewUserDialogComponent } from './components/view-user-dialog/view-user-dialog.component';
+// import { ViewCourseDialogComponent } from './components/view-course-dialog/view-course-dialog.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { UserTableComponent } from './components/user-table/user-table.component
     CourseTableComponent,
     UsersDialogComponent,
     UserTableComponent,
+    ViewUserDialogComponent,
+    // ViewCourseDialogComponent,
   ]
 })
 export class AdminModule { }
