@@ -158,5 +158,5 @@ export interface UserEmbeddedUserCourses extends User {
 }
 
 export interface UserAverage extends User {
-    average: number;
+    score: number;
 }

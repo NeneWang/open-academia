@@ -19,5 +19,9 @@ export class RankingsComponent {
     )
   }
 
+  onRowClick(ranking: UserAverage) {
+    console.log(ranking); // Replace with your logic
+  }
+
 
 }

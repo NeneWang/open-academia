@@ -193,7 +193,7 @@ export class AcademiaserviceService {
               role: rest.role,
               token: rest.token,
               avatar: rest.avatar,
-              average: total,
+              score: total,
             };
             return userAverage;
 

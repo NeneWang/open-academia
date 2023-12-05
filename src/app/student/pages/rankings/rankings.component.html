@@ -1,10 +1,18 @@
-<mat-card>
-  <mat-card-title>Rankings</mat-card-title>
-  <mat-card-content>
-    <mat-list>
-      <mat-list-item class="ranking-item" *ngFor="let ranking of rankings">
-        <div>{{ ranking.first }} {{ ranking.last }} | {{ranking?.average??0}}</div>
-      </mat-list-item>
-    </mat-list>
-  </mat-card-content>
-</mat-card>
+<table class="large-table">
+  <thead>
+    <tr>
+      <th class="spaced-cell">Name</th>
+      <th class="spaced-cell">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let ranking of rankings"
+      class="clickable-row spaced-cell"
+      (click)="onRowClick(ranking)"
+    >
+      <td>{{ ranking.first }} {{ ranking.last }}</td>
+      <td class="center-text">{{ ranking?.score ?? 0 }}</td>
+    </tr>
+  </tbody>
+</table>

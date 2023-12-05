@@ -1,3 +1,25 @@
-.ranking-item{
-    min-height: 5em;
+.clickable-row:hover {
+  cursor: pointer;
+  background-color: #f5f5f5; /* Adjust as needed */
 }
+.ranking-item {
+  min-height: 5em;
+}
+
+.large-table {
+  width: 100%;
+  
+}
+
+.spaced-cell {
+  padding: 15px;
+}
+
+.clickable-row:hover {
+  cursor: pointer;
+  background-color: #f5f5f5; /* Adjust as needed */
+}
+
+.center-text {
+    text-align: center;
+  }
