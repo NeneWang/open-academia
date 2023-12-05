@@ -491,7 +491,73 @@ So here
         });
     }
 
+
 ```
+
+
+
+```
+http://localhost:3000/users?_expand=addresses&_embed=schedules
+```
+
+```
+http://localhost:3000/users?_embed=usercourses
+```
+
+```js
+[
+  {
+    "id": 1,
+    "first": "Bucky",
+    "last": "Roberts",
+    "email": "buckyroberts@mail.com",
+    "password": "password1",
+    "role": "ADMIN",
+    "token": "",
+    "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=826&t=st=1700594112~exp=1700594712~hmac=5d7a5afc2a327d64e046bf43f816d0d1f98928253eb08eae7636a1917dbe3659",
+    "usercourses": [
+      {
+        "id": 1701743346037,
+        "userId": 1,
+        "courseId": 4,
+        "progress": 100,
+        "status": "In Progress",
+        "grade": 1,
+        "start_date": "2023-12-05T02:29:06.037Z",
+        "expire_date": "2023-12-05T02:29:06.037Z",
+        "end_date": "2023-12-05T02:29:06.037Z"
+      },
+      {
+        "id": 1701747224146,
+        "userId": 1,
+        "courseId": 1,
+        "progress": 0,
+        "status": "In Progress",
+        "grade": 0,
+        "start_date": "2023-12-05T03:33:44.146Z",
+        "expire_date": "2023-12-05T03:33:44.146Z",
+        "end_date": "2023-12-05T03:33:44.146Z"
+      },
+      {
+        "id": 1701747226436,
+        "userId": 1,
+        "courseId": 2,
+        "progress": 0,
+        "status": "In Progress",
+        "grade": 0,
+        "start_date": "2023-12-05T03:33:46.436Z",
+        "expire_date": "2023-12-05T03:33:46.436Z",
+        "end_date": "2023-12-05T03:33:46.436Z"
+      }
+    ]
+  },
+  ]
+  ```
+
+  The you append the grades to calculate the scores.
+  
+
+  - Use the grades to be summed up.
 
 
 

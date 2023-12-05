@@ -147,3 +147,16 @@ export interface Path {
 }
 
 
+export interface UserCourseExpand extends UserCourse {
+    course?: Course;
+    user?: User;
+}
+
+
+export interface UserEmbeddedUserCourses extends User {
+    usercourses: UserCourse[];
+}
+
+export interface UserAverage extends User {
+    average: number;
+}

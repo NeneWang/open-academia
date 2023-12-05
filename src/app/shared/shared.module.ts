@@ -16,6 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { MatListModule } from '@angular/material/list';
+import { RankscorePipe } from './pipes/rankscore.pipe';
 // import { AppRoutingModule } from '../app-routing.module';
 
 
@@ -25,7 +26,8 @@ import { MatListModule } from '@angular/material/list';
   declarations: [
 
     NavbarComponent,
-     CapitalizePipe
+     CapitalizePipe,
+     RankscorePipe,
   ],
   imports: [
     CommonModule, MatProgressSpinnerModule,

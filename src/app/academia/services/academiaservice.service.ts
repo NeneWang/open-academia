@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { User, LoginPayload, Course, UserCourse } from 'src/app/academia/models';
+import { User, LoginPayload, Course, UserCourse, UserCourseExpand, UserEmbeddedUserCourses, UserAverage  } from 'src/app/academia/models';
 import { selectAuthUser } from 'src/app/academia/store/coursemanagement.selector';
 import { AuthActions } from 'src/app/academia/store/coursemanagement.actions';
 import { environment } from 'src/environments/environment.local';
@@ -76,7 +76,7 @@ export class AcademiaserviceService {
       });
   }
 
-  logout(): void{
+  logout(): void {
     this.store.dispatch(AuthActions.resetState());
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
@@ -84,7 +84,7 @@ export class AcademiaserviceService {
 
   redirectToLogin(): void {
     this.router.navigate(['/login']);
-    
+
   }
 
   // ======== Course Management ======== 
@@ -93,7 +93,7 @@ export class AcademiaserviceService {
     return this.httpClient.get<Course[]>(`${environment.baseUrl}/courses`);
 
   }
-  
+
   createCourse$(payload: Course): Observable<Course[]> {
     // this.courses.push(payload);
     return this.httpClient.post<Course[]>(`${environment.baseUrl}/courses`, payload).
@@ -134,6 +134,72 @@ export class AcademiaserviceService {
   deleteUser$(id: number): Observable<User[]> {
     return this.httpClient.delete<User[]>(`${environment.baseUrl}/users/${id}`)
       .pipe(concatMap(() => this.getUsers$()));
+  }
+
+  getRanking$(): Observable<UserAverage[]> {
+
+    /**
+     * http://localhost:3000/users?_embed=usercourses
+     * [
+    {
+      "id": 1,
+      "first": "Bucky",
+      "last": "Roberts",
+      "email": "buckyroberts@mail.com",
+      "password": "password1",
+      "role": "ADMIN",
+      "token": "",
+      "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=826&t=st=1700594112~exp=1700594712~hmac=5d7a5afc2a327d64e046bf43f816d0d1f98928253eb08eae7636a1917dbe3659",
+      "usercourses": [
+        {
+          "id": 1701743346037,
+          "userId": 1,
+          "courseId": 4,
+          "progress": 100,
+          "status": "In Progress",
+          "grade": 1,
+          "start_date": "2023-12-05T02:29:06.037Z",
+          "expire_date": "2023-12-05T02:29:06.037Z",
+          "end_date": "2023-12-05T02:29:06.037Z"
+        },
+        {
+          "id": 1701747226436,
+          "userId": 1,
+          "courseId": 2,
+          "progress": 0,
+          "status": "In Progress",
+          "grade": 0,
+          "start_date": "2023-12-05T03:33:46.436Z",
+          "expire_date": "2023-12-05T03:33:46.436Z",
+          "end_date": "2023-12-05T03:33:46.436Z"
+        }
+      ]
+    },
+    ]
+     */
+    const url = `${environment.baseUrl}/users?_embed=usercourses`;
+    return this.httpClient.get<UserEmbeddedUserCourses[]>(url).pipe(
+      map((users) => {
+        return users.map((user) => {
+          const { usercourses, ...rest } = user;
+          const total = usercourses.reduce((acc, curr) => acc + curr.grade, 0);
+          // const average = total / usercourses.length;
+            const userAverage: UserAverage = {
+              id: rest.id,
+              first: rest.first,
+              last: rest.last,
+              email: rest.email,
+              password: rest.password,
+              role: rest.role,
+              token: rest.token,
+              avatar: rest.avatar,
+              average: total,
+            };
+            return userAverage;
+
+        });
+      })
+    );
   }
 
 
@@ -184,28 +250,14 @@ export class AcademiaserviceService {
   getEnrolledCourses$(id_user: number): Observable<Course[]> {
     // console.log(`ENROLL COURSE: ${environment.baseUrl}/usercourses?userId=${id_user}?expand=course`);
     // http://localhost:3000/usercourses?userId=1&_expand=course
-    return this.httpClient.get<UserCourseExpand[]>(`${environment.baseUrl}/usercourses?userId=${id_user}&_expand=course`).pipe(map((e) => e.map((e) => e.course)));
+    return this.httpClient.get<UserCourseExpand[]>(`${environment.baseUrl}/usercourses?userId=${id_user}&_expand=course`).pipe(map((e) => e.map((e) => e.course!)));
   }
 
   getEnrolledUsers$(id_course: number): Observable<User[]> {
     // console.log(`ENROLL COURSE: ${environment.baseUrl}/usercourses?userId=${id_user}?expand=course`);
     // http://localhost:3000/usercourses?userId=1&_expand=course
-    return this.httpClient.get<UserCourseExpand[]>(`${environment.baseUrl}/usercourses?courseId=${id_course}&_expand=user`).pipe(map((e) => e.map((e) => e.user)));
+    return this.httpClient.get<UserCourseExpand[]>(`${environment.baseUrl}/usercourses?courseId=${id_course}&_expand=user`).pipe(map((e) => e.map((e) => e.user!)));
   }
 
 
-}
-
-interface UserCourseExpand {
-  user: any;
-  id: number;
-  userId: number;
-  courseId: number;
-  progress: number;
-  status: string;
-  grade: number;
-  start_date: string;
-  expire_date: string;
-  end_date: string;
-  course: Course;
 }

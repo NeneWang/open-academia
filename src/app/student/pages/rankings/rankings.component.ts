@@ -1,4 +1,7 @@
+import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 import { Component } from '@angular/core';
+import { UserAverage } from 'src/app/academia/models';
+
 
 @Component({
   selector: 'app-rankings',
@@ -6,10 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./rankings.component.css']
 })
 export class RankingsComponent {
-  rankings = [
-    { name: 'Player 1', score: 100 },
-    { name: 'Player 2', score: 90 },
-    { name: 'Player 3', score: 80 },
-    // more rankings...
-  ];
+  rankings: UserAverage[] | undefined;
+
+  constructor(private academiaserviceService: AcademiaserviceService) { 
+    this.academiaserviceService.getRanking$().subscribe(
+      (ranking: any) => {
+        this.rankings = ranking;
+      }
+    )
+  }
+
+
 }

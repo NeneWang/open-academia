@@ -201,9 +201,9 @@
       "id": 1701711753045,
       "userId": 2,
       "courseId": 8,
-      "progress": 0,
+      "progress": 100,
       "status": "In Progress",
-      "grade": 0,
+      "grade": 1,
       "start_date": "2023-12-04T17:42:33.045Z",
       "expire_date": "2023-12-04T17:42:33.045Z",
       "end_date": "2023-12-04T17:42:33.045Z"
@@ -212,9 +212,9 @@
       "id": 1701743346037,
       "userId": 1,
       "courseId": 4,
-      "progress": 0,
+      "progress": 100,
       "status": "In Progress",
-      "grade": 0,
+      "grade": 1,
       "start_date": "2023-12-05T02:29:06.037Z",
       "expire_date": "2023-12-05T02:29:06.037Z",
       "end_date": "2023-12-05T02:29:06.037Z"
