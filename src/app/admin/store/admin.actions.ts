@@ -2,7 +2,7 @@ import { createAction, createActionGroup, emptyProps, props } from '@ngrx/store'
 import { UserCourse } from 'src/app/academia/models';
 
 export const adminActions = createActionGroup({
-    source: 'Enrollment',
+    source: 'admin',
     events: {
         'Load Enrollment By Id': props<{ id: number }>(),
         'Load Enrollments': emptyProps(),
