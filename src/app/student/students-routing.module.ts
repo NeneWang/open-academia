@@ -35,7 +35,8 @@ import { studentGuard } from '../core/student.guard';
         component: RankingsComponent
       },
       {
-        path: 'rankings', component: RankingsComponent
+        path: 'rankings', component: RankingsComponent,
+        canActivate: [studentGuard],
       },
       {
         path: 'profile', component: ProfileScreenComponent,

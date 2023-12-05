@@ -408,8 +408,90 @@ At this point I am strugling with the courses view table.
 
 
 
+## Fixing the enroll viewable from outside
+
+- Intention is to have the enroll button disabled at least, or that sends you to login, if you are not logged in.
 
 
+```html
+<div mat-dialog-content>
+  <h1>{{ course.name }}</h1>
+  <p>{{ course.category }} | Intensity: {{ course.intensity }} | Credits: {{course.credits}}</p>
+
+  <p>
+    {{ course.description }}
+  </p>
+
+  <div *ngIf="course.prequisites">
+    <h3>Prerequisites</h3>
+    <ul>
+      <li *ngFor="let prerequisite of course.prequisites">
+        {{ prerequisite }}
+      </li>
+    </ul>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button  mat-button color="primary" (click)="enrollCourse()">Enroll</button>
+  </div>
+</div>
+
+```
+
+
+```ts
+
+
+  enrollCourse(): void {
+    this.MatDialogRef.close(this.course.id);
+  }
+
+```
+
+So here
+
+```ts title="courses-table.components"
+
+
+  openEnrollDialog(course: Course): void {
+
+
+    if(this.isEnrolled(course.id)){
+      this.matDialog
+        .open(CourseEnrollmentDialogDetailonlyComponent, {
+          data: course,
+          width: "90%",
+          
+        })
+        .afterClosed()
+        .subscribe({
+          next: (result) => {
+            if (result) {
+              console.log('exit result', result)
+              this.enrollCourse.emit(result);
+            }
+          },
+        });
+
+    }else{
+      this.matDialog
+        .open(CourseEnrollmentDialogComponent, {
+          data: course,
+          
+        })
+        .afterClosed()
+        .subscribe({
+          next: (result) => {
+            if (result) {
+              console.log('exit result', result)
+              this.enrollCourse.emit(result);
+            }
+          },
+        });
+    }
+
+```
 
 
 

@@ -17,3 +17,22 @@
   border-radius: 10px;
   padding: 20px;
 }
+
+
+.details-card {
+  background-color: white;
+  /* Clean border */
+  border: none;
+  border-radius: 10px;
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding-bottom: 1em;
+}
+
+.table-section {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+

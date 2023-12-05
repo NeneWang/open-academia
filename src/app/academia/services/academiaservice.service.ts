@@ -82,6 +82,11 @@ export class AcademiaserviceService {
     this.router.navigate(['/login']);
   }
 
+  redirectToLogin(): void {
+    this.router.navigate(['/login']);
+    
+  }
+
   // ======== Course Management ======== 
 
   getCourses$(): Observable<Course[]> {

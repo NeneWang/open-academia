@@ -1,5 +1,4 @@
-<div *ngIf="selectedCourse">
-  <mat-card class="custom-card">
+<div *ngIf="selectedCourse" class="details-card">
     <h2 mat-dialog-title>{{ selectedCourse.name }}</h2>
 
     <img class="mini-render" [src]="selectedCourse.image" alt="Course Image" />
@@ -17,10 +16,9 @@
         </div>
       </div>
     </div>
-  </mat-card>
 </div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="table-section mat-elevation-z8">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Nombre</th>
 

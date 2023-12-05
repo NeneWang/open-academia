@@ -21,16 +21,6 @@
       "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436200.jpg?t=st=1700594112~exp=1700594712~hmac=2934ab53e7f19067f89bf02628536856fe43e4af6b1e8214c86a8b7e9646eb06"
     },
     {
-      "id": 3,
-      "first": "Julio",
-      "last": "Caesar",
-      "email": "juliocaesar@mail.com",
-      "password": "password1",
-      "role": "STUDENT",
-      "token": "",
-      "avatar": "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436200.jpg?t=st=1700594112~exp=1700594712~hmac=2934ab53e7f19067f89bf02628536856fe43e4af6b1e8214c86a8b7e9646eb06"
-    },
-    {
       "id": 4,
       "first": "Viian",
       "last": "Lin",
