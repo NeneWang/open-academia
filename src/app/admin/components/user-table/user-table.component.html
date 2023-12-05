@@ -4,7 +4,7 @@
     class="details-card"
     style="background-color: white"
   >
-      <h2 mat-dialog-title>{{ selectedUser.first }} {{ selectedUser.last }}</h2>
+      <h2 mat-dialog-title>{{ selectedUser | username }}</h2>
       <mat-dialog-content>
         <p><strong>Email:</strong> {{ selectedUser.email }}</p>
         <p><strong>Role:</strong> {{ selectedUser.role }}</p>

@@ -15,8 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { MatListModule } from '@angular/material/list';
-import { RankscorePipe } from './pipes/rankscore.pipe';
-// import { AppRoutingModule } from '../app-routing.module';
+import { UsernamePipe } from './pipes/username.pipe';
 
 
 
@@ -24,7 +23,7 @@ import { RankscorePipe } from './pipes/rankscore.pipe';
 @NgModule({
   declarations: [
      CapitalizePipe,
-     RankscorePipe,
+     UsernamePipe,
   ],
   imports: [
     CommonModule, MatProgressSpinnerModule,
@@ -56,6 +55,7 @@ import { RankscorePipe } from './pipes/rankscore.pipe';
     MatToolbarModule,
     MatSidenavModule,
     CapitalizePipe,
+    UsernamePipe,
   ],
 })
 export class SharedModule { }
