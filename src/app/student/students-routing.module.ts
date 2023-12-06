@@ -71,6 +71,7 @@ import { studentGuard } from '../core/student.guard';
       },
       {
         path: 'enrollments',
+        canActivate: [studentGuard],
         loadChildren: () => import('./pages/enrollments/enrollments.module').then(m => m.EnrollmentsModule),
       }
     ])
