@@ -568,7 +568,17 @@ http://localhost:3000/users?_embed=usercourses
 
   - Use the grades to be summed up.
 
+### Understanding Reducers
 
+![](./img/2023-12-05-21-32-55.png)
+
+Attack plan: 
+1. Follow previous example with enrollments
+2. Propagate inot all other cards type of problems
+
+```js
+
+```
 
 ## Overall Conclusions
 
