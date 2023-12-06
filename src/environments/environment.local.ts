@@ -1,4 +1,4 @@
 export const environment = {
-  // baseUrl: 'https://645a796665bd868e931c34ee.mockapi.io',
-  baseUrl: 'http://localhost:3000',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://json-server-render-7y3s.onrender.com/',
 };
