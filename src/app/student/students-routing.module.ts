@@ -69,6 +69,10 @@ import { studentGuard } from '../core/student.guard';
         path: 'terms-of-use', component: TermsOfUseComponent,
         title: "Terms of Use",
       },
+      {
+        path: 'enrollments',
+        loadChildren: () => import('./pages/enrollments/enrollments.module').then(m => m.EnrollmentsModule),
+      }
     ])
   ],
   exports: [RouterModule]

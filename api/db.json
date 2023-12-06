@@ -185,6 +185,18 @@
       "intensity": "High"
     }
   ],
+  "enrollments": [
+    {
+      "id": 1,
+      "courseId": 1,
+      "userId": 2
+    },
+    {
+      "courseId": 2,
+      "userId": 2,
+      "id": 2
+    }
+  ],
   "usercourses": [
     {
       "id": 1701711752226,

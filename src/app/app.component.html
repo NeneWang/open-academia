@@ -44,6 +44,14 @@
           <a>Users Rankings</a>
         </mat-list-item>
       </div>
+      <mat-list-item
+        routerLink="/enrollments"
+        routerLinkActive
+        #enrollmentsLink="routerLinkActive"
+        [activated]="enrollmentsLink.isActive"
+      >
+        <a>Enrollments</a>
+      </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
 

@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 // mat-nav-list
 import { MatListModule } from '@angular/material/list';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatListModule } from '@angular/material/list';
     MatListModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]
