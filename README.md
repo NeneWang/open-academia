@@ -7,6 +7,26 @@ Some Case studies are such as:
 - https://www.wgu.edu/
 
 
+### Notes
+
+Backend Server
+
+```
+https://github.com/NeneWang/json_server_render/blob/main/db.json
+
+```
+
+Live Deployment
+
+```
+git checkout -b gh-pages
+ng build --configuration=production --base-href "https://nenewang.github.io/open-academia/"
+sudo npm install -g angular-cli-ghpages
+ngh --dir dist/lista-alumnos
+
+npx angular-cli-ghpages --dir=dist/open-academia
+```
+
 ### Ng Key Features
 
 - [ ] Authentication
