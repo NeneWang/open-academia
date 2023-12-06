@@ -7,6 +7,7 @@ import {
   selectEnrollmentsIsLoading,
 } from '../../store/enrollment.selectors';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
+import { EnrollmentActions } from '../../store/enrollment.actions';
 
 @Component({
   selector: 'app-enrollments-table',
@@ -18,6 +19,7 @@ export class EnrollmentsTableComponent {
 
   enrollments$: Observable<Enrollment[]>;
   isLoading$: Observable<boolean>;
+  isAdmin: boolean = false;
 
   constructor(private store: Store, private academiaserviceService: AcademiaserviceService) {
     this.enrollments$ = this.store.select(selectEnrollments);
@@ -29,9 +31,18 @@ export class EnrollmentsTableComponent {
           // Add actions if logged as admin
           if (user.role === 'ADMIN') {
             this.displayedColumns.push('actions');
+            this.isAdmin = true;
           }
         }
       }
     )
   }
+
+  deleteEnrollment(enrollment: Enrollment) {
+    
+    console.log('delete enrollment', enrollment);
+    this.store.dispatch(EnrollmentActions.unsubscribeEnrollment({ id: enrollment.id }));
+
+  }
+
 }

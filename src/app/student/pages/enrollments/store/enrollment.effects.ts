@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
+import { catchError, map, concatMap, mergeMap } from 'rxjs/operators';
 import { Observable, EMPTY, of, forkJoin } from 'rxjs';
 import { EnrollmentActions } from './enrollment.actions';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.local';
 import { CreateEnrollmentPayload, Enrollment } from '../models';
-import { Course, User } from 'src/app/academia/models';
+import { Course, User, UserCourse } from 'src/app/academia/models';
 
 @Injectable()
 export class EnrollmentEffects {
+
+
+
+  constructor(private actions$: Actions, private httpClient: HttpClient) { }
   loadEnrollments$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(EnrollmentActions.loadEnrollments),
@@ -51,9 +55,7 @@ export class EnrollmentEffects {
       ofType(EnrollmentActions.createEnrollment),
       concatMap((action) => {
         return this.createEnrollment(action.payload).pipe(
-          // Si sale bien
           map((data) => EnrollmentActions.loadEnrollments()),
-          // Si hay error
           catchError((error) =>
             of(EnrollmentActions.createEnrollmentFailure({ error }))
           )
@@ -62,7 +64,27 @@ export class EnrollmentEffects {
     )
   );
 
-  constructor(private actions$: Actions, private httpClient: HttpClient) { }
+  unsubscribeEnrollment$ = createEffect(() =>
+  {  
+    
+    return this.actions$.pipe(
+      ofType(EnrollmentActions.unsubscribeEnrollment), 
+      mergeMap((action: any) => 
+        this.httpClient.delete<UserCourse>(
+          `${environment.baseUrl}/usercourses/${action.id}`
+        ).pipe(
+          map(() => ({ type: '[Enrollment] Unsubscribed' })) 
+        )
+      )
+    )}
+  );
+
+  deleteEnrollment(id: number): void {
+    this.httpClient.delete<Enrollment>(
+      `${environment.baseUrl}/usercourses/${id}`
+    ).pipe().subscribe((e) => {});
+
+  }
 
   createEnrollment(payload: CreateEnrollmentPayload): Observable<Enrollment> {
     // Calculate end date as today + 1 year

@@ -199,17 +199,6 @@
   ],
   "usercourses": [
     {
-      "id": 1701711752226,
-      "userId": 2,
-      "courseId": 9,
-      "progress": 0,
-      "status": "In Progress",
-      "grade": 0,
-      "start_date": "2023-12-04T17:42:32.226Z",
-      "expire_date": "2023-12-04T17:42:32.226Z",
-      "end_date": "2023-12-04T17:42:32.226Z"
-    },
-    {
       "id": 1701711753045,
       "userId": 2,
       "courseId": 8,
