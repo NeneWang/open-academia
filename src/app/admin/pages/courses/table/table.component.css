@@ -1,10 +1,10 @@
 .button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 16px; /* Add some space below the button */
-  }
-  
-  .button-container button {
-    padding: 12px 24px; /* Add some padding to the button */
-    font-size: 16px; /* Increase the font size */
-  }
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px; /* Add some space below the button */
+}
+
+.button-container button {
+  padding: 12px 24px; /* Add some padding to the button */
+  font-size: 16px; /* Increase the font size */
+}

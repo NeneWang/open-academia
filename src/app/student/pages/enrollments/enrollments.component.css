@@ -1,3 +1,10 @@
 .p-3 {
-  padding: 1rem !important;
+  padding-bottom: 1rem !important;
 }
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px; /* Add some space below the button */
+  }
+  

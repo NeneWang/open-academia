@@ -1,13 +1,11 @@
 mat-form-field {
-    width: 100%;
-  }
-  
-  mat-dialog-actions {
-    justify-content: space-between;
-  }
-  
-  
-  
-  .spacer {
-      flex-grow: 1;
-    }
+  width: 100%;
+}
+
+mat-dialog-actions {
+  justify-content: space-between;
+}
+
+.spacer {
+  flex-grow: 1;
+}
