@@ -22,7 +22,7 @@ export const selectCourseOptions = createSelector(
 
 export const selectStudentOptions = createSelector(
   selectEnrollmentState,
-  (state) => state.studentOptions
+  (state) => state.userOptions
 );
 
 export const selectIsLoadingDialogOptions = createSelector(

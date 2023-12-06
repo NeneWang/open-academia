@@ -600,9 +600,14 @@ Attack plan:
 1. Follow previous example with enrollments
 2. Propagate inot all other cards type of problems
 
-```js
 
-```
+I was finally able to comprehend store and reducers after implementing and dabbing a little bits with the enrollments reducers.
+
+I am considering having as admin effects for the managaments in general so that it would make sense to update them.
+
+And then change from api and weird management (from the academic service) to a full fledged odification using the admin only for tables. Since the others are sutdents.
+
+
 
 ## Overall Conclusions
 

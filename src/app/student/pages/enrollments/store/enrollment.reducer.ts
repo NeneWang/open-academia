@@ -9,7 +9,7 @@ export interface State {
   isLoading: boolean;
   isLoadingDialogOptions: boolean;
   courseOptions: Course[];
-  studentOptions: User[];
+  userOptions: User[];
   enrollments: Enrollment[];
   error: unknown;
 }
@@ -19,7 +19,7 @@ export const initialState: State = {
   isLoadingDialogOptions: false,
   enrollments: [],
   courseOptions: [],
-  studentOptions: [],
+  userOptions: [],
   error: null,
 };
 
@@ -51,7 +51,7 @@ export const reducer = createReducer(
   on(EnrollmentActions.loadEnrollmentDialogOptionsSuccess, (state, action) => ({
     ...state,
     courseOptions: action.courses,
-    studentOptions: action.students,
+    userOptions: action.students,
     isLoadingDialogOptions: false,
   })),
 
