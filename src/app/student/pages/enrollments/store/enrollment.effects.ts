@@ -65,19 +65,18 @@ export class EnrollmentEffects {
   );
 
   unsubscribeEnrollment$ = createEffect(() =>
-  {  
-    
-    return this.actions$.pipe(
-      ofType(EnrollmentActions.unsubscribeEnrollment), 
-      mergeMap((action: any) => 
-        this.httpClient.delete<UserCourse>(
-          `${environment.baseUrl}/usercourses/${action.id}`
-        ).pipe(
-          map(() => ({ type: '[Enrollment] Unsubscribed' })) 
-        )
+  this.actions$.pipe(
+    ofType(EnrollmentActions.unsubscribeEnrollment),
+    mergeMap((action: any) =>
+      this.httpClient.delete<UserCourse>(
+        `${environment.baseUrl}/usercourses/${action.id}`
+      ).pipe(
+        map(() => EnrollmentActions.unsubscribeEnrollmentSuccess({ id: action.id })),
+        catchError((error) => of(EnrollmentActions.unsubscribeEnrollmentFailure({ error })))
       )
-    )}
-  );
+    )
+  )
+);
 
   deleteEnrollment(id: number): void {
     this.httpClient.delete<Enrollment>(

@@ -59,7 +59,14 @@ export const reducer = createReducer(
     ...state,
     error: action.error,
     isLoadingDialogOptions: false,
-  }))
+  })),
+  on(EnrollmentActions.unsubscribeEnrollmentSuccess, (state, { id }) => {
+    return {
+      ...state,
+      enrollments: state.enrollments.filter(enrollment => enrollment.id !== id)
+    };
+  }),
+
 );
 
 export const enrollmentFeature = createFeature({

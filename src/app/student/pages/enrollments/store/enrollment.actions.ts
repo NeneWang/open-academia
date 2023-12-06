@@ -15,7 +15,9 @@ export const EnrollmentActions = createActionGroup({
     }>(),
     'Load Enrollment Dialog Options Failure': props<{ error: unknown }>(),
     'Create Enrollment': props<{ payload: CreateEnrollmentPayload }>(),
-    'Unsubscribe Enrollment': props<{ id: number }>(),
     'Create Enrollment Failure': props<{ error: unknown }>(),
+    'Unsubscribe Enrollment': props<{ id: number }>(),
+    'Unsubscribe Enrollment Success': props<{ id: number }>(),
+    'Unsubscribe Enrollment Failure': props<{ error: unknown }>(),
   },
 });
