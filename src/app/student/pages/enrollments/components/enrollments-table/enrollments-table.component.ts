@@ -10,10 +10,10 @@ import {
 @Component({
   selector: 'app-enrollments-table',
   templateUrl: './enrollments-table.component.html',
-  styleUrls: ['./enrollments-table.component.scss'],
+  styleUrls: ['./enrollments-table.component.css'],
 })
 export class EnrollmentsTableComponent {
-  displayedColumns = ['id', 'course', 'user', 'actions'];
+  displayedColumns = [ 'course', 'user', 'actions'];
 
   enrollments$: Observable<Enrollment[]>;
   isLoading$: Observable<boolean>;

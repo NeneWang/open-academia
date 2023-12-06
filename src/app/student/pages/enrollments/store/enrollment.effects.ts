@@ -8,23 +8,16 @@ import { environment } from 'src/environments/environment.local';
 import { CreateEnrollmentPayload, Enrollment } from '../models';
 import { Course, User } from 'src/app/academia/models';
 
-// import { Course } from '../../courses/models';
-// import { User } from '../../users/models';
-
 @Injectable()
 export class EnrollmentEffects {
   loadEnrollments$ = createEffect(() => {
     return this.actions$.pipe(
-      // FILTRAR DE TODAS LAS ACCIONES, SOLO AQUELLAS QUE SEAN DE TIPO EnrollmentActions.loadEnrollments
       ofType(EnrollmentActions.loadEnrollments),
 
       concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
         this.getEnrollments().pipe(
-          // SI LA PETICION SALE BIEN, DISPARA LA ACCION EnrollmentActions.loadEnrollmentsSuccess
           map((data) => EnrollmentActions.loadEnrollmentsSuccess({ data })),
 
-          // SI LA PETICION SALE MAL DISPARA LA ACCION EnrollmentActions.loadEnrollmentsFailure
           catchError((error) =>
             of(EnrollmentActions.loadEnrollmentsFailure({ error }))
           )
@@ -35,12 +28,10 @@ export class EnrollmentEffects {
 
   loadEnrollmentDialogOptions$ = createEffect(() =>
     this.actions$.pipe(
-      // FILTRO LAS ACCIONES loadEnrollmentDialogOptions
       ofType(EnrollmentActions.loadEnrollmentDialogOptions),
       concatMap(() =>
         this.getEnrollmentDialogOptions().pipe(
           map((resp) =>
-            // SI SALE BIEN loadEnrollmentDialogOptionsSuccess
             EnrollmentActions.loadEnrollmentDialogOptionsSuccess(resp)
           ),
           catchError((err) =>
@@ -74,9 +65,20 @@ export class EnrollmentEffects {
   constructor(private actions$: Actions, private httpClient: HttpClient) { }
 
   createEnrollment(payload: CreateEnrollmentPayload): Observable<Enrollment> {
+    // Calculate end date as today + 1 year
+    const endDate = new Date();
+    endDate.setFullYear(endDate.getFullYear() + 1);
+    const newUserCourse = {
+      ...payload,
+      status: 'In Progress',
+      grade: 0,
+      start_date: new Date().toISOString(),
+      expire_date: new Date().toISOString(),
+      end_date: endDate.toISOString(),
+    }
     return this.httpClient.post<Enrollment>(
-      `${environment.baseUrl}/enrollments`,
-      payload
+      `${environment.baseUrl}/usercourses`,
+      newUserCourse
     );
   }
 
@@ -86,7 +88,7 @@ export class EnrollmentEffects {
   }> {
     return forkJoin([
       this.httpClient.get<Course[]>(`${environment.baseUrl}/courses`),
-      this.httpClient.get<User[]>(`${environment.baseUrl}/users?role=STUDENT`),
+      this.httpClient.get<User[]>(`${environment.baseUrl}/users`),
     ]).pipe(
       map(([courses, students]) => {
         return {
@@ -99,7 +101,7 @@ export class EnrollmentEffects {
 
   getEnrollments(): Observable<Enrollment[]> {
     return this.httpClient.get<Enrollment[]>(
-      `${environment.baseUrl}/enrollments?_expand=course&_expand=user`
+      `${environment.baseUrl}/usercourses?_expand=course&_expand=user`
     );
   }
 

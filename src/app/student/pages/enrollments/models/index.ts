@@ -1,8 +1,5 @@
-import { Course, User } from 'src/app/academia/models';
-export interface Enrollment {
-  id: number;
-  courseId: number;
-  userId: number;
+import { Course, User, UserCourse } from 'src/app/academia/models';
+export interface Enrollment extends UserCourse {
   user?: User;
   course?: Course;
 }

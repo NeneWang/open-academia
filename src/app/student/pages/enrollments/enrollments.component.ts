@@ -7,7 +7,7 @@ import { EnrollmentDialogComponent } from './components/enrollment-dialog/enroll
 @Component({
   selector: 'app-enrollments',
   templateUrl: './enrollments.component.html',
-  styleUrls: ['./enrollments.component.scss'],
+  styleUrls: ['./enrollments.component.css'],
 })
 export class EnrollmentsComponent {
   constructor(private store: Store, private dialog: MatDialog) {
@@ -15,6 +15,8 @@ export class EnrollmentsComponent {
   }
 
   addEnrollment(): void {
-    this.dialog.open(EnrollmentDialogComponent);
+    this.dialog.open(EnrollmentDialogComponent, {
+      width: '80%'
+    });
   }
 }

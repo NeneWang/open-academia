@@ -15,7 +15,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-enrollment-dialog',
   templateUrl: './enrollment-dialog.component.html',
-  styleUrls: ['./enrollment-dialog.component.scss'],
+  styleUrls: ['./enrollment-dialog.component.css'],
 })
 export class EnrollmentDialogComponent {
   userIdControl = new FormControl<number | null>(null);
