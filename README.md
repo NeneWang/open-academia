@@ -19,12 +19,15 @@ https://json-server-render-7y3s.onrender.com/
 
 Live Deployment
 
+Setup
 ```
 git checkout -b gh-pages
-ng build --configuration=production --base-href "https://nenewang.github.io/open-academia/"
 sudo npm install -g angular-cli-ghpages
-ngh --dir dist/lista-alumnos
+```
 
+```
+ng build --configuration=production --base-href "https://nenewang.github.io/open-academia/"
+ngh --dir dist/open-academia
 npx angular-cli-ghpages --dir=dist/open-academia
 ```
 
