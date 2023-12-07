@@ -1,6 +1,6 @@
 import { CoursesComponent } from './../pages/courses/courses.component';
 import { createAction, createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Course, EnrollPayload, UserCourse } from 'src/app/academia/models';
+import { Course, EnrollPayload, UserAverage, UserCourse } from 'src/app/academia/models';
 
 
 export const StudentActions = createActionGroup({
@@ -25,7 +25,13 @@ export const StudentActions = createActionGroup({
         'Load Courses Success': props<{data: any}>(),
         'Load Courses Failure': props<{error: unknown}>(),
 
-    }
+        // User Rankings
+        'Load User Rankings': emptyProps(),
+        'Load User Rankings Success': props<{data: UserAverage[]}>(),
+        'Load User Rankings Failure': props<{error: unknown}>(),
+
+
+    }   
 
 });
 

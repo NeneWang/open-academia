@@ -87,6 +87,20 @@ export class StudentEffects {
         )
     });
 
+    getRankings$ = createEffect(() => {
+        return this.academiaserviceService.getRanking$().pipe(
+            map((data) => StudentActions.loadUserRankingsSuccess({ data })),
+            catchError((error) => of(StudentActions.loadUserRankingsFailure({ error })))
+        )
+    });
+
+
+    getRankings(){
+        return this.academiaserviceService.getRanking$();
+    }
+
+    
+
 }
 
 

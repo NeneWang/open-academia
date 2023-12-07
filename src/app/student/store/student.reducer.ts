@@ -2,7 +2,7 @@ import { Enrollment } from './../pages/enrollments/models/index';
 
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { StudentActions } from './student.actions';
-import { Course, UserCourse } from 'src/app/academia/models';
+import { Course, UserAverage, UserCourse } from 'src/app/academia/models';
 
 
 export const studentFeatureKey = 'student'
@@ -13,6 +13,7 @@ export interface State {
     courses: Course[];
     enrolledCourses: Course[];
     enrolledCoursesIds: number[];
+    userRankings: UserAverage[]; 
 }
 
 export const initialState: State = {
@@ -22,6 +23,7 @@ export const initialState: State = {
     courses: [],
     enrolledCourses: [],
     enrolledCoursesIds: [],
+    userRankings: [],
 }
 
 export const studentReducer = createReducer(
@@ -84,6 +86,25 @@ export const studentReducer = createReducer(
         courses: data,
     })),
     on(StudentActions.loadCoursesFailure, (state, { error }) => ({
+        ...state,
+        isLoading: false,
+        error,
+    })),
+
+    // User Rankings
+    on(StudentActions.loadUserRankings, (state) => ({
+        ...state,
+        isLoading: true,
+
+    })),
+
+    on(StudentActions.loadUserRankingsSuccess, (state, { data }) => ({
+        ...state,
+        isLoading: false,
+        userRankings: data,
+    })),
+
+    on(StudentActions.loadUserRankingsFailure, (state, { error }) => ({
         ...state,
         isLoading: false,
         error,

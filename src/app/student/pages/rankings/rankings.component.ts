@@ -1,6 +1,8 @@
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 import { Component } from '@angular/core';
 import { Course, UserAverage } from 'src/app/academia/models';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -9,16 +11,13 @@ import { Course, UserAverage } from 'src/app/academia/models';
   styleUrls: ['./rankings.component.css']
 })
 export class RankingsComponent {
-  rankings: UserAverage[] | undefined;
+  rankings: Observable<UserAverage[]>;
   selectedUser: UserAverage | undefined;
   userCourses: Course[] = [];
 
-  constructor(private academiaserviceService: AcademiaserviceService) { 
-    this.academiaserviceService.getRanking$().subscribe(
-      (ranking: any) => {
-        this.rankings = ranking;
-      }
-    )
+  constructor(private store: Store, private academiaserviceService: AcademiaserviceService) { 
+    
+    this.rankings = this.academiaserviceService.getRanking$();
   }
 
   onRowClick(ranking: UserAverage) {
@@ -28,7 +27,6 @@ export class RankingsComponent {
     this.academiaserviceService.getEnrolledCourses$(ranking.id).subscribe(
       (userCourse: any) => {
         this.userCourses = userCourse;
-        console.log('selected userCourse', userCourse)
       }
     )
   }
