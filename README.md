@@ -608,6 +608,14 @@ I am considering having as admin effects for the managaments in general so that 
 And then change from api and weird management (from the academic service) to a full fledged odification using the admin only for tables. Since the others are sutdents.
 
 
+### Building a loading spinner
+
+```html
+<mat-spinner *ngIf="isLoading$ | async; else isNotLoading"></mat-spinner>
+
+```
+
+
 
 ## Overall Conclusions
 

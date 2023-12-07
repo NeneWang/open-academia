@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { Course, User, UserCourse } from 'src/app/academia/models';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
-import { selectCourses, selectErolledCoursesIds } from '../../store/student.selector';
+import { selectCourses, selectErolledCoursesIds, selectIsLoading } from '../../store/student.selector';
 import { StudentActions } from '../../store/student.actions';
 
 @Component({
@@ -15,10 +15,12 @@ export class CoursesComponent implements OnInit {
   courses$: Observable<Course[]>;
   enrolledCoursesIds$: Observable<number[]>;
   userId: number | undefined; // Initialize as undefined
+  isLoading$: Observable<boolean> | undefined;
 
   constructor(private academiaserviceService: AcademiaserviceService, private store: Store) {
     // this.courses$ = this.academiaserviceService.getCourses$();
     this.courses$ = this.store.select(selectCourses);
+    this.isLoading$ = this.store.select(selectIsLoading);
     this.enrolledCoursesIds$ = this.store.select(selectErolledCoursesIds)
   
   }

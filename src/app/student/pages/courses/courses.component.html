@@ -2,14 +2,14 @@
 Click on the course to see the details.
 <br>
 <br>
+<ng-template #isNotLoading>
+  <app-view-courses-table
+    [dataSource]="(courses$ | async) || []"
+    [enrolledCoursesIds]="(enrolledCoursesIds$ | async) || []"
+    [isLogged]="isLogged() || false"
+    (unenrollCourse)="unenrollCourse($event)"
+    (enrollCourse)="enrollCourse($event)"
+  ></app-view-courses-table>
+</ng-template>
 
-
-<app-view-courses-table
-  [dataSource]="(courses$ | async) || []"
-  [enrolledCoursesIds]="(enrolledCoursesIds$ | async) || []"
-  [isLogged]="isLogged() || false"
-  (unenrollCourse)="unenrollCourse($event)"
-  (enrollCourse)="enrollCourse($event)"
-  
-></app-view-courses-table>
-
+<mat-spinner *ngIf="isLoading$ | async; else isNotLoading"></mat-spinner>

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Course, UserAverage } from 'src/app/academia/models';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { selectIsLoading, selectUserRankings } from '../../store/student.selector';
 
 
 @Component({
@@ -14,10 +15,12 @@ export class RankingsComponent {
   rankings: Observable<UserAverage[]>;
   selectedUser: UserAverage | undefined;
   userCourses: Course[] = [];
+  isLoading$: Observable<boolean> | undefined;
 
   constructor(private store: Store, private academiaserviceService: AcademiaserviceService) { 
     
-    this.rankings = this.academiaserviceService.getRanking$();
+    this.rankings = this.store.select(selectUserRankings);
+    this.isLoading$ = this.store.select(selectIsLoading);
   }
 
   onRowClick(ranking: UserAverage) {
