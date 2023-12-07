@@ -161,7 +161,7 @@ export interface UserAverage extends User {
     score: number;
 }
 
-export interface UnenrollPayload {
+export interface EnrollPayload {
     userId: number;
     courseId: number;
 }

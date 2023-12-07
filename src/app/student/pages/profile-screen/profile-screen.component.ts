@@ -1,5 +1,5 @@
 import { CreateEnrollmentPayload } from './../enrollments/models/index';
-import { UnenrollPayload, UserRole } from './../../../academia/models/index';
+import { EnrollPayload, UserRole } from './../../../academia/models/index';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 import { Component } from '@angular/core';
 import { Observable, filter } from 'rxjs';
@@ -38,18 +38,7 @@ export class ProfileScreenComponent {
         this.userRole = user.role;
 
         this.store.dispatch(StudentActions.loadEnrolledCourses({ userId: this.userId }));
-
-        // this.academiaserviceService.getEnrolledUserCourses$(this.userId).subscribe((userCourses) => {
-
-        // this.courses$.subscribe((courses) => {
-        //   this.enrolledCoursesIds$ = courses.map((course) => course.id);
-        // }
-        // );
-        //   console.log('this.enrolledCoursesIds', this.enrolledCoursesIds)
-        // });
-        // this.courses$ = this.academiaserviceService.getEnrolledCourses$(this.userId);
-
-        console.log('this.courses$', this.courses$)
+        
       }
     }
     )
@@ -62,7 +51,7 @@ export class ProfileScreenComponent {
 
   unenrollCourse(courseId: number): void {
     if (this.userId !== undefined) {
-      const createEnrollmentPayload: UnenrollPayload  = {
+      const createEnrollmentPayload: EnrollPayload  = {
         courseId: courseId,
         userId: this.userId
       }

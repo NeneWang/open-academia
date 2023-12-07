@@ -4,8 +4,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Observable, catchError, concatMap, map, mergeMap, of } from "rxjs";
 import { StudentActions } from "./student.actions";
-import { Course, UnenrollPayload } from 'src/app/academia/models';
-import { CreateEnrollmentPayload } from '../pages/enrollments/models';
+import { Course, EnrollPayload, UserCourse } from 'src/app/academia/models';
 
 
 @Injectable()
@@ -36,7 +35,7 @@ export class StudentEffects {
             ofType(StudentActions.unenrollCourse),
             concatMap((action) => {
                 this.academiaserviceService.deleteUserCourse(action.payload.userId, action.payload.courseId);
-                const payload: UnenrollPayload = {
+                const payload: EnrollPayload = {
                     userId: action.payload.userId,
                     courseId: action.payload.courseId
                 }
@@ -49,6 +48,44 @@ export class StudentEffects {
     unenrollCourse(id_user: number, id_course: number) {
         this.academiaserviceService.deleteUserCourse(id_user, id_course);
     }
+
+    enrollCourse$ = createEffect(() => {
+
+        return this.actions$.pipe(
+            ofType(StudentActions.enrollCourse),
+            concatMap((action) => {
+                const payload = this.enrollCourse(action.payload.userId, action.payload.courseId);
+                return payload.pipe(
+                    map((data) => StudentActions.enrollCourseSuccess({ data })),
+                    catchError((error) => of(StudentActions.enrollCourseFailure({ error })))
+                )
+            }),
+            catchError((error) => of(StudentActions.enrollCourseFailure({ error })))
+        )
+    });
+
+    enrollCourse(id_user: number, id_course: number): Observable<UserCourse[]> {
+        const payload: UserCourse = {
+            id: new Date().getTime(),
+            userId: id_user,
+            courseId: id_course,
+            progress: 0,
+            status: 'In Progress',
+            grade: 0,
+            start_date: new Date().toISOString(),
+            expire_date: new Date().toISOString(),
+            end_date: new Date().toISOString()
+        }
+        return this.academiaserviceService.createUserCourse(payload);
+
+    }
+
+    loadCourses$ = createEffect(() => {
+        return this.academiaserviceService.getCourses$().pipe(
+            map((data) => StudentActions.loadCoursesSuccess({ data })),
+            catchError((error) => of(StudentActions.loadCoursesFailure({ error })))
+        )
+    });
 
 }
 

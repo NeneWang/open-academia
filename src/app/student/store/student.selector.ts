@@ -10,13 +10,18 @@ export const selectEnrolledCourses = createSelector(
     );
 
 export const selectErolledCoursesIds = createSelector(
-    selectEnrolledCourses,
-    (courses) => courses.map((course) => course.id)
+    selectStudentState,
+    (state) => state.enrolledCoursesIds
     );
 
 export const selectIsLoading = createSelector(
     selectStudentState,
     (state) => state.isLoading
+    );
+
+export const selectCourses = createSelector(
+    selectStudentState,
+    (state) => state.courses
     );
 
 
