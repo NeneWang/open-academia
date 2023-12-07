@@ -160,3 +160,8 @@ export interface UserEmbeddedUserCourses extends User {
 export interface UserAverage extends User {
     score: number;
 }
+
+export interface UnenrollPayload {
+    userId: number;
+    courseId: number;
+}

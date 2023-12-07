@@ -20,6 +20,11 @@ import { MatListModule } from '@angular/material/list';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
+import { studentFeature } from './store/student.reducer';
+import { Store, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StudentEffects } from './store/student.effects';
+
 
 @NgModule({
   declarations: [
@@ -45,8 +50,10 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
     SharedModule,
     StudentsRoutingModule,
     MatListModule,
+    StoreModule.forFeature(studentFeature),
+    EffectsModule.forFeature([StudentEffects]),
     // ViewCoursesTableComponent,
-    
+
   ]
 })
 export class StudentModule { }

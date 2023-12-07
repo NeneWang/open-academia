@@ -1,8 +1,12 @@
-import { UserRole } from './../../../academia/models/index';
+import { CreateEnrollmentPayload } from './../enrollments/models/index';
+import { UnenrollPayload, UserRole } from './../../../academia/models/index';
 import { AcademiaserviceService } from 'src/app/academia/services/academiaservice.service';
 import { Component } from '@angular/core';
 import { Observable, filter } from 'rxjs';
 import { Course, UserCourse } from 'src/app/academia/models';
+import { Store } from '@ngrx/store';
+import { StudentActions } from '../../store/student.actions';
+import { selectEnrolledCourses, selectErolledCoursesIds } from '../../store/student.selector';
 
 @Component({
   selector: 'app-profile-screen',
@@ -15,67 +19,56 @@ export class ProfileScreenComponent {
   userId: number | undefined; // Initialize as undefined
   userName: string | undefined;
   userRole: string | undefined;
-  enrolledCoursesIds: number[] = [];
+  enrolledCoursesIds$: Observable<number[]> | undefined;
   userRoleFormatted: string | undefined;
 
-  constructor(private academiaserviceService: AcademiaserviceService) {
-    this.courses$ = new Observable<Course[]>();
+  constructor(private academiaserviceService: AcademiaserviceService, private store: Store) {
+    this.courses$ = this.store.select(selectEnrolledCourses);
+    this.enrolledCoursesIds$ = this.store.select(selectErolledCoursesIds)
   }
 
   ngOnInit() {
     // Subscribe to the authUser$ observable to get the user's ID
-    
-    
+
+
     this.academiaserviceService.authUser$.subscribe((user) => {
       if (user) {
         this.userId = user.id;
         this.userName = user.first + ' ' + user.last;
         this.userRole = user.role;
 
-        this.academiaserviceService.getEnrolledUserCourses$(this.userId).subscribe((userCourses) => {
+        this.store.dispatch(StudentActions.loadEnrolledCourses({ userId: this.userId }));
 
-          this.enrolledCoursesIds = userCourses.map((e) => e.courseId);
-          console.log('this.enrolledCoursesIds', this.enrolledCoursesIds)
-        });
-        this.courses$ = this.academiaserviceService.getEnrolledCourses$(this.userId);
+        // this.academiaserviceService.getEnrolledUserCourses$(this.userId).subscribe((userCourses) => {
+
+        // this.courses$.subscribe((courses) => {
+        //   this.enrolledCoursesIds$ = courses.map((course) => course.id);
+        // }
+        // );
+        //   console.log('this.enrolledCoursesIds', this.enrolledCoursesIds)
+        // });
+        // this.courses$ = this.academiaserviceService.getEnrolledCourses$(this.userId);
+
+        console.log('this.courses$', this.courses$)
       }
     }
     )
   };
 
-  
+
   enrollCourse(courseId: number): void {
 
-
-    if (this.userId !== undefined) {
-      const payload: UserCourse = {
-        id: new Date().getTime(),
-        userId: this.userId,
-        courseId: courseId,
-        progress: 0,
-        status: 'In Progress',
-        grade: 0,
-        start_date: new Date().toISOString(),
-        expire_date: new Date().toISOString(),
-        end_date: new Date().toISOString(),
-      };
-
-      this.enrolledCoursesIds.push(courseId);
-
-      this.academiaserviceService.createUserCourse(
-        payload,
-      ).subscribe((e) => {
-        return e;
-      });
-    } else {
-      console.error('User ID is undefined. User not logged in.');
-    }
   }
 
   unenrollCourse(courseId: number): void {
     if (this.userId !== undefined) {
-      this.enrolledCoursesIds = this.enrolledCoursesIds.filter((e) => e !== courseId);
-      this.academiaserviceService.deleteUserCourse(this.userId, courseId);
+      const createEnrollmentPayload: UnenrollPayload  = {
+        courseId: courseId,
+        userId: this.userId
+      }
+      this.store.dispatch(StudentActions.unenrollCourse({payload: createEnrollmentPayload}));
+      // this.enrolledCoursesIds$ = this.enrolledCoursesIds$.filter((e) => e !== courseId);
+      // this.academiaserviceService.deleteUserCourse(this.userId, courseId);
     } else {
       console.error('User ID is undefined. User not logged in.');
     }

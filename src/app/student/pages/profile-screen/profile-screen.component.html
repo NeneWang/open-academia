@@ -6,7 +6,7 @@
 
 <app-view-courses-table
   [dataSource]="(courses$ | async) || []"
-  [enrolledCoursesIds]="enrolledCoursesIds || []"
+  [enrolledCoursesIds]="(enrolledCoursesIds$ | async) || []"
   (unenrollCourse)="unenrollCourse($event)"
   (enrollCourse)="enrollCourse($event)"
 ></app-view-courses-table>

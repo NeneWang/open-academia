@@ -1,6 +1,8 @@
 import { createAction, createActionGroup, emptyProps, props } from '@ngrx/store';
+import { UnenrollPayload } from 'src/app/academia/models';
 
-export const studentActions = createActionGroup({
+
+export const StudentActions = createActionGroup({
     source: 'student',
     events: {
         // Profile
@@ -13,8 +15,8 @@ export const studentActions = createActionGroup({
         'Enroll Course Success': props<{data: any}>(),
         'Enroll Course Failure': props<{error: unknown}>(),
 
-        'Unenroll Course': props<{payload: any}>(),
-        'Unenroll Course Success': props<{data: any}>(),
+        'Unenroll Course': props<{payload: UnenrollPayload}>(),
+        'Unenroll Course Success': props<{data: UnenrollPayload}>(),
         'Unenroll Course Failure': props<{error: unknown}>(),
 
     }
