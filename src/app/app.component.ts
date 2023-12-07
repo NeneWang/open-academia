@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { increment, decrement } from './store/counter.actions';
 
 import { Observable, filter, map, mergeMap, of } from 'rxjs';
 import { User } from 'src/app/academia/models';
@@ -61,14 +60,7 @@ export class AppComponent {
   get isAdmin$(): Observable<boolean> {
     return this.authUser$.pipe(map((user) => user?.role === 'ADMIN'));
   }
-
-  increment() {
-    this.store.dispatch(increment());
-  }
-
-  decrement() {
-    this.store.dispatch(decrement());
-  }
+  
 
   loginAsAdmin() {
     console.log('loginDemo');

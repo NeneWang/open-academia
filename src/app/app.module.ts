@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
-import { CounterStoreModule } from './store/counter.store';
 import { appReducer } from './store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
@@ -24,7 +23,6 @@ import { EffectsModule } from '@ngrx/effects';
     CommonModule,
     SharedModule,
     AppRoutingModule,
-    CounterStoreModule,
     CoreModule,
     MatListModule,
     BrowserAnimationsModule,
