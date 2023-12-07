@@ -27,10 +27,6 @@ export class AppComponent {
     private academiaserviceService: AcademiaserviceService,
     private titleService: Title,
     private activatedRoute: ActivatedRoute,) {
-    this.store.select('counter').subscribe((state) => {
-      this.count = state.count;
-    });
-
     this.authUser$ = this.academiaserviceService.authUser$;
 
     this.router.events.pipe(
@@ -60,7 +56,7 @@ export class AppComponent {
   get isAdmin$(): Observable<boolean> {
     return this.authUser$.pipe(map((user) => user?.role === 'ADMIN'));
   }
-  
+
 
   loginAsAdmin() {
     console.log('loginDemo');
