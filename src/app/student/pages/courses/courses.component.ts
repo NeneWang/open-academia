@@ -46,26 +46,7 @@ export class CoursesComponent implements OnInit {
 
     if (this.userId !== undefined) {
       this.store.dispatch(StudentActions.enrollCourse({payload: {userId: this.userId, courseId: courseId}}));
-      // const payload: UserCourse = {
-      //   id: new Date().getTime(),
-      //   userId: this.userId,
-      //   courseId: courseId,
-      //   progress: 0,
-      //   status: 'In Progress',
-      //   grade: 0,
-      //   start_date: new Date().toISOString(),
-      //   expire_date: new Date().toISOString(),
-      //   end_date: new Date().toISOString(),
-      // };
-
-      // console.log('Payload, ', payload);
-      // this.enrolledCoursesIds.push(courseId);
-
-      // this.academiaserviceService.createUserCourse(
-      //   payload,
-      // ).subscribe((e) => {
-      //   return e;
-      // });
+  
     } else {
       console.error('User ID is undefined. User not logged in.');
     }
@@ -74,8 +55,6 @@ export class CoursesComponent implements OnInit {
   unenrollCourse(courseId: number): void {
     if (this.userId !== undefined) {
       this.store.dispatch(StudentActions.unenrollCourse({payload: {userId: this.userId, courseId: courseId}}));
-      // this.enrolledCoursesIds = this.enrolledCoursesIds.filter((e) => e !== courseId);
-      // this.academiaserviceService.deleteUserCourse(this.userId, courseId)
     } else {
       console.error('User ID is undefined. User not logged in.');
     }
