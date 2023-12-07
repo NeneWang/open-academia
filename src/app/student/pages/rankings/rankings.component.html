@@ -1,46 +1,47 @@
-<div
-    *ngIf="selectedUser"
-    class="details-card"
-    style="background-color: white"
-  >
-      <h2 mat-dialog-title>{{ selectedUser | username }}</h2>
-      <mat-dialog-content>
-        <p><strong>Email:</strong> {{ selectedUser.email }}</p>
-        <p><strong>Role:</strong> {{ selectedUser.role | capitalize }}</p>
-      </mat-dialog-content>
+<div *ngIf="selectedUser" class="details-card" style="background-color: white">
+  <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+  <h2 mat-dialog-title>{{ selectedUser | username }}</h2>
+  <mat-dialog-content>
+    <p><strong>Email:</strong> {{ selectedUser.email }}</p>
+    <p><strong>Role:</strong> {{ selectedUser.role | capitalize }}</p>
+  </mat-dialog-content>
 
-      <div>
-        <h3>Enrolled Courses</h3>
-        <div class="course-container">
-          <div class="course" *ngFor="let course of userCourses">
-            <h4 matLine>{{ course.name }}</h4>
-            <img miniRender [src]="course.image" alt="Course Image" />
-
-          </div>
-        </div>
+  <div>
+    <h3>Enrolled Courses</h3>
+    <div class="course-container">
+      <div class="course" *ngFor="let course of userCourses">
+        <h4 matLine>{{ course.name }}</h4>
+        <img miniRender [src]="course.image" alt="Course Image" />
       </div>
-
-      <mat-dialog-actions>
-        <button mat-button mat-dialog-close color="warn"  (click)="reset()">Close</button>
-      </mat-dialog-actions>
+    </div>
   </div>
 
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close color="warn" (click)="reset()">
+      Close
+    </button>
+  </mat-dialog-actions>
+</div>
 
-<table class="large-table details-card table table-hover table-section ">
-  <thead>
-    <tr>
-      <th class="spaced-cell col">Name</th>
-      <th class="spaced-cell col">Score</th>
-    </tr>
-  </thead>
+<mat-spinner *ngIf="isLoading$ | async; else isNotLoading"></mat-spinner>
+
+<ng-template #isNotLoading>
+  <table class="large-table details-card table table-hover table-section">
+    <thead>
+      <tr>
+        <th class="spaced-cell col">Name</th>
+        <th class="spaced-cell col">Score</th>
+      </tr>
+    </thead>
   <tbody>
     <tr
-      *ngFor="let ranking of ((rankings | async) || [])"
-      class="clickable-row spaced-cell"
-      (click)="onRowClick(ranking)"
+    *ngFor="let ranking of (rankings | async) || []"
+    class="clickable-row spaced-cell"
+    (click)="onRowClick(ranking)"
     >
-      <td>{{ ranking | username}}</td>
-      <td class="center-text">{{ ranking?.score ?? 0 }}</td>
-    </tr>
-  </tbody>
+    <td>{{ ranking | username }}</td>
+    <td class="center-text">{{ ranking?.score ?? 0 }}</td>
+  </tr>
+</tbody>
 </table>
+</ng-template>
