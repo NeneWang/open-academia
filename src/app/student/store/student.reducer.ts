@@ -109,6 +109,14 @@ export const studentReducer = createReducer(
         isLoading: false,
         error,
     })),
+
+    // Selected User Courses.
+    on(StudentActions.loadSelectedUserCourses, (state) => ({
+        ...state,
+        isLoading: true,
+    }))
+
+
 )
 
 
